@@ -7,9 +7,8 @@ public class Player : MovingObject
     class PlayerInteractionManager
     {
         private float distance;
-        private InteractableObject interactableObject;
+        private Interactable interactableObject;
         private GameObject gameObject;
-        private float interactionRadius = 1f;
         public PlayerInteractionManager()
         {
             Reset();
@@ -19,16 +18,22 @@ public class Player : MovingObject
             Vector2 gameObjectPosition = new Vector2(gameObject.transform.position.x, 
                                                         gameObject.transform.position.y);
             float newDistance = Vector2.Distance(gameObjectPosition, playerPos);
-            if (newDistance > interactionRadius || newDistance > distance)
+
+            if(gameObject == this.gameObject)
+            {
+                distance = newDistance;
+                return;
+            }
+
+            if (newDistance > distance)
             {
                 return;
             }
 
             interactableObject?.HideMessage();
 
-            distance = newDistance;
             this.gameObject = gameObject;
-            interactableObject = gameObject.GetComponent<InteractableObject>(); ;
+            interactableObject = gameObject.GetComponent<Interactable>(); ;
 
             interactableObject.ShowMessage();
 
@@ -67,17 +72,16 @@ public class Player : MovingObject
         int xDir = (int)Input.GetAxisRaw("Horizontal");
         int yDir = (int)Input.GetAxisRaw("Vertical");
 
-        //base.Move(xDir, yDir);
         transform.Translate(new Vector2(xDir, yDir) * playerSpeed * Time.fixedDeltaTime);
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             interactionManager.Interact();
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<InteractableObject>() != null)
+        if (collision.gameObject.GetComponent<Interactable>() != null)
         {
             interactionManager.ReplaceObject(collision.gameObject,
                 new Vector2(transform.position.x, transform.position.y));
@@ -85,7 +89,7 @@ public class Player : MovingObject
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<InteractableObject>() != null)
+        if (collision.gameObject.GetComponent<Interactable>() != null)
         {
             interactionManager.ExitCollider(collision.gameObject);
         }
