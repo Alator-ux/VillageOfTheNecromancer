@@ -30,6 +30,7 @@ public class Interactable: MonoBehaviour
     }
     private void Start()
     {
+        tag = "Interactable";
         if (createBoxColider2D)
         {
             if(triggerCollider != null)
@@ -54,6 +55,7 @@ public class Interactable: MonoBehaviour
 
             var messageCanvas = canvasObject.AddComponent<Canvas>();
             messageCanvas.renderMode = RenderMode.WorldSpace;
+            messageCanvas.sortingLayerName = "UI";
 
             canvasObject.AddComponent<CanvasScaler>();
             canvasObject.AddComponent<GraphicRaycaster>();
@@ -61,23 +63,21 @@ public class Interactable: MonoBehaviour
             var messageCanvasRT = canvasObject.GetComponent<RectTransform>();
             messageCanvasRT.transform.localPosition = new Vector3(1, 1, 0);
             messageCanvasRT.sizeDelta = new Vector2(2f, 2f);
-
+            
             var textObject = new GameObject("MessageText");
             textObject.transform.SetParent(canvasObject.transform);
 
-            var textComponent = textObject.gameObject.AddComponent<TextMeshPro>();
+            var textComponent = textObject.gameObject.AddComponent<TextMeshProUGUI>();
             textComponent.text = message;
-            textComponent.fontSize = 3f;
+            textComponent.fontSize = 0.3f;
             textComponent.alignment = TextAlignmentOptions.BottomLeft;
 
             var textRT = textComponent.GetComponent<RectTransform>();
             textRT.anchorMin = new Vector2(0f, 0f);
             textRT.anchorMax = new Vector2(1f, 1f);
             textRT.pivot = new Vector2(1f, 1f);
-            //textRT.transform.localPosition = new Vector3(0f, 0f, 0f);
             textRT.offsetMin = new Vector2(0f, 0f);
             textRT.offsetMax = new Vector2(0f, 0f);
-
         }
         HideMessage();
     }

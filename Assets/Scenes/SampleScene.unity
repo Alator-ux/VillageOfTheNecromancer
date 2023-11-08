@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7918436909785798849, guid: d7adc679592fcf440a116cc04c3f3541, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918436909785798849, guid: d7adc679592fcf440a116cc04c3f3541, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1055091769
+      objectReference: {fileID: 0}
     - target: {fileID: 8901965341824978174, guid: d7adc679592fcf440a116cc04c3f3541, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.83
@@ -482,8 +490,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1453737291
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 186884597, guid: e06e00e1f37b8ba43a0dc0283ba62e41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -595,11 +603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf1116cf168a0e499076b041873f8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0.1
+  speed: 1
   blockingLayer:
     serializedVersion: 2
     m_Bits: 64
-  playerSpeed: 2
+  playerSpeed: 4
 --- !u!1001 &507617343689368476
 PrefabInstance:
   m_ObjectHideFlags: 0

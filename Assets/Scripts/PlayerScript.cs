@@ -69,19 +69,19 @@ public class Player : MovingObject
 
     void Update()
     {
-        int xDir = (int)Input.GetAxisRaw("Horizontal");
-        int yDir = (int)Input.GetAxisRaw("Vertical");
+        Vector2 moveDirection = new Vector2(0f, 0f);
+        moveDirection.x = (float)Input.GetAxisRaw("Horizontal");
+        moveDirection.y = (float)Input.GetAxisRaw("Vertical");
+        Move(moveDirection);
 
-        transform.Translate(new Vector2(xDir, yDir) * playerSpeed * Time.fixedDeltaTime);
-
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Interact"))
         {
             interactionManager.Interact();
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Interactable>() != null)
+        if (collision.tag == "Interactable")
         {
             interactionManager.ReplaceObject(collision.gameObject,
                 new Vector2(transform.position.x, transform.position.y));
@@ -89,7 +89,7 @@ public class Player : MovingObject
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Interactable>() != null)
+        if (collision.tag == "Interactable")
         {
             interactionManager.ExitCollider(collision.gameObject);
         }
