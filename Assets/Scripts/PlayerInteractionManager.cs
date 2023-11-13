@@ -47,7 +47,7 @@ public class PlayerInteractionManager : MonoBehaviour
 
     public void Interact()
     {
-        closest?.Interact();
+        closest?.Interact(this.gameObject);
     }
 
     private void Reset()

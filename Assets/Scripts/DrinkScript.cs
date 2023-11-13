@@ -9,7 +9,7 @@ public class DrinkScript : Interactable
         base(createBoxColider2D: true, colliderSizeMultiplier: 2f, createMessageObject: true, message:"Выпей меня")
     { }
 
-    public override void Interact()
+    public override void Interact(GameObject _interactor)
     {
         if (!canInteract)
         {

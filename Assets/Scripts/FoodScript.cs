@@ -8,7 +8,7 @@ public class FoodScript : Interactable
         base(createBoxColider2D: true, colliderSizeMultiplier: 1f, createMessageObject: true, message:"Подбери меня")
     { }
 
-    public override void Interact()
+    public override void Interact(GameObject _interactor)
     {
         Destroy(gameObject);
     }

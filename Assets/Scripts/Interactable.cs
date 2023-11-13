@@ -95,7 +95,7 @@ public abstract class Interactable: MonoBehaviour
         textRT.offsetMax = new Vector2(0f, 0f);
     }
 
-    public abstract void Interact();
+    public abstract void Interact(GameObject interactor);
 
     public void ShowMessage()
     {
