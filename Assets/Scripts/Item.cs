@@ -12,8 +12,6 @@ public class Item : ScriptableObject
     [SerializeField]
     private Sprite image;
     [SerializeField]
-    private int count = 1;
-    [SerializeField]
     private int stackSize = 10;
     [SerializeField]
     private GameObject prefab;
@@ -21,23 +19,13 @@ public class Item : ScriptableObject
     public string Name { get => name; set => name = value; }
     public string Description { get => description; set => description = value; }
     public Sprite Image { get => image; set => image = value; }
-    
-    public int Count { get => count; }
-
-    public void AddToStack(int count)
-    {
-        if (count <= 0 || (this.count + count) > stackSize)
-            return;
-
-        this.count += count;
-    }
-
-    public void RemoveFromStack(int count)
-    {
-        if (count <= 0 || (this.count - count) <= stackSize)
-            return;
-
-        this.count -= count;
+    public int StackSize { 
+        get => stackSize;
+        set {
+            if (value < 0)
+                return;
+            stackSize = value;
+        }
     }
 
     public void Drop(Vector3 position, Quaternion? rotation = null)
@@ -47,7 +35,17 @@ public class Item : ScriptableObject
         Instantiate(prefab, position, actualRotation);
     }
 
-    public bool IsStack => count > 1;
+    public override bool Equals(object other)
+    {
+        Item otherItem = other as Item;
+        if (otherItem == null)
+            return false;
 
-    public bool IsEnded => count == 0;
+        return name == otherItem.Name;
+    }
+
+    public override int GetHashCode()
+    {
+        return name.GetHashCode();
+    }
 }
