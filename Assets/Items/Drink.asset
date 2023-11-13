@@ -15,6 +15,5 @@ MonoBehaviour:
   name: Drink
   description: Looks like coke cola
   image: {fileID: 21300000, guid: 6b620d2f2dccab9498fdd51786a5a1de, type: 3}
-  count: 1
   stackSize: 10
   prefab: {fileID: 5295605487757059071, guid: 50ccd74219981224298a987f342b6a25, type: 3}
