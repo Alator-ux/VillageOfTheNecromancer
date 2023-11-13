@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3282421009827056721}
   - component: {fileID: 5906122805841494844}
-  - component: {fileID: 5680090537440782113}
+  - component: {fileID: -3460341361358175138}
   m_Layer: 0
   m_Name: Drink
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5680090537440782113
+--- !u!114 &-3460341361358175138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5295605487757059071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76c414bf4fb98b40afce90029d2ee96, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c69144c44df0984f9784b84ecd337b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   messageObject: {fileID: 0}
   triggerCollider: {fileID: 0}
-  prefab: {fileID: 5295605487757059071}
+  item: {fileID: 11400000, guid: 3fbd80bba48286645a980253b53734fd, type: 2}
+  count: 1
