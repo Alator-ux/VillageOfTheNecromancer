@@ -6,7 +6,7 @@ public class DrinkScript : Interactable
 {
     public GameObject prefab;
     DrinkScript() :
-        base(createBoxColider2D: true, bcSizeMult: 2f, createMessageObject: true, message:"Выпей меня")
+        base(createBoxColider2D: true, colliderSizeMultiplier: 2f, createMessageObject: true, message:"Выпей меня")
     { }
 
     public override void Interact()
