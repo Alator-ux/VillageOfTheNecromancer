@@ -719,6 +719,10 @@ PrefabInstance:
       value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 6936232762173922290, guid: d7adc679592fcf440a116cc04c3f3541, type: 3}
+      propertyPath: count
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936232762173922290, guid: d7adc679592fcf440a116cc04c3f3541, type: 3}
       propertyPath: createBoxColider2D
       value: 0
       objectReference: {fileID: 0}

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PickableItem : Interactable
@@ -23,6 +22,7 @@ public class PickableItem : Interactable
         inventory.AddItem(item, count);
         // Debugging
         inventory.LogItems();
+        inventory.LogGrid();
         Destroy(gameObject);
     }
 

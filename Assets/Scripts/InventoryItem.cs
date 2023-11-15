@@ -18,23 +18,44 @@ public class InventoryItem
         this.gridColumn = gridColumn;
     }
 
-    public void AddToStack(int count)
+    // returns added count
+    public int AddToStack(int count)
     {
-        if (count <= 0 || (this.count + count) > item.StackSize)
-            return;
+        if (count <= 0) return 0;
+
+        if ((this.count + count) > item.StackSize)
+        {
+            var added = item.StackSize - this.count;
+            this.count = item.StackSize;
+            return added;
+        }
 
         this.count += count;
+        return count;
     }
 
-    public void RemoveFromStack(int count)
+    // returns removed count
+    public int RemoveFromStack(int count)
     {
-        if (count <= 0 || (this.count - count) <= item.StackSize)
-            return;
+        if (count <= 0) return 0;
+
+        if ((this.count - count) <= item.StackSize)
+        {
+            var removed = this.count;
+            this.count = 0;
+            return removed;
+        }
 
         this.count -= count;
+        return count;
     }
 
     public bool IsStackFull => count == item.StackSize;
 
     public bool IsStackEmpty => count == 0;
+
+    public override string ToString()
+    {
+        return $"{item.Name}: {count}";
+    }
 }
