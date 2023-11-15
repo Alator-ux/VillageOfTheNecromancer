@@ -27,11 +27,12 @@ public class PlayerInteractionManager : MonoBehaviour
             return;
         }
 
-        closest?.HideMessage();
+        closest?.LeaveInteractionArea(this.gameObject);
 
         closest = newInteractable;
+        distanceToClosest = newDistance;
 
-        closest.ShowMessage();
+        closest.EnterInteractionArea(this.gameObject);
 
     }
     public void StopInteraction(Interactable interactable)
@@ -41,7 +42,7 @@ public class PlayerInteractionManager : MonoBehaviour
             return;
         }
 
-        closest.HideMessage();
+        closest.LeaveInteractionArea(this.gameObject);
         Reset();
     }
 

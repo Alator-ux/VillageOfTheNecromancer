@@ -8,12 +8,13 @@ public class PickableItem : Interactable
     [SerializeField] int count = 1;
 
     PickableItem() :
-        base(createBoxColider2D: true, colliderSizeMultiplier: 1f, createMessageObject: true, message: "Подбери меня")
+        base(colliderSizeMultiplier: 1f)
     { }
 
-    public override void Interact(GameObject interactor)
+    public override void Interact(GameObject interactor) { }
+
+    public override void EnterInteractionArea(GameObject interactor)
     {
-        Debug.Log("Interacting here!");
         if (interactor.tag != "Player") return;
 
         Inventory inventory = interactor.GetComponent<Inventory>();
@@ -24,4 +25,6 @@ public class PickableItem : Interactable
         inventory.LogItems();
         Destroy(gameObject);
     }
+
+    public override void LeaveInteractionArea(GameObject interactor) { }
 }
