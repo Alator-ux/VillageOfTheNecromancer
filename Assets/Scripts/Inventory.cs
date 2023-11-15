@@ -12,15 +12,15 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private int gridColsCount = 10;
 
-    private Dictionary<Item, List<InventoryItem>> itemsToInventoryItems = new();
-    private InventoryItem[,] grid = null;
+    private Dictionary<Item, List<ItemStack>> itemsToStacks = new();
+    private ItemStack[,] grid = null;
 
     private void Start()
     {
-        grid = new InventoryItem[gridRowsCount, gridColsCount];
+        grid = new ItemStack[gridRowsCount, gridColsCount];
     }
 
-    public InventoryItem[,] Grid
+    public ItemStack[,] Grid
     {
         get { return grid; }
     }
@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
         return (gridRowsCount, gridColsCount);
     }
 
-    public IEnumerable<Item> Items => itemsToInventoryItems.Keys;
+    public IEnumerable<Item> Items => itemsToStacks.Keys;
 
     public Dictionary<Item, int> ItemsCounts()
     {
@@ -45,12 +45,15 @@ public class Inventory : MonoBehaviour
 
     public int Count(Item item)
     {
-        return itemsToInventoryItems[item].Select(l => l.Count).Sum();
+        return itemsToStacks[item].Select(l => l.Count).Sum();
     }
 
-    public bool Contains(Item item)
+    public bool Contains(Item item, int count=1)
     {
-        return itemsToInventoryItems.ContainsKey(item);
+        if (count == 1)
+            return itemsToStacks.ContainsKey(item);
+
+        return Count(item) >= count;
     }
 
     // returns added count
@@ -59,7 +62,7 @@ public class Inventory : MonoBehaviour
         if (count < 1)
             return 0;
 
-        if (itemsToInventoryItems.ContainsKey(item))
+        if (itemsToStacks.ContainsKey(item))
         {
             return AddExistingItem(item, count);
         }
@@ -90,7 +93,7 @@ public class Inventory : MonoBehaviour
             if (lastItemStack == null)
                 return addedCount;
 
-            var addedToStack = lastItemStack.AddToStack(remaining);
+            var addedToStack = lastItemStack.Add(remaining);
             remaining -= addedToStack;
             addedCount += addedToStack;
         }
@@ -98,9 +101,9 @@ public class Inventory : MonoBehaviour
         return addedCount;
     }
 
-    private InventoryItem FirstNotFullStack(Item item) 
+    private ItemStack FirstNotFullStack(Item item) 
     {
-        return itemsToInventoryItems[item].First((inventoryItem) => !inventoryItem.IsStackFull);
+        return itemsToStacks[item].First((inventoryItem) => !inventoryItem.IsStackFull);
     }
 
     private int AddToFreeCells(Item item, int count)
@@ -121,18 +124,18 @@ public class Inventory : MonoBehaviour
     {
         if (count < 1 || count > item.StackSize) return 0;
 
-        if (!itemsToInventoryItems.ContainsKey(item))
-            itemsToInventoryItems[item] = new List<InventoryItem>();
+        if (!itemsToStacks.ContainsKey(item))
+            itemsToStacks[item] = new List<ItemStack>();
         
         var (row, col) = FreeGridCell();
         
         if (row == -1)
             return 0;
 
-        var inventoryItem = new InventoryItem(item, count, row, col);
+        var inventoryItem = new ItemStack(item, count, row, col);
 
         grid[row, col] = inventoryItem;
-        itemsToInventoryItems[item].Add(inventoryItem);
+        itemsToStacks[item].Add(inventoryItem);
         
         return count;
     }
@@ -151,6 +154,40 @@ public class Inventory : MonoBehaviour
         }
 
         return (-1, -1);
+    }
+
+    // TODO: Implement this
+    public int RemoveItem(Item item, int count)
+    {
+        return 0;
+    }
+
+    // TODO: Implement this
+    public int AddToCell(Item item, int row, int column, int count)
+    {
+        if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount)
+            return 0;
+
+        return 0;
+    }
+
+    // returns removed count
+    public int RemoveFromCell(int row, int column, int count)
+    {
+        if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount)
+            return 0;
+
+        var cell = grid[row, column];
+        if (cell == null)
+            return 0;
+
+        var removed = cell.Remove(count);
+        if (cell.IsStackEmpty)
+        {
+            itemsToStacks[cell.Item].Remove(cell);
+        }
+
+        return removed;
     }
 
     public void LogItems()
@@ -176,7 +213,7 @@ public class Inventory : MonoBehaviour
         Debug.Log(sb.ToString());
     }
 
-    private string CellString(int row, int column, int len=10)
+    private string CellString(int row, int column, int len = 10)
     {
         if (row > gridRowsCount || column > gridColsCount) return null;
 
@@ -186,10 +223,5 @@ public class Inventory : MonoBehaviour
         }
 
         return grid[row, column].ToString().PadRight(len, ' ');
-    }
-
-    // TODO: Implement this
-    public void RemoveItem(Item item, int count)
-    {
     }
 }

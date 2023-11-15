@@ -1,4 +1,4 @@
-public class InventoryItem
+public class ItemStack
 {
     private Item item;
     private int count;
@@ -10,7 +10,7 @@ public class InventoryItem
     public int GridRow { get => gridRow; set => gridRow = value; }
     public int GridColumn { get => gridColumn; set => gridColumn = value; }
 
-    public InventoryItem(Item item, int count, int gridRow, int gridColumn)
+    public ItemStack(Item item, int count, int gridRow, int gridColumn)
     {
         this.item = item;
         this.count = count;
@@ -19,7 +19,7 @@ public class InventoryItem
     }
 
     // returns added count
-    public int AddToStack(int count)
+    public int Add(int count)
     {
         if (count <= 0) return 0;
 
@@ -35,7 +35,7 @@ public class InventoryItem
     }
 
     // returns removed count
-    public int RemoveFromStack(int count)
+    public int Remove(int count)
     {
         if (count <= 0) return 0;
 
