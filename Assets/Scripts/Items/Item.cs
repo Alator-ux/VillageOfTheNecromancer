@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEditor;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/Item")]
 public class Item : ScriptableObject
 {
     [SerializeField]
@@ -14,7 +16,10 @@ public class Item : ScriptableObject
     [SerializeField]
     private int stackSize = 10;
     [SerializeField]
-    private GameObject prefab;
+    private GameObject droppedItemPrefab;
+
+    [SerializeField]
+    protected MonoScript itemUseScript;
 
     public string Name { get => name; set => name = value; }
     public string Description { get => description; set => description = value; }
@@ -27,12 +32,26 @@ public class Item : ScriptableObject
             stackSize = value;
         }
     }
+    public Type ItemUseScriptType { 
+        get
+        {
+            if (itemUseScript == null)
+                return null;
+
+            var itemUseScriptType = itemUseScript.GetClass();
+
+            if (!itemUseScriptType.IsSubclassOf(typeof(ItemUse))) return null;
+
+            return itemUseScriptType;
+        }
+    }
+
 
     public void Drop(Vector3 position, Quaternion? rotation = null)
     {
         Quaternion actualRotation = rotation ?? Quaternion.identity;
 
-        Instantiate(prefab, position, actualRotation);
+        Instantiate(droppedItemPrefab, position, actualRotation);
     }
 
     public override bool Equals(object other)

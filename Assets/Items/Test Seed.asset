@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee7d9fff6955e64e882ee794959a70b, type: 3}
+  m_Name: Test Seed
+  m_EditorClassIdentifier: 
+  name: Test Seed
+  description: First seed item created for tests
+  image: {fileID: 975130589, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
+  stackSize: 10
+  droppedItemPrefab: {fileID: 542552474495479402, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+  itemUseScript: {fileID: 11500000, guid: 5a77f4707383022418cce43b1504756a, type: 3}
+  plantPrefab: {fileID: 5408820985873089467, guid: d6a593f261cfc88488fbcc9cbce77572, type: 3}
