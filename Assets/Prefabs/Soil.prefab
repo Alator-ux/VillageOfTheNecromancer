@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6973751490917701816}
   - component: {fileID: 3521469786584764707}
   - component: {fileID: 6434826112346889736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Soil
   m_TagString: Untagged
   m_Icon: {fileID: 0}

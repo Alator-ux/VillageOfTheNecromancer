@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c79e1aabf9aad24bbd5542c51d088cc, type: 3}
   m_Name: Corn
   m_EditorClassIdentifier: 
-  name: Test Fruit
-  description: Fruit from a test plant
+  name: Corn
+  description: Corn fruit from a corn plant growing from a corn seed
   image: {fileID: 21300000, guid: 5acc85ada6ec2b441a128b3de94682a3, type: 3}
   stackSize: 10
   droppedItemPrefab: {fileID: 6624897588072369553, guid: 66702b981443fd24ab47cd6b31e61c6c, type: 3}

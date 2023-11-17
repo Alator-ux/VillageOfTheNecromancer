@@ -9,29 +9,21 @@ public class Soil : MonoBehaviour
     public SpriteRenderer SpriteRenderer { get; private set; }
     public Plant CurrentPlant { get; private set; }
 
+    private Color baseColor;
+
     private void Start()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         playerUseItemController = playerObject.GetComponent<PlayerUseItemController>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void OnMouseEnter()
-    {
-        SeedUse seedUse = playerUseItemController.ItemInUse as SeedUse;
-
-        if (seedUse == null)
-            return;
-
-        seedUse.SoilEnter(this);
+        baseColor = SpriteRenderer.color;
     }
 
     private void OnMouseOver()
     {
         SeedUse seedUse = playerUseItemController.ItemInUse as SeedUse;
 
-        if (seedUse == null)
-            return;
+        if (seedUse == null) return;
 
         seedUse.SoilHover(this);
     }
@@ -40,8 +32,7 @@ public class Soil : MonoBehaviour
     {
         SeedUse seedUse = playerUseItemController.ItemInUse as SeedUse;
 
-        if (seedUse == null)
-            return;
+        if (seedUse == null) return;
 
         seedUse.SoilLeave(this);
     }
@@ -55,6 +46,11 @@ public class Soil : MonoBehaviour
         seedUse.SoilClick(this);
     }
 
+    public void ResetColor()
+    {
+        SpriteRenderer.color = baseColor;
+    }
+
     public bool IsFree => CurrentPlant == null;
 
     public void Plant(Seed seed)
@@ -62,13 +58,14 @@ public class Soil : MonoBehaviour
         if (!IsFree)
             return;
 
-        GameObject plantPrefab = seed.PlantPrefab?.gameObject;
-        if (plantPrefab == null) return;
+        if (seed == null || seed.PlantPrefab == null) return;
+
+        GameObject plantPrefab = seed.PlantPrefab.gameObject;
 
         GameObject plantedObject = Instantiate(plantPrefab, transform);
         
-        // It should be a bit closer to camera
-        Vector3 plantPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f);
+        // It should be a bit closer to camera. TODO: Rewrite using sorting layers.
+        Vector3 plantPosition = new(transform.position.x, transform.position.y, transform.position.z - 0.1f);
         plantedObject.transform.position = plantPosition;
 
         CurrentPlant = plantedObject.GetComponent<Plant>();

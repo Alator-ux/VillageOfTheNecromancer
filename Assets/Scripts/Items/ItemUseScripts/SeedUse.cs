@@ -10,7 +10,8 @@ public class SeedUse : ItemUse
 
     private Color canPlantColor = Color.green;
     private Color cannotPlantColor = Color.red;
-    private Color baseSoilColor = Color.white;
+
+    private Soil highlightedSoil = null;
 
     private float maxDistance = 2.0f;
 
@@ -23,16 +24,18 @@ public class SeedUse : ItemUse
 
     private void OnDestroy()
     {
-        Cursor.visible=false;
-    }
+        Debug.Log("On destroy!");
 
-    public void SoilEnter(Soil soil)
-    {
-        baseSoilColor = soil.SpriteRenderer.color;
+        if (highlightedSoil != null)
+        {
+            highlightedSoil.ResetColor();
+            Debug.Log(highlightedSoil);
+        }
     }
 
     public void SoilHover(Soil soil)
     {
+        highlightedSoil = soil;
         if (CanPlant(soil))
         {
             soil.SpriteRenderer.color = canPlantColor;
@@ -45,14 +48,20 @@ public class SeedUse : ItemUse
 
     public void SoilLeave(Soil soil)
     {
-        soil.SpriteRenderer.color = baseSoilColor;
+        soil.ResetColor();
     }
 
     public void SoilClick(Soil soil)
     {
-        if (CanPlant(soil))
+        if (!CanPlant(soil)) return;
+        
+        inventory.RemoveItem(seed);
+        soil.Plant(seed);
+        inventory.LogItems();
+
+        if (!inventory.Contains(seed))
         {
-            soil.Plant(seed);
+            StopUsing();
         }
     }
 

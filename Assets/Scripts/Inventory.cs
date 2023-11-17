@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
     }
 
     // returns added count
-    public int AddItem(Item item, int count)
+    public int AddItem(Item item, int count = 1)
     {
         if (count < 1)
             return 0;
@@ -166,13 +166,23 @@ public class Inventory : MonoBehaviour
     }
 
     // TODO: Implement this
-    public int RemoveItem(Item item, int count)
+    public int RemoveItem(Item item, int count = 1)
     {
-        return 0;
+        if (!itemsToStacks.ContainsKey(item)) return 0;
+
+        int removed = 0;
+
+        while (removed < count && itemsToStacks.ContainsKey(item))
+        {
+            var lastStack = itemsToStacks[item].Last();
+            removed += RemoveFromStack(lastStack, count);
+        }
+
+        return removed;
     }
 
     // TODO: Implement this
-    public int AddToCell(Item item, int row, int column, int count)
+    public int AddToCell(Item item, int row, int column, int count = 1)
     {
         if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount)
             return 0;
@@ -181,7 +191,7 @@ public class Inventory : MonoBehaviour
     }
 
     // returns removed count
-    public int RemoveFromCell(int row, int column, int count)
+    public int RemoveFromCell(int row, int column, int count = 1)
     {
         if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount)
             return 0;
@@ -190,10 +200,24 @@ public class Inventory : MonoBehaviour
         if (cell == null)
             return 0;
 
-        var removed = cell.Remove(count);
-        if (cell.IsStackEmpty)
+        return RemoveFromStack(cell, count);
+    }
+
+    private int RemoveFromStack(ItemStack stack, int count)
+    {
+        var removed = stack.Remove(count);
+        if (stack.IsStackEmpty)
         {
-            itemsToStacks[cell.Item].Remove(cell);
+            itemsToStacks[stack.Item].Remove(stack);
+
+            Debug.Log(itemsToStacks[stack.Item]);
+            
+            if (itemsToStacks[stack.Item].Count() == 0)
+            {
+                Debug.Log($"{stack.Item} list is empty");
+                itemsToStacks.Remove(stack.Item);
+                Debug.Log("Remove that list");
+            }
         }
 
         return removed;

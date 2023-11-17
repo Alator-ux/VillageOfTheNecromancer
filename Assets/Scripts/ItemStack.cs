@@ -39,7 +39,7 @@ public class ItemStack
     {
         if (count <= 0) return 0;
 
-        if ((this.count - count) <= item.StackSize)
+        if ((this.count - count) < 0)
         {
             var removed = this.count;
             this.count = 0;

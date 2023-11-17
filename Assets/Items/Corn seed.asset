@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee7d9fff6955e64e882ee794959a70b, type: 3}
   m_Name: Corn seed
   m_EditorClassIdentifier: 
-  name: Test Seed
+  name: Corn Seed
   description: First seed item created for tests
   image: {fileID: 975130589, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
   stackSize: 10

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2349002495797945312}
   - component: {fileID: 8465783011844891512}
   - component: {fileID: -5321591004579256636}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,3 +151,4 @@ MonoBehaviour:
   fruit: {fileID: 11400000, guid: 3b03b30c47c80174ab01b51938a47b40, type: 2}
   fruitMinCount: 2
   fruitMaxCount: 4
+  Soil: {fileID: 0}
