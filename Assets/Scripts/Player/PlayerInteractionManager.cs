@@ -48,7 +48,11 @@ public class PlayerInteractionManager : MonoBehaviour
 
     public void Interact()
     {
-        closest?.Interact(this.gameObject);
+        if (closest != null)
+        {
+            Debug.Log($"Closest: {closest}");
+            closest.Interact(this.gameObject);
+        }
     }
 
     private void Reset()

@@ -7,6 +7,7 @@ public class Soil : MonoBehaviour
     private GameObject playerObject;
     private PlayerUseItemController playerUseItemController;
     public SpriteRenderer SpriteRenderer { get; private set; }
+    public Plant CurrentPlant { get; private set; }
 
     private void Start()
     {
@@ -54,8 +55,22 @@ public class Soil : MonoBehaviour
         seedUse.SoilClick(this);
     }
 
-    public void Plant(SeedItem seed)
+    public bool IsFree => CurrentPlant == null;
+
+    public void Plant(Seed seed)
     {
-        Debug.Log("Seed");
+        if (!IsFree)
+            return;
+
+        GameObject plantPrefab = seed.PlantPrefab?.gameObject;
+        if (plantPrefab == null) return;
+
+        GameObject plantedObject = Instantiate(plantPrefab, transform);
+        
+        // It should be a bit closer to camera
+        Vector3 plantPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f);
+        plantedObject.transform.position = plantPosition;
+
+        CurrentPlant = plantedObject.GetComponent<Plant>();
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 public class PickableItem : Interactable
 {
     [SerializeField] Item item;
-    [SerializeField] int count = 1;
 
     PickableItem() :
         base(colliderSizeMultiplier: 1f)
@@ -19,9 +18,12 @@ public class PickableItem : Interactable
         Inventory inventory = interactor.GetComponent<Inventory>();
         if (inventory == null) return;
 
-        inventory.AddItem(item, count);
+        int added = inventory.AddItem(item, 1);
+        if (added == 0)
+            return;
+
         // Debugging
-        //inventory.LogItems();
+        inventory.LogItems();
         //inventory.LogGrid();
         PlayerUseItemController playerUseItemController = interactor.GetComponent<PlayerUseItemController>();
         playerUseItemController.UseItem(item);

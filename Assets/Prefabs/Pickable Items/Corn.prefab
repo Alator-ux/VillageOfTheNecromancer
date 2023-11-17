@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5408820985873089467
+--- !u!1 &6624897588072369553
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3718409226521050648}
-  - component: {fileID: 2349002495797945312}
-  - component: {fileID: 8465783011844891512}
-  - component: {fileID: -5321591004579256636}
+  - component: {fileID: 8157784159419071881}
+  - component: {fileID: 8770802686049773041}
+  - component: {fileID: 204743554050541515}
+  - component: {fileID: 4688232679259742581}
   m_Layer: 0
-  m_Name: Plant
+  m_Name: Corn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3718409226521050648
+--- !u!4 &8157784159419071881
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5408820985873089467}
+  m_GameObject: {fileID: 6624897588072369553}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -2.8895884, y: -0.035673857, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2349002495797945312
+--- !u!212 &8770802686049773041
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5408820985873089467}
+  m_GameObject: {fileID: 6624897588072369553}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,24 +75,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 975130589, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5acc85ada6ec2b441a128b3de94682a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 19.2, y: 19.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8465783011844891512
+--- !u!61 &204743554050541515
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5408820985873089467}
+  m_GameObject: {fileID: 6624897588072369553}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -122,32 +122,25 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 19.2, y: 19.2}
+    newSize: {x: 19.2, y: 19.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 19.2, y: 19.2}
   m_EdgeRadius: 0
---- !u!114 &-5321591004579256636
+--- !u!114 &4688232679259742581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5408820985873089467}
+  m_GameObject: {fileID: 6624897588072369553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea85667aeed358488876a2ed4399ab2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c69144c44df0984f9784b84ecd337b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childGrowPointsThreshold: 5
-  grownGrowPointsThreshold: 10
-  seedSpriteRenderer: {fileID: 975130589, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
-  childSpriteRenderer: {fileID: -545974863, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
-  grownSpriteRenderer: {fileID: -315365310, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
-  fruit: {fileID: 11400000, guid: 3b03b30c47c80174ab01b51938a47b40, type: 2}
-  fruitMinCount: 2
-  fruitMaxCount: 4
+  item: {fileID: 11400000, guid: 3b03b30c47c80174ab01b51938a47b40, type: 2}

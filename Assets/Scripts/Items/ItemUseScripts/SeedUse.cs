@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SeedUse : ItemUse
 {
-    private SeedItem seed;
+    private Seed seed;
 
     private Inventory inventory;
 
@@ -17,7 +17,7 @@ public class SeedUse : ItemUse
     private void Start()
     {
         inventory = GetComponent<Inventory>();
-        seed = (SeedItem)item;
+        seed = (Seed)item;
         Cursor.visible = true;
     }
 
@@ -33,8 +33,8 @@ public class SeedUse : ItemUse
 
     public void SoilHover(Soil soil)
     {
-        float distance = Vector3.Distance(transform.position, soil.transform.position);
-        if (distance <= maxDistance)
+        
+        if (CanPlant(soil))
         {
             soil.SpriteRenderer.color = freeSoilColor;
         }
@@ -51,11 +51,16 @@ public class SeedUse : ItemUse
 
     public void SoilClick(Soil soil)
     {
-        float distance = Vector3.Distance(transform.position, soil.transform.position);
-
-        if (distance <= maxDistance)
+        if (CanPlant(soil))
         {
+            Debug.Log("Try plant");
             soil.Plant(seed);
         }
+    }
+
+    private bool CanPlant(Soil soil)
+    {
+        float distance = Vector3.Distance(transform.position, soil.transform.position);
+        return distance <= maxDistance && soil.IsFree;
     }
 }

@@ -90,6 +90,7 @@ public class Inventory : MonoBehaviour
         while (addedCount < count && remaining != 0)
         {
             var lastItemStack = FirstNotFullStack(item);
+            Debug.Log(lastItemStack);
             if (lastItemStack == null)
                 return addedCount;
 
@@ -103,7 +104,15 @@ public class Inventory : MonoBehaviour
 
     private ItemStack FirstNotFullStack(Item item) 
     {
-        return itemsToStacks[item].First((inventoryItem) => !inventoryItem.IsStackFull);
+        try
+        {
+            var first = itemsToStacks[item].First((inventoryItem) => !inventoryItem.IsStackFull);
+            return first;
+        }
+        catch (InvalidOperationException)
+        {
+            return null;
+        }
     }
 
     private int AddToFreeCells(Item item, int count)

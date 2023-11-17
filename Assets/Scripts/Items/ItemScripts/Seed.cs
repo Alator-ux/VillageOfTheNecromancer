@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEditor;
 
 [CreateAssetMenu(fileName = "New Seed Item", menuName = "Items/Seed")]
-public class SeedItem : Item
+public class Seed : Item
 {
     [SerializeField]
-    private GameObject plantPrefab;
+    private Plant plantPrefab;
+    public Plant PlantPrefab { get => plantPrefab; }
 
     private void OnEnable()
     {

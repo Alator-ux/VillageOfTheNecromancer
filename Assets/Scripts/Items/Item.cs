@@ -51,7 +51,7 @@ public class Item : ScriptableObject
     {
         Quaternion actualRotation = rotation ?? Quaternion.identity;
 
-        Instantiate(droppedItemPrefab, position, actualRotation);
+        GameObject droppedItemObject = Instantiate(droppedItemPrefab, position, actualRotation);
     }
 
     public override bool Equals(object other)

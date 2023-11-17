@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c79e1aabf9aad24bbd5542c51d088cc, type: 3}
+  m_Name: Corn
+  m_EditorClassIdentifier: 
+  name: Test Fruit
+  description: Fruit from a test plant
+  image: {fileID: 21300000, guid: 5acc85ada6ec2b441a128b3de94682a3, type: 3}
+  stackSize: 10
+  droppedItemPrefab: {fileID: 6624897588072369553, guid: 66702b981443fd24ab47cd6b31e61c6c, type: 3}
+  itemUseScript: {fileID: 0}
