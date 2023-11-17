@@ -33,6 +33,8 @@ public class Plant : Interactable
     public PlantState CurrentState { get; private set; }
     public int GrowPoints { get; private set; }
 
+    public Soil Soil;
+
     private SpriteRenderer spriteRenderer;
 
     protected new void Start()
@@ -41,6 +43,11 @@ public class Plant : Interactable
         Debug.Log("I am planted!");
         base.Start();
         StartCoroutine(GrowTimer());
+    }
+
+    private void OnDestroy()
+    {
+        Soil.RemovePlant();
     }
 
     // For debug
@@ -102,18 +109,28 @@ public class Plant : Interactable
         
         if (inventory == null) return;
 
-        Debug.Log("Try add");
         int count = Random.Range(fruitMinCount, fruitMaxCount + 1);
         int added = inventory.AddItem(fruit, count);
         if (added != count)
         {
             int fruitsToDrop = count - added;
-            for (int i = 0; i < fruitsToDrop; i++)
-            {
-                fruit.Drop(transform.position, transform.rotation);
-            }
+            DropFruits(fruitsToDrop);
         }
         inventory.LogGrid();
+        AfterPickUp();
+    }
+
+    private void DropFruits(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            fruit.Drop(transform.position, transform.rotation);
+        }
+    }
+
+    protected virtual void AfterPickUp()
+    {
+        Destroy(gameObject);
     }
 
     public override void EnterInteractionArea(GameObject interactor)

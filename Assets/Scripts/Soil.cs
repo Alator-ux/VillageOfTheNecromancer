@@ -72,5 +72,11 @@ public class Soil : MonoBehaviour
         plantedObject.transform.position = plantPosition;
 
         CurrentPlant = plantedObject.GetComponent<Plant>();
+        CurrentPlant.Soil = this;
+    }
+
+    public void RemovePlant()
+    {
+        CurrentPlant = null;
     }
 }

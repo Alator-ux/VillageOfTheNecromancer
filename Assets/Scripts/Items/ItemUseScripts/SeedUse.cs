@@ -8,8 +8,8 @@ public class SeedUse : ItemUse
 
     private Inventory inventory;
 
-    private Color freeSoilColor = Color.green;
-    private Color occupiedSoilColor = Color.red;
+    private Color canPlantColor = Color.green;
+    private Color cannotPlantColor = Color.red;
     private Color baseSoilColor = Color.white;
 
     private float maxDistance = 2.0f;
@@ -33,14 +33,13 @@ public class SeedUse : ItemUse
 
     public void SoilHover(Soil soil)
     {
-        
         if (CanPlant(soil))
         {
-            soil.SpriteRenderer.color = freeSoilColor;
+            soil.SpriteRenderer.color = canPlantColor;
         }
         else
         {
-            soil.SpriteRenderer.color = occupiedSoilColor;
+            soil.SpriteRenderer.color = cannotPlantColor;
         }
     }
 
@@ -53,7 +52,6 @@ public class SeedUse : ItemUse
     {
         if (CanPlant(soil))
         {
-            Debug.Log("Try plant");
             soil.Plant(seed);
         }
     }
