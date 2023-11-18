@@ -4,51 +4,28 @@ using UnityEngine;
 
 public class Soil : MonoBehaviour
 {
-    private GameObject playerObject;
-    private PlayerUseItemController playerUseItemController;
-    public SpriteRenderer SpriteRenderer { get; private set; }
+    private SpriteRenderer spriteRenderer;
     public Plant CurrentPlant { get; private set; }
 
     private Color baseColor;
 
     private void Start()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-        playerUseItemController = playerObject.GetComponent<PlayerUseItemController>();
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        baseColor = SpriteRenderer.color;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        baseColor = spriteRenderer.color;
     }
 
-    private void OnMouseOver()
+    public void SetIndicatonColor(bool available)
     {
-        SeedUse seedUse = playerUseItemController.ItemInUse as SeedUse;
-
-        if (seedUse == null) return;
-
-        seedUse.SoilHover(this);
-    }
-
-    private void OnMouseExit()
-    {
-        SeedUse seedUse = playerUseItemController.ItemInUse as SeedUse;
-
-        if (seedUse == null) return;
-
-        seedUse.SoilLeave(this);
-    }
-
-    private void OnMouseDown()
-    {
-        SeedUse seedUse = playerUseItemController.ItemInUse as SeedUse;
-        
-        if (seedUse == null) return;
-
-        seedUse.SoilClick(this);
+        if (available)
+            spriteRenderer.color = Color.green;
+        else
+            spriteRenderer.color = Color.red;
     }
 
     public void ResetColor()
     {
-        SpriteRenderer.color = baseColor;
+        spriteRenderer.color = baseColor;
     }
 
     public bool IsFree => CurrentPlant == null;

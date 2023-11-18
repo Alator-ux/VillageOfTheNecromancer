@@ -8,24 +8,55 @@ public class SeedUse : ItemUse
 
     private Inventory inventory;
 
-    private Color canPlantColor = Color.green;
-    private Color cannotPlantColor = Color.red;
-
     private Soil highlightedSoil = null;
 
     private float maxDistance = 2.0f;
 
     private void Start()
     {
+        seed = item as Seed;
+        if (seed == null)
+        {
+            Destroy(this);
+            return;
+        }
+
         inventory = GetComponent<Inventory>();
-        seed = (Seed)item;
         Cursor.visible = true;
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        LayerMask mask = 1 << LayerMask.NameToLayer("Soil");
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, mask);
+
+        if (hit.collider == null) return;
+
+        Soil soil = hit.collider.GetComponent<Soil>();
+        if (soil == null) return;
+
+        if (highlightedSoil != null)
+        {
+            MouseLeaveSoil(highlightedSoil);
+        }
+
+        highlightedSoil = soil;
+        MouseHoverSoil(highlightedSoil);
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (highlightedSoil == null) return;
+
+            MouseDownOnSoil(highlightedSoil);
+        }
     }
 
     private void OnDestroy()
     {
-        Debug.Log("On destroy!");
-
         if (highlightedSoil != null)
         {
             highlightedSoil.ResetColor();
@@ -33,25 +64,18 @@ public class SeedUse : ItemUse
         }
     }
 
-    public void SoilHover(Soil soil)
+    public void MouseHoverSoil(Soil soil)
     {
-        highlightedSoil = soil;
-        if (CanPlant(soil))
-        {
-            soil.SpriteRenderer.color = canPlantColor;
-        }
-        else
-        {
-            soil.SpriteRenderer.color = cannotPlantColor;
-        }
+        bool available = CanPlant(soil);
+        soil.SetIndicatonColor(available);
     }
 
-    public void SoilLeave(Soil soil)
+    public void MouseLeaveSoil(Soil soil)
     {
         soil.ResetColor();
     }
 
-    public void SoilClick(Soil soil)
+    public void MouseDownOnSoil(Soil soil)
     {
         if (!CanPlant(soil)) return;
         
