@@ -15,9 +15,12 @@ public class Inventory : MonoBehaviour
     private Dictionary<Item, List<ItemStack>> itemsToStacks = new();
     private ItemStack[,] grid = null;
 
+    private Action<int, int> onChanged;
+
     private void Start()
     {
         grid = new ItemStack[gridRowsCount, gridColsCount];
+        SetOnChangedCallback(delegate (int row, int col) { }); // заглушка
     }
 
     public ItemStack[,] Grid
@@ -54,6 +57,10 @@ public class Inventory : MonoBehaviour
             return itemsToStacks.ContainsKey(item);
 
         return Count(item) >= count;
+    }
+    public void SetOnChangedCallback(Action<int, int> callback)
+    {
+        onChanged = callback;
     }
 
     // returns added count
@@ -97,6 +104,8 @@ public class Inventory : MonoBehaviour
             var addedToStack = lastItemStack.Add(remaining);
             remaining -= addedToStack;
             addedCount += addedToStack;
+
+            onChanged(lastItemStack.GridRow, lastItemStack.GridColumn);
         }
 
         return addedCount;
@@ -145,7 +154,9 @@ public class Inventory : MonoBehaviour
 
         grid[row, col] = inventoryItem;
         itemsToStacks[item].Add(inventoryItem);
-        
+
+        onChanged(row, col);
+
         return count;
     }
 
@@ -169,13 +180,19 @@ public class Inventory : MonoBehaviour
     public int RemoveItem(Item item, int count = 1)
     {
         if (!itemsToStacks.ContainsKey(item)) return 0;
+        var (removedItemGridRow, removedItemGridCol) = (-1, -1);
 
         int removed = 0;
-
         while (removed < count && itemsToStacks.ContainsKey(item))
         {
             var lastStack = itemsToStacks[item].Last();
+            (removedItemGridRow, removedItemGridCol) = (lastStack.GridRow, lastStack.GridColumn);
             removed += RemoveFromStack(lastStack, count);
+        }
+
+        if(removed > 0)
+        {
+            onChanged(removedItemGridRow, removedItemGridCol);
         }
 
         return removed;
@@ -205,6 +222,7 @@ public class Inventory : MonoBehaviour
 
     private int RemoveFromStack(ItemStack stack, int count)
     {
+        var (removedItemGridRow, removedItemGridCol) = (stack.GridRow, stack.GridColumn);
         var removed = stack.Remove(count);
         if (stack.IsStackEmpty)
         {
@@ -216,13 +234,36 @@ public class Inventory : MonoBehaviour
             {
                 Debug.Log($"{stack.Item} list is empty");
                 itemsToStacks.Remove(stack.Item);
+                grid[stack.GridRow, stack.GridColumn] = null;
                 Debug.Log("Remove that list");
             }
         }
 
+        onChanged(stack.GridRow, stack.GridColumn);
         return removed;
     }
+    // TODO сделал как-то. ≈сли нужно, переназови да.
+    public void SwapStacks(int row, int col, int otherRow, int otherCol)
+    {
+        var itemStack = grid[row, col];
 
+        grid[row, col] = grid[otherRow, otherCol];
+        if (grid[row, col] != null)
+        {
+            grid[row, col].GridRow = row;
+            grid[row, col].GridColumn = col;
+        }
+
+        grid[otherRow, otherCol] = itemStack;
+        if (grid[otherRow, otherCol] != null)
+        {
+            grid[otherRow, otherCol].GridRow = otherRow;
+            grid[otherRow, otherCol].GridColumn = otherCol;
+        }
+
+        onChanged(row, col);
+        onChanged(otherRow, otherCol);
+    }
     public void LogItems()
     {
         var items = Items.Select(i => (i.Name, Count(i)));
