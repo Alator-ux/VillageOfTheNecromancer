@@ -1470,6 +1470,7 @@ MonoBehaviour:
   quickBar: {fileID: 1787086796474039051}
   inventory: {fileID: 5099605026786109507}
   inventoryCellPrefab: {fileID: 6886071471150581518, guid: e446314e426a0334b986f4694aa5b5bb, type: 3}
+  itemOptionsMenuPrefab: {fileID: 63897876649892534, guid: db91b697568393548bf9b487faa4aa95, type: 3}
   topLevelObject: {fileID: 3470669646810383644}
 --- !u!1 &6898487309481141279
 GameObject:

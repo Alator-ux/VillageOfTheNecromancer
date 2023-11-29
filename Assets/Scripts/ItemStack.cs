@@ -52,7 +52,7 @@ public class ItemStack
         return count;
     }
 
-    public void Drop(int count, Vector3 position, float maxOffset = 1f)
+    public int Drop(int count, Vector3 position, float maxOffset, Quaternion? rotation)
     {
         var removed = Remove(count);
         for(var i = 0; i < removed; i++)
@@ -61,8 +61,10 @@ public class ItemStack
             float offsetX = Random.Range(-maxOffset, maxOffset);
             float offsetY = Random.Range(-maxOffset, maxOffset);
             position += new Vector3(offsetX, offsetY, 0f);
-            item.Drop(position);
+            item.Drop(position, rotation);
         }
+
+        return removed;
     }
 
     public bool IsStackFull => count == item.StackSize;

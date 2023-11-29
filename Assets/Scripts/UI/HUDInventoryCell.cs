@@ -6,15 +6,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HUDInventoryCell : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IInitializePotentialDragHandler, IDropHandler
+public class HUDInventoryCell : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IInitializePotentialDragHandler, IDropHandler
 {
     private CanvasGroup canvasGroup;
-    private Image itemImage;
+    private Image itemImage, background;
     private TextMeshProUGUI itemCount;
-    static private GameObject itemOptionsWindow;
-    private int row, col;
+    private int row, column;
     public int Row { get => row; set => row = value; }
-    public int Col { get => col; set => col = value; }
+    public int Column { get => column; set => column = value; }
 
     private Action<int, int> onItemSwapped;
     public Action<int, int> OnItemSwapped { set => onItemSwapped = value; }
@@ -25,22 +24,16 @@ public class HUDInventoryCell : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     private Action onAllItemsRemoved;
     public Action OnAllItemsRemoved { set => onAllItemsRemoved = value; }
 
-    private Action onItemUsed;
-    public Action OnItemUsed { set => onItemUsed = value; }
-
-    [SerializeField]
-    private GameObject itemOptionsWindowPrefab;
-
     private GameObject topLevelObject;
     public GameObject TopLevelObject { set => topLevelObject = value; }
     
-    private bool IsEmpty { get => itemImage.sprite == null;}
-
     public bool dropped = false;
 
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        background = GetComponent<Image>();
+
         var cellItem = transform.Find("Foreground");
         itemImage = cellItem.Find("ItemImage").GetComponent<Image>();
         itemCount = cellItem.Find("ItemCount").GetComponent<TextMeshProUGUI>();
@@ -60,7 +53,6 @@ public class HUDInventoryCell : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Destroy(itemOptionsWindow);
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             topLevelObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -102,35 +94,6 @@ public class HUDInventoryCell : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     {
         eventData.useDragThreshold = true;
     }
-    
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Destroy(itemOptionsWindow);
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            itemOptionsWindow = Instantiate(itemOptionsWindowPrefab, topLevelObject.transform);
-            itemOptionsWindow.transform.position = transform.position + new Vector3(60, 0, 0);
-            var topLevelCanvasGroup = topLevelObject.GetComponent<CanvasGroup>();
-            topLevelCanvasGroup.blocksRaycasts = true;
-            itemOptionsWindow.GetComponent<HUDItemOptions>()
-                .SetOnButtonClickCallback(delegate (int code)
-                {
-                    switch (code)
-                    {
-                        case 0:
-                            onItemUsed();
-                            break;
-                        case 1:
-                            onItemRemoved();
-                            break;
-                        case 2:
-                            onAllItemsRemoved();
-                            break;
-                    }
-                    topLevelCanvasGroup.blocksRaycasts = false;
-                });
-        }
-    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -144,6 +107,21 @@ public class HUDInventoryCell : MonoBehaviour, IPointerDownHandler, IBeginDragHa
             return;
         }
         cell.dropped = true;
-        onItemSwapped(cell.Row, cell.Col);
+        onItemSwapped(cell.Row, cell.Column);
+    }
+
+    public void SetActiveColor()
+    {
+        background.color = new Color(0.68f, 0.48f, 0.0f, 1f);
+    }
+
+    public void SetInactiveColor()
+    {
+        background.color = new Color(0.34f, 0.24f, 0f, 1f);
+    }
+    // TODO не знаю правильно ли так, но...
+    public bool IsEqual(HUDInventoryCell other)
+    {
+        return row == other.Row && column == other.Column;
     }
 }

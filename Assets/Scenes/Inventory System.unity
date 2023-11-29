@@ -744,6 +744,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2317122689639027833, guid: e4d47797b72b0dd4b90fb701fa63f2dc, type: 3}
   m_PrefabInstance: {fileID: 5131296244794301591}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1609410874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6790204732135594700, guid: 4bf32b3f552387f4da573c14ab0288e7, type: 3}
+  m_PrefabInstance: {fileID: 2454818768927719360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1640781202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,6 +1389,10 @@ PrefabInstance:
       propertyPath: gridRowsCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6986853961289372703, guid: 2ae2e5534ce58f24fa5a0b8c33684d09, type: 3}
+      propertyPath: hudGameObject
+      value: 
+      objectReference: {fileID: 1609410874}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -148,8 +148,8 @@ GameObject:
   - component: {fileID: 3508724356228554512}
   - component: {fileID: 5591299686686615079}
   m_Layer: 5
-  m_Name: ItemOptionsWindow
-  m_TagString: Untagged
+  m_Name: ItemOptionsMenu
+  m_TagString: HUDItemOptionsMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

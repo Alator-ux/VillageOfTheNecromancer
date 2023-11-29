@@ -222,47 +222,89 @@ public class Inventory : MonoBehaviour
 
     private int RemoveFromStack(ItemStack stack, int count)
     {
-        var (removedItemGridRow, removedItemGridCol) = (stack.GridRow, stack.GridColumn);
         var removed = stack.Remove(count);
         if (stack.IsStackEmpty)
         {
-            itemsToStacks[stack.Item].Remove(stack);
-
-            Debug.Log(itemsToStacks[stack.Item]);
-            
-            if (itemsToStacks[stack.Item].Count() == 0)
-            {
-                Debug.Log($"{stack.Item} list is empty");
-                itemsToStacks.Remove(stack.Item);
-                grid[stack.GridRow, stack.GridColumn] = null;
-                Debug.Log("Remove that list");
-            }
+            UpdateStackAndListsOnEmpty(stack);
         }
 
         onChanged(stack.GridRow, stack.GridColumn);
         return removed;
     }
-    // TODO сделал как-то. ≈сли нужно, переназови да.
-    public void SwapStacks(int row, int col, int otherRow, int otherCol)
+
+    public int DropFromCell(int row, int column, Vector3 position, int count = 1, float maxOffset = 1f, Quaternion? rotation = null)
     {
-        var itemStack = grid[row, col];
+        if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount)
+            return 0;
 
-        grid[row, col] = grid[otherRow, otherCol];
-        if (grid[row, col] != null)
+        var cell = grid[row, column];
+        if (cell == null)
+            return 0;
+
+        return DropFromStack(cell, count, position, maxOffset, rotation);
+    }
+    private int DropFromStack(ItemStack stack, int count, Vector3 position, float maxOffset, Quaternion? rotation)
+    {
+        var removed = stack.Drop(count, position, maxOffset, rotation);
+        if (stack.IsStackEmpty)
         {
-            grid[row, col].GridRow = row;
-            grid[row, col].GridColumn = col;
+            UpdateStackAndListsOnEmpty(stack);
         }
 
-        grid[otherRow, otherCol] = itemStack;
-        if (grid[otherRow, otherCol] != null)
+        onChanged(stack.GridRow, stack.GridColumn);
+        return removed;
+    }
+    private void UpdateStackAndListsOnEmpty(ItemStack stack)
+    {
+        grid[stack.GridRow, stack.GridColumn] = null;
+
+        itemsToStacks[stack.Item].Remove(stack);
+
+        Debug.Log(itemsToStacks[stack.Item]);
+
+        if (itemsToStacks[stack.Item].Count() == 0)
         {
-            grid[otherRow, otherCol].GridRow = otherRow;
-            grid[otherRow, otherCol].GridColumn = otherCol;
+            Debug.Log($"{stack.Item} list is empty");
+            itemsToStacks.Remove(stack.Item);
+            Debug.Log("Remove that list");
+        }
+    }
+    public void SwapStacks(int row, int column, int otherRow, int otherColumn)
+    {
+        if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount ||
+            otherRow < 0 || otherColumn < 0 || otherRow > gridRowsCount || otherColumn > gridColsCount)
+            return;
+
+        var itemStack = grid[row, column];
+
+        grid[row, column] = grid[otherRow, otherColumn];
+        if (grid[row, column] != null)
+        {
+            grid[row, column].GridRow = row;
+            grid[row, column].GridColumn = column;
         }
 
-        onChanged(row, col);
-        onChanged(otherRow, otherCol);
+        grid[otherRow, otherColumn] = itemStack;
+        if (grid[otherRow, otherColumn] != null)
+        {
+            grid[otherRow, otherColumn].GridRow = otherRow;
+            grid[otherRow, otherColumn].GridColumn = otherColumn;
+        }
+
+        onChanged(row, column);
+        onChanged(otherRow, otherColumn);
+    }
+    public bool IsCellEmpty(int row, int column)
+    {
+        if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount)
+            return true;
+
+        if(grid[row, column] == null)
+        {
+            return true;
+        }
+
+        return grid[row, column].IsStackEmpty;
     }
     public void LogItems()
     {
