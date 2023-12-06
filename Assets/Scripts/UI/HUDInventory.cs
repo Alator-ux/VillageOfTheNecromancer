@@ -11,25 +11,28 @@ public class HUDInventory : MonoBehaviour
     private GameObject player;
     private Inventory playerInventory;
     private PlayerUseItemController playerUseItemController;
-
+    private TooltipManager tooltipManager;
+    private OptionsMenuManager optionsMenuManager;
     [SerializeField]
     private GameObject quickBar, inventory;
 
-    public GameObject inventoryCellPrefab, itemOptionsMenuPrefab, topLevelObject;
+    public GameObject inventoryCellPrefab, topLevelObject;
 
     private HUDInventoryCell[,] cells;
     private HUDInventoryCell activeItemCell;
-    private GameObject itemOptionsMenu;
-    private CanvasGroup topLevelObjectCG;
+
     void Start()
     {
-        topLevelObjectCG = topLevelObject.GetComponent<CanvasGroup>();
-
         playerUseItemController = player.GetComponent<PlayerUseItemController>();
+        tooltipManager = GetComponent<TooltipManager>();
+
+        optionsMenuManager = GetComponent<OptionsMenuManager>();
+        optionsMenuManager.TopLevelObject = topLevelObject;
+
         playerInventory = player.GetComponent<Inventory>();
-        playerInventory.SetOnChangedCallback(delegate (int row, int col)
+        playerInventory.SetOnChangedCallback((int row, int column) =>
         {
-            cells[row, col].SetItemStack(playerInventory.Grid[row, col]);
+            cells[row, column].SetItemStack(playerInventory.Grid[row, column]);
         });
 
         var gridSize = playerInventory.GridSize();
@@ -38,6 +41,9 @@ public class HUDInventory : MonoBehaviour
 
         cells = new HUDInventoryCell[gridSize.Item1, gridSize.Item2];
         FillItemGrid(gridSize);
+
+        activeItemCell = cells[0, 0];
+        ToggleItemActivation(activeItemCell);
 
         ChangeInventoryVisibility();
     }
@@ -71,9 +77,6 @@ public class HUDInventory : MonoBehaviour
             cells[row, column].OnItemRemoved = () => {
                 DropItem(currentRow, currentColumn);
             };
-            cells[row, column].OnAllItemsRemoved = () => {
-                DropAllItems(currentRow, currentColumn);
-            };
 
             cells[row, column].SetItemStack(itemStack);
         }
@@ -86,7 +89,7 @@ public class HUDInventory : MonoBehaviour
     void DropItem(int row, int column)
     {
         playerInventory.DropFromCell(row, column, position: playerInventory.transform.position, count: 1);
-        if(activeItemCell?.IsEqual(cells[row, column]) ?? false && playerInventory.IsCellEmpty(row, column))
+        if(activeItemCell.IsEqual(cells[row, column]) && playerInventory.IsCellEmpty(row, column))
         {
             playerUseItemController.UseItem(null);
         }
@@ -97,7 +100,7 @@ public class HUDInventory : MonoBehaviour
         if(stack != null)
         {
             playerInventory.DropFromCell(row, column, position: playerInventory.transform.position, count: stack.Count);
-            if (activeItemCell?.IsEqual(cells[row, column]) ?? false)
+            if (activeItemCell.IsEqual(cells[row, column]))
             {
                 playerUseItemController.UseItem(null);
             }
@@ -105,55 +108,64 @@ public class HUDInventory : MonoBehaviour
     }
     public void ToggleItemActivation(int column)
     {
-        activeItemCell?.SetInactiveColor();
+        activeItemCell.SetInactiveColor();
         UseItem(0, column);
         activeItemCell = cells[0, column];
         activeItemCell.SetActiveColor();
     }
     public void ToggleItemActivation(HUDInventoryCell inventoryCell)
     {
-        activeItemCell?.SetInactiveColor();
+        activeItemCell.SetInactiveColor();
         UseItem(inventoryCell.Row, inventoryCell.Column);
         activeItemCell = inventoryCell;
         activeItemCell.SetActiveColor();
     }
-    public void CreateItemOptionsMenu(HUDInventoryCell inventoryCell)
+
+    public void OnItemCellRightClick(HUDInventoryCell inventoryCell)
     {
         if(playerInventory.IsCellEmpty(inventoryCell.Row, inventoryCell.Column)) {
             return;
         }
-        Destroy(itemOptionsMenu);
-        itemOptionsMenu = Instantiate(itemOptionsMenuPrefab, topLevelObject.transform);
-        itemOptionsMenu.transform.position = inventoryCell.transform.position + new Vector3(60, 0, 0);
-        topLevelObjectCG.blocksRaycasts = true;
-        itemOptionsMenu.GetComponent<HUDItemOptions>()
-                .SetOnButtonClickCallback((HUDItemOptions.MenuAction choosenAction) =>
-                {
-                    switch (choosenAction)
-                    {
-                        case HUDItemOptions.MenuAction.Use:
-                            UseItem(inventoryCell.Row, inventoryCell.Column);
-                            break;
-                        case HUDItemOptions.MenuAction.Drop:
-                            DropItem(inventoryCell.Row, inventoryCell.Column);
-                            break;
-                        case HUDItemOptions.MenuAction.DropAll:
-                            DropAllItems(inventoryCell.Row, inventoryCell.Column); ;
-                            break;
-                    }
-                    topLevelObjectCG.blocksRaycasts = false;
-                });
+        var menuScript = optionsMenuManager.
+            CreateOptionsMenu(inventoryCell.transform.position) as HUDItemOptionsMenu;
+        menuScript.SetOnButtonClickCallback((HUDItemOptionsMenuAction choosenAction) =>
+        {
+            switch (choosenAction)
+            {
+                case HUDItemOptionsMenuAction.Use:
+                    ToggleItemActivation(inventoryCell);
+                    break;
+                case HUDItemOptionsMenuAction.Drop:
+                    DropItem(inventoryCell.Row, inventoryCell.Column);
+                    break;
+                case HUDItemOptionsMenuAction.DropAll:
+                    DropAllItems(inventoryCell.Row, inventoryCell.Column); ;
+                    break;
+            }
+            optionsMenuManager.DestroyOptionsMenu();
+        });    
     }
-    public void DestroyItemOptionsMenu()
+    public void OnClick()
     {
-        Destroy(itemOptionsMenu);
+        optionsMenuManager.DestroyOptionsMenu();
     }
+    public void OnItemCellMouseEnter(HUDInventoryCell inventoryCell, Vector2 mousePosition)
+    {
+        if (playerInventory.IsCellEmpty(inventoryCell.Row, inventoryCell.Column))
+        {
+            return;
+        }
+        var item = playerInventory.Grid[inventoryCell.Row, inventoryCell.Column].Item;
+        var text = $"{item.Name}:\n{item.Description}";
+        tooltipManager.CreateTooltip(mousePosition, text);
+    }
+    public void OnItemCellMouseExit()
+    {
+        tooltipManager.DestroyTooltip();
+    }
+
     public void ChangeInventoryVisibility()
     {
         inventory.SetActive(!inventory.activeSelf);
-    }
-    void Update()
-    {
-        
     }
 }

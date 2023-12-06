@@ -6,7 +6,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HUDInventoryCell : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IInitializePotentialDragHandler, IDropHandler
+public class HUDInventoryCell : MonoBehaviour, 
+    IBeginDragHandler, IEndDragHandler, IDragHandler, IInitializePotentialDragHandler, IDropHandler
 {
     private CanvasGroup canvasGroup;
     private Image itemImage, background;
@@ -21,12 +22,9 @@ public class HUDInventoryCell : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     private Action onItemRemoved;
     public Action OnItemRemoved { set => onItemRemoved = value; }
 
-    private Action onAllItemsRemoved;
-    public Action OnAllItemsRemoved { set => onAllItemsRemoved = value; }
-
     private GameObject topLevelObject;
     public GameObject TopLevelObject { set => topLevelObject = value; }
-    
+
     public bool dropped = false;
 
     void Awake()
@@ -51,6 +49,24 @@ public class HUDInventoryCell : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         itemImage.color = Color.white;
         itemCount.text = itemStack.Count.ToString();
     }
+    public void SetActiveColor()
+    {
+        background.color = new Color(0.68f, 0.48f, 0.0f, 1f);
+    }
+
+    public void SetInactiveColor()
+    {
+        background.color = new Color(0.34f, 0.24f, 0f, 1f);
+    }
+    public bool IsEqual(HUDInventoryCell other)
+    {
+        return row == other.Row && column == other.Column;
+    }
+    // ----- Dragging section begin ----
+    public void OnInitializePotentialDrag(PointerEventData eventData)
+    {
+        eventData.useDragThreshold = true;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -71,6 +87,20 @@ public class HUDInventoryCell : MonoBehaviour, IBeginDragHandler, IEndDragHandle
             itemCount.rectTransform.anchoredPosition += eventData.delta;
         }
     }
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag == null)
+        {
+            return;
+        }
+        var cell = eventData.pointerDrag.GetComponent<HUDInventoryCell>();
+        if (cell == null)
+        {
+            return;
+        }
+        cell.dropped = true;
+        onItemSwapped(cell.Row, cell.Column);
+    }
 
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -89,39 +119,5 @@ public class HUDInventoryCell : MonoBehaviour, IBeginDragHandler, IEndDragHandle
             dropped = false;
         }
     }
-
-    public void OnInitializePotentialDrag(PointerEventData eventData)
-    {
-        eventData.useDragThreshold = true;
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        if(eventData.pointerDrag == null)
-        {
-            return;
-        }
-        var cell = eventData.pointerDrag.GetComponent<HUDInventoryCell>();
-        if (cell == null)
-        {
-            return;
-        }
-        cell.dropped = true;
-        onItemSwapped(cell.Row, cell.Column);
-    }
-
-    public void SetActiveColor()
-    {
-        background.color = new Color(0.68f, 0.48f, 0.0f, 1f);
-    }
-
-    public void SetInactiveColor()
-    {
-        background.color = new Color(0.34f, 0.24f, 0f, 1f);
-    }
-    // TODO не знаю правильно ли так, но...
-    public bool IsEqual(HUDInventoryCell other)
-    {
-        return row == other.Row && column == other.Column;
-    }
+    // ----- Dragging section end ----
 }

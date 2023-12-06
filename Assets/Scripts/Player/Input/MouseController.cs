@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ClickController : MonoBehaviour
+public class MouseController : MonoBehaviour
 {
     public float doubleClickTimeLimit = 0.4f;
+    public float hoverTimeLimit = 0.5f;
     private ClickAction lastClickAction = ClickAction.None;
     private MouseButton lastButton = MouseButton.None;
-    private Vector3 globalMousePosition = new Vector3();
-
+    private Vector3 clickMousePosition = new Vector3();
+    private Vector3 lastMousePosition = new Vector3();
+    private float mouseMoveDowntime = 200f;
     void Start()
     {
         StartCoroutine(InputListener());
     }
-
+    void Update()
+    {
+        var currentMousePosition = Input.mousePosition;
+        mouseMoveDowntime += Time.unscaledDeltaTime;
+        if (currentMousePosition != lastMousePosition)
+        {
+            lastMousePosition = currentMousePosition;
+            mouseMoveDowntime = 0f;
+        }
+    }
     IEnumerator InputListener()
     {
         while (enabled)
@@ -23,7 +34,7 @@ public class ClickController : MonoBehaviour
             {
                 lastClickAction = ClickAction.None;
                 lastButton = MouseButton.Left;
-                globalMousePosition = Input.mousePosition;
+                clickMousePosition = Input.mousePosition;
                 yield return ClickEvent(lastButton);
             }
 
@@ -31,7 +42,7 @@ public class ClickController : MonoBehaviour
             {
                 lastClickAction = ClickAction.None;
                 lastButton = MouseButton.Right;
-                globalMousePosition = Input.mousePosition;
+                clickMousePosition = Input.mousePosition;
                 yield return ClickEvent(lastButton);
             }
 
@@ -78,18 +89,18 @@ public class ClickController : MonoBehaviour
         lastClickAction = ClickAction.None;
         lastButton = MouseButton.None;
     }
-    public MouseInfo ClickButtonNAction()
+    public MouseInfo GetMouseState()
     {
-        Vector3 localMousePosition = Camera.main.ScreenToWorldPoint(globalMousePosition);
-        var info = new MouseInfo(lastClickAction, lastButton, globalMousePosition);
-        if(lastClickAction != ClickAction.None)
+        bool hover = mouseMoveDowntime > hoverTimeLimit && lastButton == MouseButton.None;
+        var info = new MouseInfo(lastClickAction, lastButton, clickMousePosition, hover, lastMousePosition);
+        if (lastClickAction != ClickAction.None)
         {
             ResetButtonNAction();
         }
         return info;
     }
 
-    public List<GameObject> ClickedGameObjects(Vector3 mousePosition, LayerMask layer)
+    public List<GameObject> RaycastGameObjects(Vector3 mousePosition, LayerMask layer)
     {
         var pointerEventData = new PointerEventData(EventSystem.current)
         {

@@ -8,11 +8,11 @@ public class PlayerInputController : MovingObject
     private GameObject hudGameObject;
     private HUDInventory hudInventory;
     private PlayerInteractionManager interactionManager;
-    private ClickController clickController;
+    private MouseController mouseController;
     protected override void Start()
     {
         interactionManager = GetComponent<PlayerInteractionManager>();
-        clickController = GetComponent<ClickController>();
+        mouseController = GetComponent<MouseController>();
         hudInventory = hudGameObject.GetComponent<HUDInventory>();
         base.Start();
     }
@@ -44,21 +44,37 @@ public class PlayerInputController : MovingObject
     }
     void HandleMouseEvents()
     {
-        var mouseInfo = clickController.ClickButtonNAction();
-        if(mouseInfo.MouseButton == MouseButton.None)
+        var mouseInfo = mouseController.GetMouseState();
+        if (mouseInfo.Hover)
+        {
+            var hovered = mouseController.RaycastGameObjects(mouseInfo.Position, LayerMask.NameToLayer("UI"));
+            if(GameObjectWithTag(hovered, "HUDItemOptionsMenu") == null)
+            {
+                var itemCell = GameObjectWithTag(hovered, "HUDInventoryItemCell");
+                if (itemCell != null)
+                {
+                    hudInventory.OnItemCellMouseEnter(itemCell.GetComponent<HUDInventoryCell>(), mouseInfo.Position);
+                }
+            }
+        }
+        else
+        {
+            hudInventory.OnItemCellMouseExit();
+        }
+        if(mouseInfo.ClickButton == MouseButton.None)
         {
             return;
         }
-        var clickedGameObjects = clickController.ClickedGameObjects(mouseInfo.MousePosition, LayerMask.NameToLayer("UI"));
-        if (GameObjectWithTag(clickedGameObjects, "HUDItemOptionsMenu"))
+        var clickedGameObjects = mouseController.RaycastGameObjects(mouseInfo.ClickPosition, LayerMask.NameToLayer("UI"));
+        if (GameObjectWithTag(clickedGameObjects, "HUDItemOptionsMenu") != null)
         {
             return;
         }
-        switch (mouseInfo.MouseButton)
+        switch (mouseInfo.ClickButton)
         {
             case MouseButton.Left:
                 {
-                    hudInventory.DestroyItemOptionsMenu();
+                    hudInventory.OnClick();
                     if (mouseInfo.ClickAction == ClickAction.DoubleClick)
                     {
                         var hudInventoryCell = GameObjectWithTag(clickedGameObjects, "HUDInventoryItemCell");
@@ -72,13 +88,13 @@ public class PlayerInputController : MovingObject
                 break;
             case MouseButton.Right:
                 {
-                    hudInventory.DestroyItemOptionsMenu();
+                    hudInventory.OnClick();
                     if (mouseInfo.ClickAction == ClickAction.Click)
                     {
                         var hudInventoryCell = GameObjectWithTag(clickedGameObjects, "HUDInventoryItemCell");
                         if (hudInventoryCell != null)
                         {
-                            hudInventory.CreateItemOptionsMenu(hudInventoryCell.GetComponent<HUDInventoryCell>());
+                            hudInventory.OnItemCellRightClick(hudInventoryCell.GetComponent<HUDInventoryCell>());
                         }
                         Debug.Log("Right click");
                     }
@@ -86,7 +102,7 @@ public class PlayerInputController : MovingObject
                 break;
             case MouseButton.Middle:
                 {
-                    hudInventory.DestroyItemOptionsMenu();
+                    hudInventory.OnClick();
                 }
                 break;
         }
