@@ -17,12 +17,12 @@ public abstract class MovingObject : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
     }
+
     protected void Move(Vector2 moveDirection)
     {
         moveDirection.Normalize();
-        Vector2 start = transform.position;
+        Vector2 start = rb2D.position;
         Vector2 end = start + moveDirection * speed * Time.fixedDeltaTime;
-        gameObject.transform.Translate(moveDirection * speed * Time.fixedDeltaTime);
-        //rb2D.MovePosition(end);
+        rb2D.MovePosition(end);
     }
 }
