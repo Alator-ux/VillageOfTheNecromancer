@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Food
   description: Looks like tomatos
   image: {fileID: 21300000, guid: 8598d23b9c5b3d84c8323fe7a18ee616, type: 3}
-  count: 1
   stackSize: 10
-  prefab: {fileID: 4400108804730477779, guid: d7adc679592fcf440a116cc04c3f3541, type: 3}
+  droppedItemPrefab: {fileID: 4400108804730477779, guid: d7adc679592fcf440a116cc04c3f3541, type: 3}
+  itemUseScript: {fileID: 0}
