@@ -97,7 +97,6 @@ public class Inventory : MonoBehaviour
         while (addedCount < count && remaining != 0)
         {
             var lastItemStack = FirstNotFullStack(item);
-            Debug.Log(lastItemStack);
             if (lastItemStack == null)
                 return addedCount;
 
@@ -260,13 +259,9 @@ public class Inventory : MonoBehaviour
 
         itemsToStacks[stack.Item].Remove(stack);
 
-        Debug.Log(itemsToStacks[stack.Item]);
-
         if (itemsToStacks[stack.Item].Count() == 0)
         {
-            Debug.Log($"{stack.Item} list is empty");
             itemsToStacks.Remove(stack.Item);
-            Debug.Log("Remove that list");
         }
     }
     public void SwapStacks(int row, int column, int otherRow, int otherColumn)

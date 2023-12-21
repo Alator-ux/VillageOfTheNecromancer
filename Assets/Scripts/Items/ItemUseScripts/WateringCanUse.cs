@@ -2,28 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeedUse : ItemUse
+public class WateringCanUse : ItemUse
 {
-    private Seed seed;
-
-    private Inventory inventory;
-
     private Soil highlightedSoil = null;
 
     private float maxDistance = 2.0f;
-
-    private void Start()
-    {
-        seed = item as Seed;
-        if (seed == null)
-        {
-            Destroy(this);
-            return;
-        }
-
-        inventory = GetComponent<Inventory>();
-        Cursor.visible = true;
-    }
 
     private void FixedUpdate()
     {
@@ -66,7 +49,7 @@ public class SeedUse : ItemUse
 
     public void MouseHoverSoil(Soil soil)
     {
-        bool available = CanPlant(soil);
+        bool available = CanWater(soil);
         soil.SetIndicatonColor(available);
     }
 
@@ -77,20 +60,14 @@ public class SeedUse : ItemUse
 
     public void MouseDownOnSoil(Soil soil)
     {
-        if (!CanPlant(soil)) return;
-        
-        inventory.RemoveItem(seed);
-        soil.Plant(seed);
+        if (!CanWater(soil)) return;
 
-        if (!inventory.Contains(seed))
-        {
-            StopUsing();
-        }
+        soil.Water();
     }
 
-    private bool CanPlant(Soil soil)
+    private bool CanWater(Soil soil)
     {
         float distance = Vector3.Distance(transform.position, soil.transform.position);
-        return distance <= maxDistance && soil.IsFree;
+        return distance <= maxDistance && !soil.Wet;
     }
 }

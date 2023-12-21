@@ -36,7 +36,7 @@ public class PickableItem : Interactable
             return;
 
         // Debugging
-        inventory.LogItems();
+        //inventory.LogItems();
         //inventory.LogGrid();
         PlayerUseItemController playerUseItemController = interactor.GetComponent<PlayerUseItemController>();
         playerUseItemController.UseItem(item);
