@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class ItemStack
 {
     private Item item;
@@ -48,6 +50,21 @@ public class ItemStack
 
         this.count -= count;
         return count;
+    }
+
+    public int Drop(int count, Vector3 position, float maxOffset, Quaternion? rotation)
+    {
+        var removed = Remove(count);
+        for(var i = 0; i < removed; i++)
+        {
+            
+            float offsetX = Random.Range(-maxOffset, maxOffset);
+            float offsetY = Random.Range(-maxOffset, maxOffset);
+            position += new Vector3(offsetX, offsetY, 0f);
+            item.Drop(position, rotation);
+        }
+
+        return removed;
     }
 
     public bool IsStackFull => count == item.StackSize;

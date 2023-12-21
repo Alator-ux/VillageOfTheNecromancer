@@ -13,7 +13,10 @@ public class PlayerUseItemController : MonoBehaviour
         {
             StopUsingItem();
         }
-
+        if(item == null)
+        {
+            return;
+        }
         var itemUseType = item.ItemUseScriptType;
         if (itemUseType == null)
             return;

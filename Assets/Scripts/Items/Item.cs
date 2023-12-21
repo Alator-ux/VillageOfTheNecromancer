@@ -52,6 +52,9 @@ public class Item : ScriptableObject
         Quaternion actualRotation = rotation ?? Quaternion.identity;
 
         GameObject droppedItemObject = Instantiate(droppedItemPrefab, position, actualRotation);
+
+        var pickableItemScript = droppedItemObject.GetComponent<PickableItem>();
+        pickableItemScript.ItemWasDropped();
     }
 
     public override bool Equals(object other)

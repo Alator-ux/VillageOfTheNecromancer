@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  - HUDInventoryItemCell
+  - HUDItemOptionsMenu
+  - Ground Tilemap
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - 
   - Soil
   - Plant
-  - 
+  - Tilemap
   - 
   - 
   - 
