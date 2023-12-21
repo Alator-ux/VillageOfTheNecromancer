@@ -53,6 +53,8 @@ public class Plant : Interactable
     public PlantState CurrentState { get; private set; }
     public int GrowPoints { get; private set; }
 
+    [Space(20)]
+    [Header("Service information")]
     public Soil Soil;
 
     private SpriteRenderer spriteRenderer;

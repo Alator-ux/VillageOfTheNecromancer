@@ -2988,7 +2988,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c5340d0b148604595e9b1511f120ab, type: 3}
---- !u!1001 &7672843307451313084
+--- !u!1001 &5364601694789367843
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2996,67 +2996,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 542552474495479402, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
-      propertyPath: m_Name
-      value: Pickable Test Seeds
-      objectReference: {fileID: 0}
-    - target: {fileID: 4096618577126939989, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
-      propertyPath: count
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5670760399913033099, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5670760399913033099, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1055091769
-      objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.47
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.41
+      value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7734684647598722025, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+    - target: {fileID: 54740659779611532, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591973884013791555, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
+      propertyPath: m_Name
+      value: Pickable Dry seed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: be2ccff15de5be147bbe747d4529a99a, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 04edcc6a74ac8564dbe1d711d78d4899, type: 3}
 --- !u!1 &7850334152442346900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1376953143070188617, guid: fb6fecc926e8a7a4388ab10643322f63, type: 3}
@@ -3133,9 +3121,9 @@ SceneRoots:
   - {fileID: 8274235829757737710}
   - {fileID: 624839042}
   - {fileID: 1640781204}
-  - {fileID: 7672843307451313084}
   - {fileID: 2011787633}
   - {fileID: 1895150724}
+  - {fileID: 5364601694789367843}
   - {fileID: 865785430}
   - {fileID: 805551496}
   - {fileID: 2538421448881782681}
