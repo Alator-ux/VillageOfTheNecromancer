@@ -14,15 +14,18 @@ public class SeedUse : ItemUse
 
     private void Start()
     {
+        inventory = GetComponent<Inventory>();
+        Cursor.visible = true;
+    }
+
+    private void OnEnable()
+    {
         seed = item as Seed;
         if (seed == null)
         {
-            Destroy(this);
+            Debug.Log("seed is null");
             return;
         }
-
-        inventory = GetComponent<Inventory>();
-        Cursor.visible = true;
     }
 
     private void FixedUpdate()
@@ -55,7 +58,7 @@ public class SeedUse : ItemUse
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (highlightedSoil != null)
         {
@@ -78,7 +81,7 @@ public class SeedUse : ItemUse
     public void MouseDownOnSoil(Soil soil)
     {
         if (!CanPlant(soil)) return;
-        
+
         inventory.RemoveItem(seed);
         soil.Plant(seed);
 

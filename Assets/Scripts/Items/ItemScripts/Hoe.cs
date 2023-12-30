@@ -13,8 +13,6 @@ public class Hoe : Item
 
     private void OnEnable()
     {
-        // Stupidest shit in the world.
-        string assetPath = "Assets/Scripts/Items/ItemUseScripts/HoeUse.cs";
-        itemUseScript = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
+        UseScriptName = "HoeUse";
     }
 }

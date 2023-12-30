@@ -35,13 +35,10 @@ public class PickableItem : Interactable
         if (added == 0)
             return;
 
-        // Debugging
-        //inventory.LogItems();
-        //inventory.LogGrid();
         PlayerUseItemController playerUseItemController = interactor.GetComponent<PlayerUseItemController>();
         if(playerUseItemController.ItemInUse == null)
             playerUseItemController.UseItem(item);
-        // End debugging
+
         Destroy(gameObject);
     }
 

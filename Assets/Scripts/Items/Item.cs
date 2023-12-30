@@ -18,13 +18,12 @@ public class Item : ScriptableObject
     [SerializeField]
     private GameObject droppedItemPrefab;
 
-    [SerializeField]
-    protected MonoScript itemUseScript;
+    public string UseScriptName = null;
 
     public string Name { get => name; set => name = value; }
     public string Description { get => description; set => description = value; }
     public Sprite Image { get => image; set => image = value; }
-    public int StackSize { 
+    public int StackSize {
         get => stackSize;
         set {
             if (value < 0)
@@ -32,20 +31,6 @@ public class Item : ScriptableObject
             stackSize = value;
         }
     }
-    public Type ItemUseScriptType { 
-        get
-        {
-            if (itemUseScript == null)
-                return null;
-
-            var itemUseScriptType = itemUseScript.GetClass();
-
-            if (!itemUseScriptType.IsSubclassOf(typeof(ItemUse))) return null;
-
-            return itemUseScriptType;
-        }
-    }
-
 
     public void Drop(Vector3 position, Quaternion? rotation = null)
     {

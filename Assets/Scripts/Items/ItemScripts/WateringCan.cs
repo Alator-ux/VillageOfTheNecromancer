@@ -8,8 +8,6 @@ public class WateringCan : Item
 {
     private void OnEnable()
     {
-        // Stupidest shit in the world.
-        string assetPath = "Assets/Scripts/Items/ItemUseScripts/WateringCanUse.cs";
-        itemUseScript = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
+        UseScriptName = "WateringCanUse";
     }
 }

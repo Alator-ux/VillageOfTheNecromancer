@@ -12,8 +12,6 @@ public class Seed : Item
 
     private void OnEnable()
     {
-        // Stupidest shit in the world.
-        string assetPath = "Assets/Scripts/Items/ItemUseScripts/SeedUse.cs";
-        itemUseScript = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
+        UseScriptName = "SeedUse";
     }
 }

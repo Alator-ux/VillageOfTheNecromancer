@@ -38,7 +38,7 @@ public class WateringCanUse : ItemUse
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (highlightedSoil != null)
         {
