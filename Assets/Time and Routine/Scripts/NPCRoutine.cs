@@ -29,7 +29,7 @@ public class NPCRoutine : MonoBehaviour
             return;
 
         Transform targetWaypoint = NPCSchedule[currentWaypoint].waypoint;
-        float step = 10 * Time.deltaTime;
+        float step = 5 * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, step);
 
         timeAtCurrentWaypoint += Time.deltaTime;

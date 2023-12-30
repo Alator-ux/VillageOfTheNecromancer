@@ -16,7 +16,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         Minute = 0;
-        Hour = 0;
+        Hour = 12;
     }
 
     // Update is called once per frame

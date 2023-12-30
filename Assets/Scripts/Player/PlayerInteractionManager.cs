@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteractionManager : MonoBehaviour
 {
     private float distanceToClosest;
-    private Interactable closest;
+    [SerializeField] private Interactable closest;
     public PlayerInteractionManager()
     {
         Reset();

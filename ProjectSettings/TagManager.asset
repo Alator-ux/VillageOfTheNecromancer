@@ -8,6 +8,7 @@ TagManager:
   - HUDInventoryItemCell
   - HUDItemOptionsMenu
   - Ground Tilemap
+  - NPC
   layers:
   - Default
   - TransparentFX
