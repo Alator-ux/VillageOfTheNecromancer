@@ -39,7 +39,8 @@ public class PickableItem : Interactable
         //inventory.LogItems();
         //inventory.LogGrid();
         PlayerUseItemController playerUseItemController = interactor.GetComponent<PlayerUseItemController>();
-        playerUseItemController.UseItem(item);
+        if(playerUseItemController.ItemInUse == null)
+            playerUseItemController.UseItem(item);
         // End debugging
         Destroy(gameObject);
     }
