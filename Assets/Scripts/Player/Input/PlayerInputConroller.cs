@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerInputController : MovingObject
 {
-    [SerializeField]
-    private GameObject hudGameObject;
-    private HUDInventory hudInventory;
+    private UIManager uiManager;
     private PlayerInteractionManager interactionManager;
     private MouseController mouseController;
     protected override void Start()
     {
         interactionManager = GetComponent<PlayerInteractionManager>();
         mouseController = GetComponent<MouseController>();
-        hudInventory = hudGameObject.GetComponent<HUDInventory>();
+
+        uiManager = GameObject.Find("UI Canvas").GetComponent<UIManager>();
+
         base.Start();
     }
 
@@ -34,89 +34,23 @@ public class PlayerInputController : MovingObject
             interactionManager.Interact();
         }
 
+        if (Input.GetButtonDown("Craft"))
+        {
+            uiManager.ProcessCraftButtonInput();
+        }
+
         for (int column = 0; column < 9; column++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + column)) // keyboard buttons 1-9
+            var keyCode = KeyCode.Alpha1 + column;
+            if (Input.GetKeyDown(keyCode)) // keyboard buttons 1-9
             {
-                hudInventory.ToggleItemActivation(column);
+                uiManager.ProcessNumInput(keyCode);
             }
         }
     }
     void HandleMouseEvents()
     {
         var mouseInfo = mouseController.GetMouseState();
-        if (mouseInfo.Hover)
-        {
-            var hovered = mouseController.RaycastGameObjects(mouseInfo.Position, LayerMask.NameToLayer("UI"));
-            if(GameObjectWithTag(hovered, "HUDItemOptionsMenu") == null)
-            {
-                var itemCell = GameObjectWithTag(hovered, "HUDInventoryItemCell");
-                if (itemCell != null)
-                {
-                    hudInventory.OnItemCellMouseEnter(itemCell.GetComponent<HUDInventoryCell>(), mouseInfo.Position);
-                }
-            }
-        }
-        else
-        {
-            hudInventory.OnItemCellMouseExit();
-        }
-        if(mouseInfo.ClickButton == MouseButton.None)
-        {
-            return;
-        }
-        var clickedGameObjects = mouseController.RaycastGameObjects(mouseInfo.ClickPosition, LayerMask.NameToLayer("UI"));
-        if (GameObjectWithTag(clickedGameObjects, "HUDItemOptionsMenu") != null)
-        {
-            return;
-        }
-        switch (mouseInfo.ClickButton)
-        {
-            case MouseButton.Left:
-                {
-                    hudInventory.OnClick();
-                    if (mouseInfo.ClickAction == ClickAction.DoubleClick)
-                    {
-                        var hudInventoryCell = GameObjectWithTag(clickedGameObjects, "HUDInventoryItemCell");
-                        if (hudInventoryCell != null)
-                        {
-                            hudInventory.ToggleItemActivation(hudInventoryCell.GetComponent<HUDInventoryCell>());
-                        }
-                        Debug.Log("Left double click");
-                    }
-                }
-                break;
-            case MouseButton.Right:
-                {
-                    hudInventory.OnClick();
-                    if (mouseInfo.ClickAction == ClickAction.Click)
-                    {
-                        var hudInventoryCell = GameObjectWithTag(clickedGameObjects, "HUDInventoryItemCell");
-                        if (hudInventoryCell != null)
-                        {
-                            hudInventory.OnItemCellRightClick(hudInventoryCell.GetComponent<HUDInventoryCell>());
-                        }
-                        Debug.Log("Right click");
-                    }
-                }
-                break;
-            case MouseButton.Middle:
-                {
-                    hudInventory.OnClick();
-                }
-                break;
-        }
+        uiManager.ProcessMouseInput(mouseInfo);
     }
-    GameObject GameObjectWithTag(List<GameObject> gameObjects, string tag)
-    {
-        foreach(var gameObject in gameObjects)
-        {
-            if (gameObject.CompareTag(tag))
-            {
-                return gameObject;
-            }
-        }
-        return null;
-    }
-
 }

@@ -88,6 +88,7 @@ public class MouseController : MonoBehaviour
     {
         lastClickAction = ClickAction.None;
         lastButton = MouseButton.None;
+        mouseMoveDowntime = 0f;
     }
     public MouseInfo GetMouseState()
     {
@@ -98,22 +99,5 @@ public class MouseController : MonoBehaviour
             ResetButtonNAction();
         }
         return info;
-    }
-
-    public List<GameObject> RaycastGameObjects(Vector3 mousePosition, LayerMask layer)
-    {
-        var pointerEventData = new PointerEventData(EventSystem.current)
-        {
-            position = mousePosition
-        };
-        var raycastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(pointerEventData, raycastResults);
-
-        if (raycastResults.Count > 0)
-        {
-            return raycastResults.ConvertAll<GameObject>(raycastObject => raycastObject.gameObject);
-        }
-
-        return new List<GameObject>();
     }
 }

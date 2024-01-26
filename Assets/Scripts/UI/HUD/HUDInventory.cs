@@ -121,7 +121,7 @@ public class HUDInventory : MonoBehaviour
         activeItemCell.SetActiveColor();
     }
 
-    public void OnItemCellRightClick(HUDInventoryCell inventoryCell)
+    public void CreateOptionsMenu(HUDInventoryCell inventoryCell)
     {
         if(playerInventory.IsCellEmpty(inventoryCell.Row, inventoryCell.Column)) {
             return;
@@ -145,11 +145,11 @@ public class HUDInventory : MonoBehaviour
             optionsMenuManager.DestroyOptionsMenu();
         });    
     }
-    public void OnClick()
+    public void DestroyOptionsMenu()
     {
         optionsMenuManager.DestroyOptionsMenu();
     }
-    public void OnItemCellMouseEnter(HUDInventoryCell inventoryCell, Vector2 mousePosition)
+    public void CreateTooltip(HUDInventoryCell inventoryCell, Vector2 mousePosition)
     {
         if (playerInventory.IsCellEmpty(inventoryCell.Row, inventoryCell.Column))
         {
@@ -159,7 +159,7 @@ public class HUDInventory : MonoBehaviour
         var text = $"{item.Name}:\n{item.Description}";
         tooltipManager.CreateTooltip(mousePosition, text);
     }
-    public void OnItemCellMouseExit()
+    public void DestroyTooltip()
     {
         tooltipManager.DestroyTooltip();
     }
