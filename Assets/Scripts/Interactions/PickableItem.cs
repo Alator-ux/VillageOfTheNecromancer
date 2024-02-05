@@ -34,6 +34,12 @@ public class PickableItem : Interactable
         int added = inventory.AddItem(item, 1);
         if (added == 0)
             return;
+        
+        //Quest
+        if (item.GetType().Name == "Seed")
+        {
+            GameManager.instance.questActions.SeedCollected();
+        }
 
         // Debugging
         inventory.LogItems();
