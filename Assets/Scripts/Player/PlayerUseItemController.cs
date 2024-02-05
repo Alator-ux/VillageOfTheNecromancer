@@ -17,12 +17,14 @@ public class PlayerUseItemController : MonoBehaviour
         {
             return;
         }
-        var itemUseType = item.ItemUseScriptType;
-        if (itemUseType == null)
+
+        ItemInUse = gameObject.GetComponent(item.UseScriptName) as ItemUse;
+
+        if (ItemInUse == null)
             return;
 
-        ItemInUse = (ItemUse) gameObject.AddComponent(itemUseType);
         ItemInUse.item = item;
+        ItemInUse.enabled = true;
     }
 
     public void StopUsingItem()

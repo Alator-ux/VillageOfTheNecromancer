@@ -8,6 +8,6 @@ public abstract class ItemUse : MonoBehaviour
 
     public virtual void StopUsing()
     {
-        Destroy(this);
+        this.enabled = false;
     }
 }

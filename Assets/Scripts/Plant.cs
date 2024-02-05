@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Plant : Interactable
 {
@@ -11,18 +12,7 @@ public class Plant : Interactable
         Grown
     }
 
-    [SerializeField]
-    private int childGrowPointsThreshold;
-    [SerializeField]
-    private int grownGrowPointsThreshold;
-
-    [SerializeField]
-    private Sprite seedSpriteRenderer;
-    [SerializeField]
-    private Sprite childSpriteRenderer;
-    [SerializeField]
-    private Sprite grownSpriteRenderer;
-
+    [Header("Fruit info")]
     [SerializeField]
     private Item fruit;
     [SerializeField]
@@ -30,9 +20,41 @@ public class Plant : Interactable
     [SerializeField]
     private int fruitMaxCount;
 
+
+    [Space(10)]
+    [Header("Grow states")]
+    
+    [SerializeField]
+    private int baseGrowPoints = 5;
+    [SerializeField]
+    private Sprite seedSpriteRenderer;
+
+    [SerializeField]
+    private int childGrowPointsThreshold;
+    [SerializeField]
+    private Sprite childSpriteRenderer;
+
+    [SerializeField]
+    private int grownGrowPointsThreshold;
+    [SerializeField]
+    private Sprite grownSpriteRenderer;
+
+
+    [Space(10)]
+    [Header("Plant care properties")]
+
+    [SerializeField]
+    private bool needsWater = false;
+    [SerializeField]
+    private int healthyGrowPointsIncrement = 5;
+    [SerializeField]
+    private int growPointsPenaltyPerViolation = 5;
+
     public PlantState CurrentState { get; private set; }
     public int GrowPoints { get; private set; }
 
+    [Space(20)]
+    [Header("Service information")]
     public Soil Soil;
 
     private SpriteRenderer spriteRenderer;
@@ -41,6 +63,7 @@ public class Plant : Interactable
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         Debug.Log("I am planted!");
+        GrowPoints = baseGrowPoints;
         base.Start();
         StartCoroutine(GrowTimer());
     }
@@ -53,16 +76,45 @@ public class Plant : Interactable
     // For debug
     private IEnumerator GrowTimer()
     {
-        yield return new WaitForSeconds(3);
+        while (true)
+        {
+            yield return new WaitForSeconds(3);
 
-        GrowPoints += 5;
-
-        yield return new WaitForSeconds(3);
-
-        GrowPoints += 5;
+            UpdateGrowPoints();
+            Debug.Log($"Updated grow points: {GrowPoints}");
+        }
     }
 
-    private void Update()
+    public void UpdateGrowPoints()
+    {
+        int countViolated = Conditions().Count(c => !c);
+        if (countViolated > 0)
+        {
+            GrowPoints -= countViolated * growPointsPenaltyPerViolation;
+            if (GrowPoints <= 0)
+                Die();
+        }
+        else
+            GrowPoints += healthyGrowPointsIncrement;
+        
+        UpdatePlantState();
+    }
+
+    protected virtual IEnumerable<bool> Conditions()
+    {
+        return new List<bool>() { EnoughWater() };
+    }
+
+    protected bool EnoughWater() => needsWater ? Soil.Wet : !Soil.Wet;
+
+    public void Die()
+    {
+        Debug.Log("Plant dies");
+        Soil.RemovePlant();
+        Destroy(gameObject);
+    }
+
+    private void UpdatePlantState()
     {
         switch (CurrentState)
         {
@@ -70,7 +122,7 @@ public class Plant : Interactable
                 if (GrowPoints >= childGrowPointsThreshold)
                     CurrentState = PlantState.Child;
                 if (GrowPoints >= grownGrowPointsThreshold)
-                    CurrentState= PlantState.Grown;
+                    CurrentState = PlantState.Grown;
 
                 if (CurrentState != PlantState.Seed)
                     UpdateSprite();

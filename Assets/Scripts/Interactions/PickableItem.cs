@@ -41,12 +41,10 @@ public class PickableItem : Interactable
             GameManager.instance.questActions.SeedCollected();
         }
 
-        // Debugging
-        inventory.LogItems();
-        //inventory.LogGrid();
         PlayerUseItemController playerUseItemController = interactor.GetComponent<PlayerUseItemController>();
-        playerUseItemController.UseItem(item);
-        // End debugging
+        if(playerUseItemController.ItemInUse == null)
+            playerUseItemController.UseItem(item);
+
         Destroy(gameObject);
     }
 

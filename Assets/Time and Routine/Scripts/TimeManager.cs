@@ -15,8 +15,8 @@ public class TimeManager : MonoBehaviour
     private float timer;
     void Start()
     {
-        Minute = 20;
-        Hour = 15;
+        Minute = 0;
+        Hour = 12;
     }
 
     // Update is called once per frame

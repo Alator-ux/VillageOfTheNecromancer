@@ -44,7 +44,7 @@ public class HoeUse : ItemUse
         ghostTileSpriteRenderer = ghostTile.AddComponent<SpriteRenderer>();
 
         Sprite sprite = hoeItem.SoilTile.gameObject.GetComponent<SpriteRenderer>().sprite;
-        ghostTileSpriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, 
+        ghostTileSpriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect,
                                                        new Vector2(0, 0), sprite.pixelsPerUnit);
         //ghostTileSpriteRenderer.sprite = sprite;
 
@@ -80,17 +80,23 @@ public class HoeUse : ItemUse
         }
     }
 
-    private void OnDestroy()
+    private void OnEnable() {
+        if (ghostTile) {
+            ghostTile.SetActive(true);
+        }
+    }
+
+    private void OnDisable()
     {
         if (ghostTile != null)
         {
-            Destroy(ghostTile);
+            ghostTile.SetActive(false);
         }
     }
 
     private void MouseHoverHighlightedTile()
     {
-        ghostTile.transform.position = new Vector3(highlightedTilePosition.x, highlightedTilePosition.y, 
+        ghostTile.transform.position = new Vector3(highlightedTilePosition.x, highlightedTilePosition.y,
                                                    highlightedTilePosition.z - 0.1f);
 
         if (CanPlow(highlightedTile, highlightedTilePosition))
@@ -111,11 +117,7 @@ public class HoeUse : ItemUse
 
     private void MouseDownOnHighlightedTile()
     {
-        Debug.Log("Mouse down");
-
         if (!CanPlow(highlightedTile, highlightedTilePosition)) return;
-
-        Debug.Log("Can plow");
 
         SoilTile soilTile = hoeItem.SoilTile;
 

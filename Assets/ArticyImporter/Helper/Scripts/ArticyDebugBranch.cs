@@ -12,6 +12,8 @@ public class ArticyDebugBranch : MonoBehaviour
 	// the processor itself.
 	private ArticyFlowPlayer processor;
 
+	public bool dialogueOver = false;
+
 	/// Called when the button is created to represent a single branch out of possible many. This is important to give the ui button the branch that is used to follow along if the user pressed the button in the ui
 	public void AssignBranch(ArticyFlowPlayer aProcessor, Branch aBranch)
 	{
@@ -56,6 +58,7 @@ public class ArticyDebugBranch : MonoBehaviour
 		// if the text is still empty, we can show the displayname of the target
 		if (dialogText.text == "")
 		{
+			dialogueOver = true;
 			if (target is IObjectWithDisplayName objWithDisplayName)
 				dialogText.text = objWithDisplayName.DisplayName;
 			else if (target is IObjectWithLocalizableDisplayName objWithLocalizableDisplayName)
@@ -78,6 +81,11 @@ public class ArticyDebugBranch : MonoBehaviour
 	// the method used when the button is clicked
 	public void OnBranchSelected()
 	{
+		if (dialogueOver)
+		{
+			Destroy(FindObjectOfType<ArticyDebugFlowPlayer>().gameObject);//.SetActive(false);
+			Time.timeScale = 1f;
+		}
 		// by giving the processor the branch assigned to the button on creation, the processor knows where to continue the flow
 		processor.Play(branch);
 	}
