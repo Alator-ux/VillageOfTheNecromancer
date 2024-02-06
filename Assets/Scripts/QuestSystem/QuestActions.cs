@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class QuestActions : MonoBehaviour
+public class QuestActions 
 {
     public event Action onSeedCollected;
 
