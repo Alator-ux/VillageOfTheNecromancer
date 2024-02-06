@@ -1,3 +1,4 @@
+ using System;
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,4 +14,11 @@ public class QuestInfoStatic : ScriptableObject
 
  public GameObject[] questStepsPrefabs;
 
+ private void OnValidate()
+ {
+  #if UNITY_EDITOR
+  id = this.name;
+  UnityEditor.EditorUtility.SetDirty(this);
+  #endif
+ }
 }
