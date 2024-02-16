@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2180281841903866278}
   - component: {fileID: 7985938481687540095}
+  - component: {fileID: 7021859767691060376}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -44,3 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e334e66cda39b4ea282500539c590a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMinuteToRealTimeSeconds: 0.2
+  startingHour: 23
+--- !u!114 &7021859767691060376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540113788580001164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858fb5ca8aa1b6444a27ba9f446aeab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nightTimeHour: 0
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  dayColor: {r: 1, g: 1, b: 1, a: 1}
+  nightColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}

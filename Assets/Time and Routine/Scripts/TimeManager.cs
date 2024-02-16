@@ -7,34 +7,60 @@ public class TimeManager : MonoBehaviour
 {
     public static Action OnMinuteChange;
     public static Action OnHourChange;
-    
+
     public static int Minute { get; private set; }
     public static int Hour { get; private set; }
 
-    private float minuteToRealTime = 1f;
+    [SerializeField]
+    private float gameMinuteToRealTimeSeconds = 0.2f;
+
+    [SerializeField]
+    private int startingHour = 12;
+
     private float timer;
+
     void Start()
     {
         Minute = 0;
-        Hour = 12;
+        Hour = startingHour;
+        timer = gameMinuteToRealTimeSeconds;
+
+        OnHourChange?.Invoke();
+        OnMinuteChange?.Invoke();
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            Minute++;
-            OnMinuteChange?.Invoke();
-            if (Minute >= 60)
-            {
-                Hour++;
-                OnHourChange?.Invoke();
-                Minute = 0;
-            }
+        if (timer > 0)
+            return;
 
-            timer = minuteToRealTime;
+        UpdateMinute();
+        timer = gameMinuteToRealTimeSeconds;
+    }
+
+    private void UpdateMinute() {
+        Minute++;
+
+        if (Minute % 10 == 0) {
+            OnMinuteChange?.Invoke();
         }
+
+        if (Minute >= 60)
+        {
+            UpdateHour();
+        }
+    }
+
+    private void UpdateHour() {
+        Hour++;
+        Minute = 0;
+
+        if (Hour == 24) {
+            Hour = 0;
+        }
+
+        OnHourChange?.Invoke();
     }
 }
