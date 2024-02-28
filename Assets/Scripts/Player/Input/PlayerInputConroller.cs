@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInputController : MovingObject
 {
+    private Animator animator;
+
     [SerializeField]
     private GameObject hudGameObject;
     private HUDInventory hudInventory;
@@ -11,6 +14,7 @@ public class PlayerInputController : MovingObject
     private MouseController mouseController;
     protected override void Start()
     {
+        animator = GetComponent<Animator>();
         interactionManager = GetComponent<PlayerInteractionManager>();
         mouseController = GetComponent<MouseController>();
         hudInventory = hudGameObject.GetComponent<HUDInventory>();
@@ -28,6 +32,8 @@ public class PlayerInputController : MovingObject
         moveDirection.x = (float)Input.GetAxisRaw("Horizontal");
         moveDirection.y = (float)Input.GetAxisRaw("Vertical");
         Move(moveDirection);
+
+        animator.SetFloat("Speed", Math.Min(moveDirection.magnitude, speed));
 
         if (Input.GetButtonDown("Interact"))
         {

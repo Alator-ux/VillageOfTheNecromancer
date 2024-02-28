@@ -11,6 +11,7 @@ public abstract class MovingObject : MonoBehaviour
     protected BoxCollider2D boxCollider;
 
     private Rigidbody2D rb2D;
+    private bool facingRight = true;
 
     protected virtual void Start()
     {
@@ -24,5 +25,18 @@ public abstract class MovingObject : MonoBehaviour
         Vector2 start = rb2D.position;
         Vector2 end = start + moveDirection * speed * Time.fixedDeltaTime;
         rb2D.MovePosition(end);
+
+        if (moveDirection.x > 0 && !facingRight)
+            Flip();
+        if (moveDirection.x < 0 && facingRight)
+            Flip();
+    }
+
+    private void Flip() {
+        facingRight = !facingRight;
+
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }
