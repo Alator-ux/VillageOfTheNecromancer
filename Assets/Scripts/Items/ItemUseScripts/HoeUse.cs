@@ -46,7 +46,7 @@ public class HoeUse : ItemUse
         Sprite sprite = hoeItem.SoilTile.gameObject.GetComponent<SpriteRenderer>().sprite;
         ghostTileSpriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect,
                                                        new Vector2(0, 0), sprite.pixelsPerUnit);
-        //ghostTileSpriteRenderer.sprite = sprite;
+        ghostTileSpriteRenderer.sortingLayerName = "Highlighting";
 
         ghostTile.transform.position = new Vector3(0, 0, -1);
         //ghostTile.transform.localScale = new Vector3(1, 1, 1);

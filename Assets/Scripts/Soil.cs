@@ -45,10 +45,14 @@ public class Soil : MonoBehaviour
         GameObject plantPrefab = seed.PlantPrefab.gameObject;
 
         GameObject plantedObject = Instantiate(plantPrefab, transform);
-        
-        // It should be a bit closer to camera. TODO: Rewrite using sorting layers.
+
         Vector3 plantPosition = new(transform.position.x, transform.position.y, transform.position.z - 0.1f);
         plantedObject.transform.position = plantPosition;
+
+        var plantSpriteRenderer = plantedObject.GetComponent<SpriteRenderer>();
+        if (plantSpriteRenderer) {
+            plantSpriteRenderer.sortingLayerName = "Plants";
+        }
 
         CurrentPlant = plantedObject.GetComponent<Plant>();
         CurrentPlant.Soil = this;

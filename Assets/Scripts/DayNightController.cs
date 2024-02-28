@@ -25,6 +25,7 @@ public class DayNightController : MonoBehaviour
     void Start()
     {
         Day = true;
+        defaultMaterial.color = CurrentColor;
         TimeManager.OnHourChange += HourChanged;
     }
 
@@ -39,7 +40,8 @@ public class DayNightController : MonoBehaviour
         Debug.Log("Daytime switch!");
         Day = !Day;
 
-        var newColor = Day? dayColor : nightColor;
-        defaultMaterial.color = newColor;
+        defaultMaterial.color = CurrentColor;
     }
+
+    private Color CurrentColor => Day? dayColor : nightColor;
 }

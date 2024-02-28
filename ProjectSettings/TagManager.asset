@@ -46,6 +46,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Highlighting
+    uniqueID: 2224912301
+    locked: 0
+  - name: Plants
+    uniqueID: 2280978239
+    locked: 0
   - name: Items
     uniqueID: 1055091769
     locked: 0

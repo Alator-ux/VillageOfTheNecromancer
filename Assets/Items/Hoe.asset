@@ -17,5 +17,5 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 29dfe053002fc8246b8fa285adfbae2c, type: 3}
   stackSize: 1
   droppedItemPrefab: {fileID: 3565539023059278173, guid: 56bc6948938207f43ad835ee749dcb0f, type: 3}
-  itemUseScript: {fileID: 11500000, guid: ee460e96836e5914cbb891b7c8c76322, type: 3}
-  soilTile: {fileID: 11400000, guid: e4dfb3506d4b0164b9a8bcdb3f0ed4ad, type: 2}
+  UseScriptName: HoeUse
+  soilTile: {fileID: 11400000, guid: 33d4062ce6d6b754994fb004d229494a, type: 2}
