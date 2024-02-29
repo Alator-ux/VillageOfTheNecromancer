@@ -21,7 +21,6 @@ public class CollectSeedsStep : QuestStep
 
     public void SeedCollected()
     {
-        Debug.Log("VAR");
         if (seedsCollected < seedsToCollect)
         {
             seedsCollected++; 

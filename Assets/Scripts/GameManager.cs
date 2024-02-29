@@ -17,6 +17,5 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         questActions = new QuestActions();
-        Debug.Log(questActions);
     }
 }

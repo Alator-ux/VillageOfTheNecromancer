@@ -1,46 +1,64 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Articy.Unity;
+using Articy.Unity.Interfaces;
+using TMPro;
 
-public class DialogueManager : MonoBehaviour
+
+public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
 {
-    // Reference to your text components in Unity
-    public Text characterNameText;
-    public Text dialogueText;
+    [Header("UI")]
+    // Reference to Dialog UI
+    [SerializeField]
+    GameObject dialogueWidget;
+    // Reference to dialogue text
+    [SerializeField]
+    TextMeshProUGUI dialogueText;
+    // Reference to speaker
+    [SerializeField]
+    TextMeshProUGUI dialogueSpeaker;
 
-    // Path to your .articyu3d file
-    public string articyu3dFilePath;
+    // To check if we are currently showing the dialog ui interface
+    public bool DialogueActive { get; set; }
 
-    // List to store parsed dialogue data
-    private List<DialogueObject> dialogues;
+    private ArticyFlowPlayer flowPlayer;
 
-    // Start is called before the first frame update
     void Start()
     {
-        dialogues = ParseArticyu3dFile(articyu3dFilePath);
-
-
-        StartDialogue(0); 
+        flowPlayer = GetComponent<ArticyFlowPlayer>();
     }
     
-    private List<DialogueObject> ParseArticyu3dFile(string filePath)
+    public void StartDialogue(IArticyObject aObject)
     {
-
-        List<DialogueObject> parsedDialogues = new List<DialogueObject>();
-
-        return parsedDialogues;
+        DialogueActive = true;
+        dialogueWidget.SetActive(DialogueActive);
+        flowPlayer.StartOn = aObject;
     }
 
-    // Function to start a dialogue by index
-    private void StartDialogue(int index)
+    public void CloseDialogueBox()
     {
-        if (index >= 0 && index < dialogues.Count)
+        DialogueActive = false;
+        dialogueWidget.SetActive(DialogueActive);        
+    }
+
+    // This is called every time the flow player reaches an object of interest
+    public void OnFlowPlayerPaused(IFlowObject aObject)
+    {
+        //Clear data
+        dialogueText.text = string.Empty;
+
+        Debug.Log(aObject.GetType());
+        // If we paused on an object that has a "Text" property fetch this text and present it        
+        var objectWithText = aObject as IObjectWithLocalizableText;
+        if (objectWithText != null)
         {
-            DialogueObject currentDialogue = dialogues[index];
-            
-            characterNameText.text = currentDialogue.characterName;
-            dialogueText.text = currentDialogue.dialogueLine;
+            dialogueText.text = objectWithText.Text;
         }
+    }
+
+    public void OnBranchesUpdated(IList<Branch> aBranches)
+    {
+        
     }
 }

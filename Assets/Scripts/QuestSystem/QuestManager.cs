@@ -9,10 +9,42 @@ public class QuestManager : MonoBehaviour
    private void Awake()
    {
       questMap = CreateQuestMap();
+      
+   }
 
-      Quest quest = GetQuestById("InitialQuest");
-      Debug.Log(quest.info.displayName);
-      Debug.Log(quest.info.previousQuestsRequired);
+   private void OnEnable()
+   {
+      GameManager.instance.questActions.onQuestStart += StartQuest;
+      GameManager.instance.questActions.onQuestFinish += FinishQuest;
+      GameManager.instance.questActions.onQuestAdvance += AdvanceQuest;
+   }
+   private void OnDisable()
+   {
+      GameManager.instance.questActions.onQuestStart -= StartQuest;
+      GameManager.instance.questActions.onQuestFinish -= FinishQuest;
+      GameManager.instance.questActions.onQuestAdvance -= AdvanceQuest;
+   }
+
+   void Start()
+   {
+      foreach (Quest quest in questMap.Values)
+      {
+         GameManager.instance.questActions.QuestStateChange(quest);
+      }
+   }
+
+   private void StartQuest(string id)
+   {
+      Debug.Log("Start quest" + id);
+   }
+   private void AdvanceQuest(string id)
+   {
+      Debug.Log("Advance quest" + id);
+   }
+   
+   private void FinishQuest(string id)
+   {
+      Debug.Log("Finish quest" + id);
    }
 
    private Dictionary<string, Quest> CreateQuestMap()
