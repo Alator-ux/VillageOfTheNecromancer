@@ -31,9 +31,12 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
     
     public void StartDialogue(IArticyObject aObject)
     {
-        DialogueActive = true;
-        dialogueWidget.SetActive(DialogueActive);
-        flowPlayer.StartOn = aObject;
+        if (aObject != null)
+        {
+            DialogueActive = true;
+            dialogueWidget.SetActive(DialogueActive);
+            flowPlayer.StartOn = aObject;
+        }
     }
 
     public void CloseDialogueBox()
@@ -45,11 +48,9 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
     // This is called every time the flow player reaches an object of interest
     public void OnFlowPlayerPaused(IFlowObject aObject)
     {
-        //Clear data
         dialogueText.text = string.Empty;
 
         Debug.Log(aObject.GetType());
-        // If we paused on an object that has a "Text" property fetch this text and present it        
         var objectWithText = aObject as IObjectWithLocalizableText;
         if (objectWithText != null)
         {

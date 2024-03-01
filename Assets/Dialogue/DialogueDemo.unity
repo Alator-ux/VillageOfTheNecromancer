@@ -154,11 +154,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &163231886 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 174172, guid: 777aebc90044bcd4a8fbc30628247904, type: 3}
-  m_PrefabInstance: {fileID: 1697018649}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &217683146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,7 +2238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9270915754405df469497628c23b7754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 163231886}
+  interactKey: 101
 --- !u!1 &293095191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,9 +2268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a0af09ddf4ff44b9a2ce565cf6d511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterNameText: {fileID: 0}
+  dialogueWidget: {fileID: 0}
   dialogueText: {fileID: 0}
-  articyu3dFilePath: 
+  dialogueSpeaker: {fileID: 0}
 --- !u!4 &293095193
 Transform:
   m_ObjectHideFlags: 0
@@ -2677,7 +2672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2670308934917d24981b8a0a51ca1709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questActions: {fileID: 0}
 --- !u!4 &805015480
 Transform:
   m_ObjectHideFlags: 0
@@ -3985,9 +3979,10 @@ GameObject:
   - component: {fileID: 1816104740683074663}
   - component: {fileID: 6739351416336039141}
   - component: {fileID: 6739351416336039142}
+  - component: {fileID: 6739351416336039143}
   m_Layer: 6
   m_Name: NPC
-  m_TagString: Interactable
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4056,6 +4051,19 @@ MonoBehaviour:
     timeAtWaypoint: 7
   - waypoint: {fileID: 2064317845}
     timeAtWaypoint: 7
+--- !u!114 &6739351416336039143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739351416336039139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9270915754405df469497628c23b7754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactKey: 101
 --- !u!1001 &7672843307451313084
 PrefabInstance:
   m_ObjectHideFlags: 0

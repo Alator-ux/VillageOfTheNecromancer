@@ -1,11 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Articy.Unity;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
     private float distanceToClosest;
     [SerializeField] private Interactable closest;
+
+    [Header("DialogueRelated")]
+
+    private DialogueManager dialogueManager;
+    
+    private ArticyObject availableDialogue;
+    
+
+    private void Start()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();
+    }
+
     public PlayerInteractionManager()
     {
         Reset();
@@ -53,6 +68,12 @@ public class PlayerInteractionManager : MonoBehaviour
             Debug.Log($"Closest: {closest}");
             closest.Interact(this.gameObject);
         }
+
+        if (availableDialogue)
+        {
+            closest.Interact(this.gameObject);
+            dialogueManager.StartDialogue(availableDialogue);
+        }
     }
 
     private void Reset()
@@ -78,5 +99,27 @@ public class PlayerInteractionManager : MonoBehaviour
             var interactable = collision.GetComponent<Interactable>();
             StopInteraction(interactable);
         }
+
+        if (collision.CompareTag("NPC"))
+        {
+            if (collision.GetComponent<ArticyReference>() != null)
+            {
+                availableDialogue = null;
+            }
+        }
     }
+    
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            var articyReferenceComp = collision.GetComponent<ArticyReference>();
+            if (articyReferenceComp)
+            {
+                availableDialogue = articyReferenceComp.reference.GetObject();
+            }
+
+        }
+    }
+    
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 1760449090, guid: 538242286e35fb84f8e90dd86ba08b80, type: 3}
   m_Name: ArticyPluginSettings
   m_EditorClassIdentifier: 
-  mUsedImportFile: Assets/villageofthenecrofarmer_new.articyu3d
+  mUsedImportFile: Assets\villageofthenecrofarmer_new.articyu3d
   mUsedLocalizationPath: 
   mSCMIgnoreState: 1
   mShowObjectsInDatabaseView: 1
