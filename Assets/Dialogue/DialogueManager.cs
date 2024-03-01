@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Articy.Unity;
 using Articy.Unity.Interfaces;
+using Articy.UnityImporterTutorial;
 using TMPro;
 
 
@@ -19,6 +20,8 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
     [SerializeField]
     TextMeshProUGUI dialogueSpeaker;
 
+    [SerializeField] private Button ProceedButton;
+
     // To check if we are currently showing the dialog ui interface
     public bool DialogueActive { get; set; }
 
@@ -27,6 +30,12 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
     void Start()
     {
         flowPlayer = GetComponent<ArticyFlowPlayer>();
+        ProceedButton.onClick.AddListener(ContinueDialogue);
+    }
+
+    private void ContinueDialogue()
+    {
+        flowPlayer.Play();
     }
     
     public void StartDialogue(IArticyObject aObject)
@@ -49,6 +58,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
     public void OnFlowPlayerPaused(IFlowObject aObject)
     {
         dialogueText.text = string.Empty;
+        dialogueSpeaker.text = string.Empty;
 
         Debug.Log(aObject.GetType());
         var objectWithText = aObject as IObjectWithLocalizableText;
@@ -56,10 +66,32 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         {
             dialogueText.text = objectWithText.Text;
         }
+
+        var objectWithSpeaker = aObject as IObjectWithSpeaker;
+        if (objectWithSpeaker != null)
+        {
+            var speakerEntity = objectWithSpeaker.Speaker as Entity;
+            if (speakerEntity != null)
+            {
+                dialogueSpeaker.text = speakerEntity.DisplayName;
+            }
+        }
     }
 
     public void OnBranchesUpdated(IList<Branch> aBranches)
     {
-        
+        bool dialogueIsFinished = true;
+        foreach (var branch in aBranches)
+        {
+            if (branch.Target is IDialogueFragment)
+            {
+                dialogueIsFinished = false;
+            }
+
+            if (dialogueIsFinished)
+            {
+                dialogueWidget.SetActive(false);
+            }
+        }
     }
 }

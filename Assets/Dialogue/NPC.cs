@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class NPC : Interactable
 {
-    
 
+    
     public override void EnterInteractionArea(GameObject interactor) {}
     public override void LeaveInteractionArea(GameObject interactor) {}
     public override void Interact(GameObject interactor)
