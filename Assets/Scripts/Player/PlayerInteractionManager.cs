@@ -13,7 +13,7 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private DialogueManager dialogueManager;
     
-    private ArticyObject availableDialogue;
+    [SerializeField] ArticyObject availableDialogue;
     
 
     private void Start()

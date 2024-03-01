@@ -15,7 +15,7 @@ public abstract class Interactable: MonoBehaviour
 
     protected void Start()
     {
-        tag = "Interactable";
+        //tag = "Interactable";
         triggerCollider = GetComponent<BoxCollider2D>();
         if (triggerCollider == null)
         {
