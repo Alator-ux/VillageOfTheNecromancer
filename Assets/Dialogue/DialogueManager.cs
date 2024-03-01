@@ -22,10 +22,12 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
 
     [SerializeField] private Button ProceedButton;
 
+    public string questid;
+
     // To check if we are currently showing the dialog ui interface
     public bool DialogueActive { get; set; }
 
-    private ArticyFlowPlayer flowPlayer;
+    public ArticyFlowPlayer flowPlayer;
 
     void Start()
     {
@@ -60,7 +62,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         dialogueText.text = string.Empty;
         dialogueSpeaker.text = string.Empty;
 
-        Debug.Log(aObject.GetType());
+        //Debug.Log(aObject.GetType());
         var objectWithText = aObject as IObjectWithLocalizableText;
         if (objectWithText != null)
         {
@@ -91,6 +93,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
             if (dialogueIsFinished)
             {
                 dialogueWidget.SetActive(false);
+                GameManager.instance.questActions.AdvanceQuest(questid);
             }
         }
     }

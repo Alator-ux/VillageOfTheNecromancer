@@ -7,7 +7,7 @@ public class QuestPoint : MonoBehaviour
     private bool playerIsNear = false;
     
     [SerializeField] private QuestInfoStatic questInfo;
-    private string questId;
+    public string questId;
     private QuestState currentQuestState;
     
     private void Awake() 
@@ -18,53 +18,30 @@ public class QuestPoint : MonoBehaviour
     private void OnEnable()
     {
         GameManager.instance.questActions.onQuestStateChange += QuestStateChange;
-        GameManager.instance.questActions.onSubmitPressed += SubmitPressed;
+        GameManager.instance.questActions.onQuestAdvance += QuestAdvance;
     }
 
     private void OnDisable()
     {
         GameManager.instance.questActions.onQuestStateChange -= QuestStateChange;
-        GameManager.instance.questActions.onSubmitPressed -= SubmitPressed;
     }
-    
-    private void SubmitPressed()
+
+    public void QuestAdvance(string questid)
     {
-        if (!playerIsNear)
+        if (currentQuestState == QuestState.REQUIREMENTS_NOT_MET)
         {
-            return;
+            currentQuestState = QuestState.IN_PROGRESS;
         }
-        GameManager.instance.questActions.StartQuest(questId); 
-        GameManager.instance.questActions.FinishQuest(questId);
+        Debug.Log("Quest advanced");
     }
 
     public void QuestStateChange(Quest quest)
     {
+        
         if (quest.info.id.Equals(questId))
         {
             currentQuestState = quest.state;
         }
     }
-    private void OnTriggerEnter2D(Collider2D otherCollider)
-    {
-        if (otherCollider.CompareTag("Player"))
-        {
-            playerIsNear = true;
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D otherCollider)
-    {
-        if (otherCollider.CompareTag("Player"))
-        {
-            playerIsNear = false;
-        }
-    }
-    
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            
-        }
-    }
 }

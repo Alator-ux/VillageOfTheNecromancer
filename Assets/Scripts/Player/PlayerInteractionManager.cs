@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Articy.Unity;
+using UnityEngine.Android;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
@@ -117,6 +118,12 @@ public class PlayerInteractionManager : MonoBehaviour
             if (articyReferenceComp)
             {
                 availableDialogue = articyReferenceComp.reference.GetObject();
+            }
+
+            var q = collision.gameObject.GetComponent<QuestPoint>();
+            if (q)
+            {
+                dialogueManager.questid = q.questId;
             }
 
         }

@@ -39,7 +39,18 @@ public class QuestManager : MonoBehaviour
    }
    private void AdvanceQuest(string id)
    {
-      Debug.Log("Advance quest" + id);
+      Quest quest = GetQuestById(id);
+      
+      quest.MoveNextStep();
+      
+      if (quest.CurrentStepExists())
+      {
+         quest.InstantiateCurrentQuestStep(this.transform);
+      }
+      else
+      {
+         ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
+      }
    }
    
    private void FinishQuest(string id)
@@ -68,5 +79,12 @@ public class QuestManager : MonoBehaviour
       }
 
       return quest;
+   }
+
+   private void ChangeQuestState(string id, QuestState state)
+   {
+      Quest quest = GetQuestById(id);
+      quest.state = state;
+      GameManager.instance.questActions.onQuestStateChange(quest);
    }
 }

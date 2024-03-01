@@ -30,6 +30,7 @@ public class QuestActions
         if (onQuestAdvance != null)
         {
             onQuestAdvance(id);
+            
         }
     }
     
@@ -52,6 +53,17 @@ public class QuestActions
         if (onSeedCollected != null)
         {
             onSeedCollected();
+        }
+    }
+    
+    public Action onDialogueFinished;
+
+    public void DialogueFinished()
+    {
+       
+        if (onDialogueFinished != null)
+        {
+            onDialogueFinished();
         }
     }
     
