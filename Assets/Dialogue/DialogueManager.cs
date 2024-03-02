@@ -61,7 +61,10 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         dialogueText.text = string.Empty;
         dialogueSpeaker.text = string.Empty;
 
-        //Debug.Log(aObject.GetType());
+        if (aObject == null)
+        {
+            Debug.Log("null");
+        }
         var objectWithText = aObject as IObjectWithLocalizableText;
         if (objectWithText != null)
         {
