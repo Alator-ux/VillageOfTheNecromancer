@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Articy.Unity;
 using Articy.Unity.Interfaces;
-using Articy.UnityImporterTutorial;
 using TMPro;
 
 
@@ -70,14 +69,14 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         }
 
         var objectWithSpeaker = aObject as IObjectWithSpeaker;
-        if (objectWithSpeaker != null)
+        /*if (objectWithSpeaker != null)
         {
             var speakerEntity = objectWithSpeaker.Speaker as Entity;
             if (speakerEntity != null)
             {
                 dialogueSpeaker.text = speakerEntity.DisplayName;
             }
-        }
+        }*/
     }
 
     public void OnBranchesUpdated(IList<Branch> aBranches)
