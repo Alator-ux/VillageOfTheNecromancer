@@ -8,9 +8,10 @@ public class SkeletonCollector : MonoBehaviour
         Idle,
         WalkToResource,
         Collect,
-        WalkToStorage
     }
 
+    [SerializeField]
+    private int lifes = 10;
     public State CurrentState { get; private set; }
     private Resource resource;
     private ResourceManager resourceManager;
@@ -30,6 +31,11 @@ public class SkeletonCollector : MonoBehaviour
     }
 
     private void Update() {
+        if (lifes == 0) {
+            Destroy(gameObject);
+            return;
+        }
+
         switch (CurrentState) {
             case State.Idle:
                 animator.SetBool("Walking", false);
@@ -56,11 +62,12 @@ public class SkeletonCollector : MonoBehaviour
 
         Item retrievableItem = resource.RetrievableItem;
         resource.Retrieve(1);
-        Debug.Log(resource.RetrievableCapacity);
 
         float offsetX = Random.Range(-2.0f, 2.0f);
         float offsetY = Random.Range(-2.0f, 2.0f);
         Vector3 offset = new Vector3(offsetX, offsetY, 0f);
         retrievableItem.Drop(resource.transform.position + offset);
+
+        lifes--;
     }
 }
