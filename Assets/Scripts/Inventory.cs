@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         grid = new ItemStack[gridRowsCount, gridColsCount];
-        SetOnChangedCallback(delegate (int row, int col) { }); // заглушка
+        SetOnChangedCallback(delegate (int row, int col) { }); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
     public ItemStack[,] Grid
@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
     private int AddExistingItem(Item item, int count)
     {
         var addedCount = AddToExistingCells(item, count);
-        
+
         if (addedCount < count)
         {
             var remaining = count - addedCount;
@@ -110,7 +110,7 @@ public class Inventory : MonoBehaviour
         return addedCount;
     }
 
-    private ItemStack FirstNotFullStack(Item item) 
+    private ItemStack FirstNotFullStack(Item item)
     {
         try
         {
@@ -143,9 +143,9 @@ public class Inventory : MonoBehaviour
 
         if (!itemsToStacks.ContainsKey(item))
             itemsToStacks[item] = new List<ItemStack>();
-        
+
         var (row, col) = FreeGridCell();
-        
+
         if (row == -1)
             return 0;
 

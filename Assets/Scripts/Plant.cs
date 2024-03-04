@@ -23,7 +23,7 @@ public class Plant : Interactable
 
     [Space(10)]
     [Header("Grow states")]
-    
+
     [SerializeField]
     private int baseGrowPoints = 5;
     [SerializeField]
@@ -96,7 +96,7 @@ public class Plant : Interactable
         }
         else
             GrowPoints += healthyGrowPointsIncrement;
-        
+
         UpdatePlantState();
     }
 
@@ -158,7 +158,7 @@ public class Plant : Interactable
         if (interactor == null || CurrentState != PlantState.Grown) return;
 
         Inventory inventory = interactor.GetComponent<Inventory>();
-        
+
         if (inventory == null) return;
 
         int count = Random.Range(fruitMinCount, fruitMaxCount + 1);
@@ -168,7 +168,7 @@ public class Plant : Interactable
             int fruitsToDrop = count - added;
             DropFruits(fruitsToDrop);
         }
-        inventory.LogGrid();
+
         AfterPickUp();
     }
 

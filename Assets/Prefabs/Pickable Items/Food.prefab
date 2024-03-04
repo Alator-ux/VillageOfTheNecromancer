@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7918436909785798849}
   - component: {fileID: 765376845504489050}
   - component: {fileID: 6936232762173922290}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1055091769
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 33797070, guid: e06e00e1f37b8ba43a0dc0283ba62e41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -144,4 +144,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 8b4759541e43b6342abb97543a545181, type: 2}
-  count: 1

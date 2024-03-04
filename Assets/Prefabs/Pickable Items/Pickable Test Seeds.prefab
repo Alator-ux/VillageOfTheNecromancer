@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7734684647598722025}
   - component: {fileID: 5670760399913033099}
   - component: {fileID: 4096618577126939989}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pickable Test Seeds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.07355822, g: 0.5377358, b: 0.13792504, a: 1}
   m_FlipX: 0
@@ -98,4 +98,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2bcf3d94ff4a43e4885b0e0bcdca7be7, type: 2}
-  count: 1

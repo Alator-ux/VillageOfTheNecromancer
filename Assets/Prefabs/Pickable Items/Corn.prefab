@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8770802686049773041}
   - component: {fileID: 204743554050541515}
   - component: {fileID: 4688232679259742581}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Corn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ TagManager:
   - Soil
   - Plant
   - Tilemap
-  - 
+  - Items
   - 
   - 
   - 
@@ -48,18 +48,6 @@ TagManager:
     locked: 0
   - name: Highlighting
     uniqueID: 2224912301
-    locked: 0
-  - name: Plants
-    uniqueID: 2280978239
-    locked: 0
-  - name: Items
-    uniqueID: 1055091769
-    locked: 0
-  - name: NPC
-    uniqueID: 1522010013
-    locked: 0
-  - name: Player
-    uniqueID: 1453737291
     locked: 0
   - name: UI
     uniqueID: 3004403853

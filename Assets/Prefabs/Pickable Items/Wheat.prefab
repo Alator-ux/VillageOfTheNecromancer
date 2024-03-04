@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1316596151515533427}
   - component: {fileID: 7317311566118917754}
   - component: {fileID: 8715898880215579135}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

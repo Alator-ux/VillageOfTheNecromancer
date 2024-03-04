@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 54740659779611532}
   - component: {fileID: 918328286562017075}
   - component: {fileID: 1746003376316737297}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pickable Dry seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1055091769
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.6037736, g: 0.13385546, b: 0.1475184, a: 1}
   m_FlipX: 0

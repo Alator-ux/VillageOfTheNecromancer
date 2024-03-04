@@ -46,13 +46,8 @@ public class Soil : MonoBehaviour
 
         GameObject plantedObject = Instantiate(plantPrefab, transform);
 
-        Vector3 plantPosition = new(transform.position.x, transform.position.y, transform.position.z - 0.1f);
+        Vector3 plantPosition = new(transform.position.x, transform.position.y, transform.position.z);
         plantedObject.transform.position = plantPosition;
-
-        var plantSpriteRenderer = plantedObject.GetComponent<SpriteRenderer>();
-        if (plantSpriteRenderer) {
-            plantSpriteRenderer.sortingLayerName = "Plants";
-        }
 
         CurrentPlant = plantedObject.GetComponent<Plant>();
         CurrentPlant.Soil = this;
