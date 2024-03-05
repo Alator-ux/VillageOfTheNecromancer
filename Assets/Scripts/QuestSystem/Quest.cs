@@ -33,7 +33,7 @@ public class Quest
 
         if (questStepPrefab != null)
         {
-            Object.Instantiate<GameObject>(questStepPrefab, parentTransform);
+            Object.Instantiate(questStepPrefab, parentTransform);
         }
         
     }
@@ -42,11 +42,11 @@ public class Quest
     {
         GameObject currentStepPrefab = null;
         
-                if (CurrentStepExists())
-                {
-                    currentStepPrefab = info.questStepsPrefabs[currentQuestStepIndex];
-                }
+        if (CurrentStepExists())
+        {
+            currentStepPrefab = info.questStepsPrefabs[currentQuestStepIndex];
+        }
         
-                return currentStepPrefab;
+        return currentStepPrefab;
     }
 }

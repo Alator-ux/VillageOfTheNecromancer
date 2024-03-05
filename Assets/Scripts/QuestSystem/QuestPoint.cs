@@ -6,13 +6,19 @@ public class QuestPoint : MonoBehaviour
 {
     private bool playerIsNear = false;
     
-    [SerializeField] private QuestInfoStatic questInfo;
+    [Header("Quest")]
+    [SerializeField] private QuestInfoStatic questInfoForPoint;
+    
     public string questId;
+
+    [Header("Config")]
+    [SerializeField] private bool startPoint = true;
+    [SerializeField] private bool finishPoint = true;
     private QuestState currentQuestState;
     
     private void Awake() 
     {
-        questId = questInfo.id;
+        questId = questInfoForPoint.id;
     }
 
     private void OnEnable()
@@ -28,11 +34,14 @@ public class QuestPoint : MonoBehaviour
 
     public void QuestAdvance(string questid)
     {
-        if (currentQuestState == QuestState.REQUIREMENTS_NOT_MET)
+        if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
         {
-            currentQuestState = QuestState.IN_PROGRESS;
+            GameManager.instance.questActions.StartQuest(questId);
         }
-        Debug.Log("Quest advanced");
+        else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
+        {
+            GameManager.instance.questActions.FinishQuest(questId);
+        }
     }
 
     public void QuestStateChange(Quest quest)

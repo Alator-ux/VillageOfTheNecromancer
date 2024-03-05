@@ -35,7 +35,9 @@ public class QuestManager : MonoBehaviour
 
    private void StartQuest(string id)
    {
-      Debug.Log("Start quest" + id);
+      Quest quest = GetQuestById(id);
+      quest.InstantiateCurrentQuestStep(this.transform);
+      ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
    }
    private void AdvanceQuest(string id)
    {

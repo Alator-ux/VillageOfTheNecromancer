@@ -23,7 +23,7 @@ public class QuestActions
         }
     }
     
-    public Action<string> onQuestAdvance;
+    public event Action<string> onQuestAdvance;
 
     public void AdvanceQuest(string id)
     {

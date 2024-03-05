@@ -95,7 +95,8 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
             if (dialogueIsFinished)
             {
                 dialogueWidget.SetActive(false);
-                GameManager.instance.questActions.AdvanceQuest(questid);
+                GameManager.instance.questActions.DialogueFinished();
+
             }
         }
     }
