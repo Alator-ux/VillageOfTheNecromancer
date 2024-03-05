@@ -32,7 +32,7 @@ public class SkeletonCollector : MonoBehaviour
 
     private void Update() {
         if (lifes == 0) {
-            Destroy(gameObject);
+            Die();
             return;
         }
 
@@ -41,6 +41,9 @@ public class SkeletonCollector : MonoBehaviour
                 animator.SetBool("Walking", false);
                 animator.SetBool("Collecting", false);
                 resource = resourceManager.GetResourceForActor(this);
+
+                if (resource == null) return;
+
                 CurrentState = State.WalkToResource;
                 skeletonMove.SetTarget(resource.transform);
                 break;
@@ -52,6 +55,11 @@ public class SkeletonCollector : MonoBehaviour
                 animator.SetBool("Collecting", true);
                 break;
         }
+    }
+
+    private void Die() {
+        resourceManager.FreeResource(this);
+        Destroy(gameObject);
     }
 
     public void OnCollectAnimationEnded() {

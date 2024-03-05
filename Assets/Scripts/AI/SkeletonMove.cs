@@ -13,6 +13,7 @@ public class SkeletonMove : MonoBehaviour
     [SerializeField]
     private float distanceToStop = 1.0f;
     private Transform target = null;
+    private bool facingRight = false;
 
     public void SetTarget(Transform newTarget) {
         target = newTarget;
@@ -35,7 +36,22 @@ public class SkeletonMove : MonoBehaviour
             OnTargetReached?.Invoke();
             Moving = false;
         }
+
+        var moveDirection = target.position - transform.position;
+        if (moveDirection.x > 0 && !facingRight)
+            Flip();
+        if (moveDirection.x < 0 && facingRight)
+            Flip();
+
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+    }
+
+    private void Flip() {
+        facingRight = !facingRight;
+
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }

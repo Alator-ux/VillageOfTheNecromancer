@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Skeleton Spawn Scroll", menuName = "Items/Scrolls")]
 public class SkeletonSpawnScroll : Item
 {
-    [SerializeField]
-    private SkeletonCollector skeletonPrefab;
+    public int skeletonsCount = 3;
+    public SkeletonCollector skeletonPrefab;
 
     public SkeletonCollector SkeletonPrefab { get => skeletonPrefab; }
 
