@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-    private Resource[] resources;
+    private Dictionary<Item, List<Resource>> itemsToResources = new();
     private Dictionary<Resource, SkeletonCollector> resourcesToActors;
     private Dictionary<SkeletonCollector, Resource> actorsToResources;
 
     private void Start() {
-        resources = FindObjectsOfType<Resource>();
+        var resources = FindObjectsOfType<Resource>();
+
+        foreach (var resource in resources) {
+            if (!itemsToResources.ContainsKey(resource.RetrievableItem))
+                itemsToResources[resource.RetrievableItem] = new List<Resource>();
+
+            itemsToResources[resource.RetrievableItem].Add(resource);
+        }
+
         resourcesToActors = new Dictionary<Resource, SkeletonCollector>();
         actorsToResources = new Dictionary<SkeletonCollector, Resource>();
     }
@@ -22,7 +26,7 @@ public class ResourceManager : MonoBehaviour
         Resource closest = null;
         float minDistance = Mathf.Infinity;
 
-        foreach (var resource in resources) {
+        foreach (var resource in itemsToResources[actor.resourceType]) {
             if (resource == null) continue;
             if (resourcesToActors.ContainsKey(resource)) continue;
 

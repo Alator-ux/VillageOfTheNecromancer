@@ -39,7 +39,8 @@ public class SkeletonSpawnScrollUse : ItemUse
     public void SpawnSkeletons() {
         for (int i = 0; i < scroll.skeletonsCount; i++) {
             Vector3 spawnPoint = spawnPoints[i].position;
-            Instantiate(scroll.skeletonPrefab, spawnPoint, Quaternion.identity);
+            var skeleton = Instantiate(scroll.skeletonPrefab, spawnPoint, Quaternion.identity);
+            skeleton.resourceType = scroll.resourceType;
         }
 
         inventory.RemoveItem(item, 1);

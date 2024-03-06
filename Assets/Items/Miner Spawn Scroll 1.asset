@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409d8804a670ed04c856d5cf5c0d38fc, type: 3}
+  m_Name: Miner Spawn Scroll 1
+  m_EditorClassIdentifier: 
+  name: Skeleton Miner Spawn Scroll
+  description: Used to spawn default skeletons
+  image: {fileID: 21300000, guid: ee76997b3005c4d4b856451308c99047, type: 3}
+  stackSize: 1
+  droppedItemPrefab: {fileID: 94639041664702109, guid: bd06475634ea7984983a0ee859920810, type: 3}
+  UseScriptName: SkeletonSpawnScrollUse
+  resourceType: {fileID: 11400000, guid: d26906e86d4e0b34fb93a97db4b5113c, type: 2}
+  skeletonsCount: 3
+  skeletonPrefab: {fileID: 396415134870437403, guid: b5271c1116abe434aa49656459a51f72, type: 3}

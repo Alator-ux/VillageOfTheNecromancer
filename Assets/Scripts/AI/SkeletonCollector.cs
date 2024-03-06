@@ -12,6 +12,8 @@ public class SkeletonCollector : MonoBehaviour
 
     [SerializeField]
     private int lifes = 10;
+
+    public Item resourceType;
     public State CurrentState { get; private set; }
     private Resource resource;
     private ResourceManager resourceManager;
