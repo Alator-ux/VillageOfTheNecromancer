@@ -85,9 +85,14 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Interactable" || collision.tag == "NPC")
+        if (collision.tag == "Interactable")
         {
             var interactable = collision.GetComponent<Interactable>();
+            if (!interactable)
+            {
+                interactable = collision.GetComponentInParent<Interactable>();
+            }
+
             var playerPosition = new Vector2(transform.position.x, transform.position.y);
             ReplaceObject(interactable, playerPosition);
         }

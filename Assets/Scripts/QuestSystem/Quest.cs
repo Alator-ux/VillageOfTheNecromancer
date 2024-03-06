@@ -33,7 +33,8 @@ public class Quest
 
         if (questStepPrefab != null)
         {
-            Object.Instantiate(questStepPrefab, parentTransform);
+            var newStep = Object.Instantiate(questStepPrefab, parentTransform);
+            Debug.Log(newStep.name);
         }
         
     }

@@ -10,7 +10,6 @@ public class NPC : Interactable
     public override void Interact(GameObject interactor)
     {
         var questPoint = GetComponent<QuestPoint>();
-        Debug.Log(gameObject.name);
         if (questPoint)
         {
             GameManager.instance.questActions.AdvanceQuest(questPoint.questId);
