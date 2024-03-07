@@ -73,7 +73,8 @@ public class PlayerInteractionManager : MonoBehaviour
         if (availableDialogue)
         {
             closest.Interact(this.gameObject);
-            dialogueManager.StartDialogue(availableDialogue);
+            if(!closest.GetComponent<NPC>().locked)
+                dialogueManager.StartDialogue(availableDialogue);
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Articy.Unity;
 using UnityEngine;
 
 public class QuestPoint : MonoBehaviour
@@ -15,7 +16,7 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] public bool startPoint = true;
     [SerializeField] private bool finishPoint = true;
     private QuestState currentQuestState;
-    
+
     private void Awake() 
     {
         questId = questInfoForPoint.id;
@@ -35,19 +36,22 @@ public class QuestPoint : MonoBehaviour
         GameManager.instance.questActions.onQuestStart -= QuestStart;
     }
 
+    public void DialogueFinished()
+    {
+        
+    }
     public void QuestStart(string questid)
     {
         if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
         {
-            Debug.Log("here");
             QuestManager.instance.StartQuest(questid);
         }
-
-        startPoint = false;
+        
     }
 
     public void QuestAdvance(string questid)
     {
+        startPoint = false;
         if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
         {
             GameManager.instance.questActions.FinishQuest(questId);

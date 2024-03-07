@@ -3844,6 +3844,7 @@ GameObject:
   - component: {fileID: 1450396268}
   - component: {fileID: 1450396267}
   - component: {fileID: 1450396266}
+  - component: {fileID: 1450396269}
   m_Layer: 6
   m_Name: NPC (1)
   m_TagString: NPC
@@ -3964,6 +3965,23 @@ Transform:
   - {fileID: 499051857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450396269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450396264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 461291041, guid: df2ec02f61e861546b9427c26ccacb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reference:
+    instanceId: 0
+    referencingMode: 0
+    lowId: 331
+    highId: 16777216
 --- !u!1 &1632750924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4499,6 +4517,10 @@ PrefabInstance:
       propertyPath: hudGameObject
       value: 
       objectReference: {fileID: 2027364354}
+    - target: {fileID: 5565050801839904387, guid: fb6fecc926e8a7a4388ab10643322f63, type: 3}
+      propertyPath: QuestLogWindow
+      value: 
+      objectReference: {fileID: 2082590171}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4580,6 +4602,10 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 187b013a63f1ea7489ea39754d24392c, type: 2}
+    - target: {fileID: 25739808933257465, guid: 56bc6948938207f43ad835ee749dcb0f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3565539023059278173, guid: 56bc6948938207f43ad835ee749dcb0f, type: 3}
       propertyPath: m_Name
       value: Hoe
@@ -4768,7 +4794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9270915754405df469497628c23b7754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactKey: 101
+  locked: 0
 --- !u!114 &6739351416336039145
 MonoBehaviour:
   m_ObjectHideFlags: 0

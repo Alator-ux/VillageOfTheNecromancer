@@ -71,8 +71,7 @@ public class QuestManager : MonoBehaviour
       {
          ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
       }
-
-      Debug.Log(quest.currentQuestStepIndex);
+      
       if (quest.currentQuestStepIndex > 0)
       {
          questLog.DisplayInLog(quest.info.questLogMessages[quest.currentQuestStepIndex-1]);

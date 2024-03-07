@@ -8,6 +8,8 @@ public class NPC : Interactable
 {
     public override void EnterInteractionArea(GameObject interactor) {}
     public override void LeaveInteractionArea(GameObject interactor) {}
+
+    public bool locked = false;
     public override void Interact(GameObject interactor)
     {
         var questPoint = GetComponent<QuestPoint>();
@@ -15,7 +17,14 @@ public class NPC : Interactable
         {
             if (!questPoint.startPoint)
             {
-                //GameManager.instance.questActions.AdvanceQuest(questPoint.questId);
+                if (FindObjectOfType<WaitForDialogueStep>())
+                {
+                    locked = false;
+                }
+                else
+                {
+                    locked = true;
+                }
             }
             else
             {
@@ -25,8 +34,6 @@ public class NPC : Interactable
     }
     
     
-    public KeyCode interactKey = KeyCode.E; 
-
-    private bool playerInRange = false;
+    
     
 }

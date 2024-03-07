@@ -67,13 +67,21 @@ public class QuestActions
         }
     }
     
-    public event Action onSubmitPressed;
-    public void SubmitPressed()
+    public event Action onHoePicked;
+    public void HoePicked()
     {
-        if (onSubmitPressed != null) 
+        if (onHoePicked != null) 
         {
-            onSubmitPressed();
+            onHoePicked();
         }
     }
     
+    public event Action onCropCollected;
+    public void CropCollected()
+    {
+        if (onCropCollected != null) 
+        {
+            onCropCollected();
+        }
+    }
 }
