@@ -7,7 +7,6 @@ using UnityEngine.Android;
 public abstract class QuestStep : MonoBehaviour
 {
     private bool isFinished = false;
-    private string questId;
     private int stepIndex;
 
     protected void FinishQuestStep()
@@ -16,7 +15,7 @@ public abstract class QuestStep : MonoBehaviour
         {
             isFinished = true;
             
-            //GameManager.instance.questActions.AdvanceQuest(questId);
+            GameManager.instance.questActions.AdvanceQuest(QuestManager.instance.currentQuest.info.id);
              
             Destroy(this.gameObject);
         }

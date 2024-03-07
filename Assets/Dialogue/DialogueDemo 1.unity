@@ -4845,7 +4845,7 @@ MonoBehaviour:
   reference:
     instanceId: 0
     referencingMode: 0
-    lowId: 369
+    lowId: 285
     highId: 16777216
 --- !u!114 &6739351416336039144
 MonoBehaviour:
@@ -4875,7 +4875,7 @@ MonoBehaviour:
   questInfoForPoint: {fileID: 11400000, guid: f16ac15de2f9b8d479581bb6d3e215e4, type: 2}
   questId: InitialQuest
   startPoint: 1
-  finishPoint: 1
+  finishPoint: 0
 --- !u!1001 &7672843307451313084
 PrefabInstance:
   m_ObjectHideFlags: 0

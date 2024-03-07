@@ -6,6 +6,8 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
    private Dictionary<string, Quest> questMap;
+
+   public Quest currentQuest;
    
    public static QuestManager instance { get; private set; }
    private void Awake()
@@ -45,15 +47,15 @@ public class QuestManager : MonoBehaviour
    public void StartQuest(string id)
    {
       Quest quest = GetQuestById(id);
+      currentQuest = quest;
       quest.InstantiateCurrentQuestStep(this.transform);
       ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
    }
    private void AdvanceQuest(string id)
    {
       Quest quest = GetQuestById(id);
+      currentQuest = quest;
 
-      Debug.Log(quest.state);
-      
       quest.MoveNextStep();
       
       if (quest.CurrentStepExists())
