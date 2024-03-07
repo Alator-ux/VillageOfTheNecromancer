@@ -13,7 +13,7 @@ public class Quest
     public Quest(QuestInfoStatic questInfoStatic)
     {
         this.info = questInfoStatic;
-        this.state = QuestState.REQUIREMENTS_NOT_MET;
+        this.state = QuestState.CAN_START;
         this.currentQuestStepIndex = 0;
     }
 

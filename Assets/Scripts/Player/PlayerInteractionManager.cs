@@ -125,11 +125,11 @@ public class PlayerInteractionManager : MonoBehaviour
                 availableDialogue = articyReferenceComp.reference.GetObject();
             }
 
-            var q = collision.gameObject.GetComponent<QuestPoint>();
+           /* var q = collision.gameObject.GetComponent<QuestPoint>();
             if (q)
             {
                 GameManager.instance.questActions.AdvanceQuest(q.questId);
-            }
+            }*/
 
         }
     }

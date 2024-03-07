@@ -6,21 +6,30 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
    private Dictionary<string, Quest> questMap;
+   
+   public static QuestManager instance { get; private set; }
    private void Awake()
    {
+      if (instance != null)
+      {
+            
+      }
+
+      instance = this;
+      
+      
+      
       questMap = CreateQuestMap();
       
    }
 
    private void OnEnable()
    {
-      GameManager.instance.questActions.onQuestStart += StartQuest;
       GameManager.instance.questActions.onQuestFinish += FinishQuest;
       GameManager.instance.questActions.onQuestAdvance += AdvanceQuest;
    }
    private void OnDisable()
    {
-      GameManager.instance.questActions.onQuestStart -= StartQuest;
       GameManager.instance.questActions.onQuestFinish -= FinishQuest;
       GameManager.instance.questActions.onQuestAdvance -= AdvanceQuest;
    }
@@ -33,7 +42,7 @@ public class QuestManager : MonoBehaviour
       }
    }
 
-   private void StartQuest(string id)
+   public void StartQuest(string id)
    {
       Quest quest = GetQuestById(id);
       quest.InstantiateCurrentQuestStep(this.transform);
@@ -42,6 +51,8 @@ public class QuestManager : MonoBehaviour
    private void AdvanceQuest(string id)
    {
       Quest quest = GetQuestById(id);
+
+      Debug.Log(quest.state);
       
       quest.MoveNextStep();
       

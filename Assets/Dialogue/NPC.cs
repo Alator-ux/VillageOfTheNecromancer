@@ -12,7 +12,14 @@ public class NPC : Interactable
         var questPoint = GetComponent<QuestPoint>();
         if (questPoint)
         {
-            GameManager.instance.questActions.AdvanceQuest(questPoint.questId);
+            if (!questPoint.startPoint)
+            {
+                GameManager.instance.questActions.AdvanceQuest(questPoint.questId);
+            }
+            else
+            {
+                GameManager.instance.questActions.StartQuest(questPoint.questId);
+            }
         }
     }
     

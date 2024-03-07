@@ -12,7 +12,7 @@ public class QuestPoint : MonoBehaviour
     public string questId;
 
     [Header("Config")]
-    [SerializeField] private bool startPoint = true;
+    [SerializeField] public bool startPoint = true;
     [SerializeField] private bool finishPoint = true;
     private QuestState currentQuestState;
     
@@ -25,20 +25,30 @@ public class QuestPoint : MonoBehaviour
     {
         GameManager.instance.questActions.onQuestStateChange += QuestStateChange;
         GameManager.instance.questActions.onQuestAdvance += QuestAdvance;
+        GameManager.instance.questActions.onQuestStart += QuestStart;
     }
 
     private void OnDisable()
     {
         GameManager.instance.questActions.onQuestStateChange -= QuestStateChange;
+        GameManager.instance.questActions.onQuestAdvance -= QuestAdvance;
+        GameManager.instance.questActions.onQuestStart -= QuestStart;
+    }
+
+    public void QuestStart(string questid)
+    {
+        if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
+        {
+            Debug.Log("here");
+            QuestManager.instance.StartQuest(questid);
+        }
+
+        startPoint = false;
     }
 
     public void QuestAdvance(string questid)
     {
-        if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
-        {
-            GameManager.instance.questActions.StartQuest(questId);
-        }
-        else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
+        if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
         {
             GameManager.instance.questActions.FinishQuest(questId);
         }
