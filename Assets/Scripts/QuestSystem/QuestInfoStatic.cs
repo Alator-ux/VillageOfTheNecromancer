@@ -13,6 +13,7 @@ public class QuestInfoStatic : ScriptableObject
  public QuestInfoStatic[] previousQuestsRequired;
 
  public GameObject[] questStepsPrefabs;
+ public string[] questLogMessages;
 
  private void OnValidate()
  {

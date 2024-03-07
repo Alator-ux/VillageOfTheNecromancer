@@ -8,6 +8,8 @@ public class QuestManager : MonoBehaviour
    private Dictionary<string, Quest> questMap;
 
    public Quest currentQuest;
+
+   private QuestLog questLog;
    
    public static QuestManager instance { get; private set; }
    private void Awake()
@@ -42,6 +44,9 @@ public class QuestManager : MonoBehaviour
       {
          GameManager.instance.questActions.QuestStateChange(quest);
       }
+
+      questLog = FindObjectOfType<QuestLog>(true);
+      Debug.Log(questLog);
    }
 
    public void StartQuest(string id)
@@ -65,6 +70,12 @@ public class QuestManager : MonoBehaviour
       else
       {
          ChangeQuestState(quest.info.id, QuestState.CAN_FINISH);
+      }
+
+      Debug.Log(quest.currentQuestStepIndex);
+      if (quest.currentQuestStepIndex > 0)
+      {
+         questLog.DisplayInLog(quest.info.questLogMessages[quest.currentQuestStepIndex-1]);
       }
    }
    

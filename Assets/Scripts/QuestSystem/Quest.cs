@@ -8,7 +8,7 @@ public class Quest
 
     public QuestState state;
 
-    private int currentQuestStepIndex;
+    public int currentQuestStepIndex;
 
     public Quest(QuestInfoStatic questInfoStatic)
     {

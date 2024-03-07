@@ -23,12 +23,7 @@ public class NPC : Interactable
             }
         }
     }
-
-    void UpdateDialogue()
-    {
-        var referen = GetComponent<ArticyRef>();
-
-    }
+    
     
     public KeyCode interactKey = KeyCode.E; 
 
