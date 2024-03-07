@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class SkeletonSpawnScrollUse : ItemUse
 {
-    SkeletonSpawnScroll scroll;
+    private SkeletonSpawnScroll scroll;
 
     [SerializeField]
-    Transform[] spawnPoints;
+    private Transform[] spawnPoints;
 
-    Inventory inventory;
+    private Inventory inventory;
+    private EnergyController energyController;
 
     private void OnEnable()
     {
@@ -28,10 +29,12 @@ public class SkeletonSpawnScrollUse : ItemUse
 
     void Start() {
         inventory = GetComponent<Inventory>();
+        energyController = GetComponent<EnergyController>();
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E) && energyController.ConsumeEnergy()) {
+            Debug.Log(energyController.EnergyPoints);
             SpawnSkeletons();
         }
     }

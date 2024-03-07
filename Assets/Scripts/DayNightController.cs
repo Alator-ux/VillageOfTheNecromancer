@@ -7,7 +7,9 @@ using UnityEngine.Tilemaps;
 
 public class DayNightController : MonoBehaviour
 {
+    public Action DaytimeChanged;
     public bool Day { get; private set; }
+    public bool Night { get => !Day; }
 
     [SerializeField]
     private int nightTimeHour = 0;
@@ -37,8 +39,8 @@ public class DayNightController : MonoBehaviour
 
     private void SwitchDayTime()
     {
-        Debug.Log("Daytime switch!");
         Day = !Day;
+        DaytimeChanged?.Invoke();
 
         defaultMaterial.color = CurrentColor;
     }
