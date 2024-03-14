@@ -46,7 +46,6 @@ public class QuestManager : MonoBehaviour
       }
 
       questLog = FindObjectOfType<QuestLog>(true);
-      Debug.Log(questLog);
    }
 
    public void StartQuest(string id)

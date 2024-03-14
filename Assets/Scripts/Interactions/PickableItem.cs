@@ -35,7 +35,6 @@ public class PickableItem : Interactable
         if (added == 0)
             return;
 
-        Debug.Log("VAR");
         //Quest
         if (item.GetType().Name == "Seed")
         {
