@@ -40,7 +40,7 @@ public abstract class ScrollElement <ContentType>: MonoBehaviour
     }
     protected abstract void FillItemsWithContent(List<ContentType> contentList);
 
-    public void SetContent(List<ContentType> contentList)
+    virtual public void SetContent(List<ContentType> contentList)
     {
         ResizeContentItemList(contentList.Count);
         FillItemsWithContent(contentList);

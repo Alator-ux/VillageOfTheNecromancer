@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,20 +28,32 @@ public class CraftController : MonoBehaviour
     {
         knownRecipes.Remove(craftableItem);
     }
-    public List<Recipe> GetAvailableCraftRecipes()
+    public Tuple<List<Recipe>, int> GetKnownCraftRecipes()
     {
         var itemToCount = inventory.GetItemToCount();
-        availabelRecipes = knownRecipes.Where(recipe => recipe.Ingredients.All(ingredient => 
-            itemToCount.ContainsKey(ingredient.item) && itemToCount[ingredient.item] >= ingredient.count)).ToList();
-        return availabelRecipes;
+        /* availabelRecipes = knownRecipes.Where(recipe => recipe.Ingredients.All(ingredient =>
+             itemToCount.ContainsKey(ingredient.item) && itemToCount[ingredient.item] >= ingredient.count)).ToList();*/
+        var availabelRecipesCount = 0;
+        knownRecipes = knownRecipes.OrderByDescending(recipe => {
+            var availabel = recipe.Ingredients.All(ingredient =>
+             itemToCount.ContainsKey(ingredient.item) && itemToCount[ingredient.item] >= ingredient.count);
+            if (availabel)
+            {
+                availabelRecipesCount++;
+            }
+            return availabel;
+        }
+        ).ToList();
+        availabelRecipes = knownRecipes.Take(availabelRecipesCount).ToList();
+        return new Tuple<List<Recipe>, int>(knownRecipes, availabelRecipesCount);
     }
     public Recipe GetCraftRecipe(int ind)
     {
-        if(ind < 0 || ind >= availabelRecipes.Count)
+        if(ind < 0 || ind >= knownRecipes.Count)
         {
             return null;
         }
-        return availabelRecipes[ind];
+        return knownRecipes[ind];
     }
     public bool CanCraft(Recipe recipe)
     {
