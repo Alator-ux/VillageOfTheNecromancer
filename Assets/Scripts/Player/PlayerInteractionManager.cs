@@ -1,11 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Articy.Unity;
+using UnityEngine.Android;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
     private float distanceToClosest;
     [SerializeField] private Interactable closest;
+
+    [Header("DialogueRelated")]
+
+    private DialogueManager dialogueManager;
+    
+    [SerializeField] ArticyObject availableDialogue;
+    
+
+    private void Start()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();
+    }
+
     public PlayerInteractionManager()
     {
         Reset();
@@ -50,8 +66,15 @@ public class PlayerInteractionManager : MonoBehaviour
     {
         if (closest != null)
         {
-            Debug.Log($"Closest: {closest}");
+//            Debug.Log($"Closest: {closest}");
             closest.Interact(this.gameObject);
+        }
+
+        if (availableDialogue)
+        {
+            closest.Interact(this.gameObject);
+            if(!closest.GetComponent<NPC>().locked)
+                dialogueManager.StartDialogue(availableDialogue);
         }
     }
 
@@ -66,6 +89,11 @@ public class PlayerInteractionManager : MonoBehaviour
         if (collision.tag == "Interactable")
         {
             var interactable = collision.GetComponent<Interactable>();
+            if (!interactable)
+            {
+                interactable = collision.GetComponentInParent<Interactable>();
+            }
+
             var playerPosition = new Vector2(transform.position.x, transform.position.y);
             ReplaceObject(interactable, playerPosition);
         }
@@ -78,5 +106,33 @@ public class PlayerInteractionManager : MonoBehaviour
             var interactable = collision.GetComponent<Interactable>();
             StopInteraction(interactable);
         }
+
+        if (collision.CompareTag("NPC"))
+        {
+            if (collision.GetComponent<ArticyReference>() != null)
+            {
+                availableDialogue = null;
+            }
+        }
     }
+    
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("NPC"))
+        {
+            var articyReferenceComp = collision.GetComponent<ArticyReference>();
+            if (articyReferenceComp)
+            {
+                availableDialogue = articyReferenceComp.reference.GetObject();
+            }
+
+           /* var q = collision.gameObject.GetComponent<QuestPoint>();
+            if (q)
+            {
+                GameManager.instance.questActions.AdvanceQuest(q.questId);
+            }*/
+
+        }
+    }
+    
 }

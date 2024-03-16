@@ -1,20 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using Articy.Unity;
 using UnityEditor;
 using UnityEngine;
 
 public class NPC : Interactable
 {
-    [SerializeField] private GameObject dialogue;
-    
     public override void EnterInteractionArea(GameObject interactor) {}
     public override void LeaveInteractionArea(GameObject interactor) {}
+
+    public bool locked = false;
     public override void Interact(GameObject interactor)
     {
-        if (dialogue)
+        var questPoint = GetComponent<QuestPoint>();
+        if (questPoint)
         {
-            dialogue.SetActive(true);
-            Time.timeScale = 0f;
+            if (!questPoint.startPoint)
+            {
+                if (FindObjectOfType<WaitForDialogueStep>())
+                {
+                    locked = false;
+                }
+                else
+                {
+                    locked = true;
+                }
+            }
+            else
+            {
+                GameManager.instance.questActions.StartQuest(questPoint.questId);
+            }
         }
     }
+    
+    
+    
+    
 }

@@ -15,7 +15,8 @@ public abstract class Interactable: MonoBehaviour
 
     protected void Start()
     {
-        tag = "Interactable";
+        if(!gameObject.CompareTag("NPC"))
+            tag = "Interactable";
         triggerCollider = GetComponent<BoxCollider2D>();
         if (triggerCollider == null)
         {

@@ -12,6 +12,8 @@ public class PlayerInputController : MovingObject
     private HUDInventory hudInventory;
     private PlayerInteractionManager interactionManager;
     private MouseController mouseController;
+    [SerializeField]
+    private GameObject QuestLogWindow;
     protected override void Start()
     {
         animator = GetComponent<Animator>();
@@ -38,6 +40,11 @@ public class PlayerInputController : MovingObject
         if (Input.GetButtonDown("Interact"))
         {
             interactionManager.Interact();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            QuestLogWindow.SetActive(!QuestLogWindow.activeSelf);
         }
 
         for (int column = 0; column < 9; column++)

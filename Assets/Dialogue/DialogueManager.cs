@@ -1,46 +1,113 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Articy.Unity;
+using Articy.Unity.Interfaces;
+using Articy.Villageofthenecrofarmer;
+using TMPro;
 
-public class DialogueManager : MonoBehaviour
+
+public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
 {
-    // Reference to your text components in Unity
-    public Text characterNameText;
-    public Text dialogueText;
+    [Header("UI")]
+    // Reference to Dialog UI
+    [SerializeField]
+    GameObject dialogueWidget;
+    // Reference to dialogue text
+    [SerializeField]
+    TextMeshProUGUI dialogueText;
+    // Reference to speaker
+    [SerializeField]
+    TextMeshProUGUI dialogueSpeaker;
 
-    // Path to your .articyu3d file
-    public string articyu3dFilePath;
+    [SerializeField] private Button ProceedButton;
 
-    // List to store parsed dialogue data
-    private List<DialogueObject> dialogues;
+    public string questid;
 
-    // Start is called before the first frame update
+    // To check if we are currently showing the dialog ui interface
+    public bool DialogueActive { get; set; }
+
+    public ArticyFlowPlayer flowPlayer;
+
     void Start()
     {
-        dialogues = ParseArticyu3dFile(articyu3dFilePath);
+        flowPlayer = GetComponent<ArticyFlowPlayer>();
+        ProceedButton.onClick.AddListener(ContinueDialogue);
+    }
 
-
-        StartDialogue(0); 
+    private void ContinueDialogue()
+    {
+        flowPlayer.Play();
     }
     
-    private List<DialogueObject> ParseArticyu3dFile(string filePath)
+    public void StartDialogue(IArticyObject aObject)
     {
-
-        List<DialogueObject> parsedDialogues = new List<DialogueObject>();
-
-        return parsedDialogues;
+        if (aObject != null)
+        {
+            Time.timeScale = 0f;
+            DialogueActive = true;
+            dialogueWidget.SetActive(DialogueActive);
+            flowPlayer.StartOn = aObject;
+        }
     }
 
-    // Function to start a dialogue by index
-    private void StartDialogue(int index)
+    public void CloseDialogueBox()
     {
-        if (index >= 0 && index < dialogues.Count)
+        DialogueActive = false;
+        dialogueWidget.SetActive(DialogueActive);        
+    }
+
+    // This is called every time the flow player reaches an object of interest
+    public void OnFlowPlayerPaused(IFlowObject aObject)
+    {
+        dialogueText.text = string.Empty;
+        dialogueSpeaker.text = string.Empty;
+
+        if (aObject == null)
         {
-            DialogueObject currentDialogue = dialogues[index];
-            
-            characterNameText.text = currentDialogue.characterName;
-            dialogueText.text = currentDialogue.dialogueLine;
+            Debug.Log("null");
+        }
+        var objectWithText = aObject as IObjectWithLocalizableText;
+        if (objectWithText != null)
+        {
+            if (objectWithText.Text != "")
+            {
+                dialogueText.text = objectWithText.Text;
+            }
+            else 
+            {
+                ContinueDialogue();
+            }
+        }
+
+        var objectWithSpeaker = aObject as IObjectWithSpeaker;
+        if (objectWithSpeaker != null)
+        {
+            var speakerEntity = objectWithSpeaker.Speaker as Entity;
+            if (speakerEntity != null)
+            {
+                dialogueSpeaker.text = speakerEntity.DisplayName;
+            }
+        }
+    }
+
+    public void OnBranchesUpdated(IList<Branch> aBranches)
+    {
+        bool dialogueIsFinished = true;
+        foreach (var branch in aBranches)
+        {
+            if (branch.Target is IDialogueFragment)
+            {
+                dialogueIsFinished = false;
+            }
+
+            if (dialogueIsFinished)
+            {
+                Time.timeScale = 1f;
+                dialogueWidget.SetActive(false);
+                GameManager.instance.questActions.DialogueFinished();
+
+            }
         }
     }
 }

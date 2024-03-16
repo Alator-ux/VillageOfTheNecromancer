@@ -163,6 +163,7 @@ public class Plant : Interactable
 
         int count = Random.Range(fruitMinCount, fruitMaxCount + 1);
         int added = inventory.AddItem(fruit, count);
+        GameManager.instance.questActions.CropCollected();
         if (added != count)
         {
             int fruitsToDrop = count - added;

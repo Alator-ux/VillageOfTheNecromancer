@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 1760449090, guid: 538242286e35fb84f8e90dd86ba08b80, type: 3}
   m_Name: ArticyPluginSettings
   m_EditorClassIdentifier: 
-  mUsedImportFile: Assets/villageofthenecrofarmer_new.articyu3d
+  mUsedImportFile: Assets/Unity Importer Tutorial.articyu3d
   mUsedLocalizationPath: 
-  mSCMIgnoreState: 1
+  mSCMIgnoreState: 0
   mShowObjectsInDatabaseView: 1
-  mLastPluginVersion: 1.0.0.41356
+  mLastPluginVersion: 1.0.3.41473
   mAutomaticallyTriggerImport: 1
   mUseAssemblyDefinitions: 0
   mGenerateStringInterpolationCode: 1
