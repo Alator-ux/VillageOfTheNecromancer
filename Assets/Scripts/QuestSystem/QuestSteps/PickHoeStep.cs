@@ -8,7 +8,11 @@ public class PickHoeStep : QuestStep
 
     private void OnEnable()
     {
-        GameObject.Find("Hoe").GetComponent<PickableItem>().enabled = true;
+        Transform hoe = GameObject.Find("Hoe").GetComponent<Transform>();
+        foreach (Transform t in hoe)
+        {
+            t.gameObject.SetActive(true);
+        }
         GameManager.instance.questActions.onHoePicked += PickHoe;
     }
 

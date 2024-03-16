@@ -70,7 +70,14 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         var objectWithText = aObject as IObjectWithLocalizableText;
         if (objectWithText != null)
         {
-            dialogueText.text = objectWithText.Text;
+            if (objectWithText.Text != "")
+            {
+                dialogueText.text = objectWithText.Text;
+            }
+            else 
+            {
+                ContinueDialogue();
+            }
         }
 
         var objectWithSpeaker = aObject as IObjectWithSpeaker;

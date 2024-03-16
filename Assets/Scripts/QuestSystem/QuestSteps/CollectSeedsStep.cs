@@ -11,6 +11,11 @@ public class CollectSeedsStep : QuestStep
 
     private void OnEnable()
     {
+        Transform seeds = GameObject.Find("Seeds").GetComponent<Transform>();
+        foreach (Transform t in seeds)
+        {
+            t.gameObject.SetActive(true);
+        }
         GameManager.instance.questActions.onSeedCollected += SeedCollected;
     }
 
