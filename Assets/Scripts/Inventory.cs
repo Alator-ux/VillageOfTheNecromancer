@@ -264,6 +264,7 @@ public class Inventory : MonoBehaviour
             itemsToStacks.Remove(stack.Item);
         }
     }
+    // TODO исправить
     public void SwapStacks(int row, int column, int otherRow, int otherColumn)
     {
         if (row < 0 || column < 0 || row > gridRowsCount || column > gridColsCount ||
@@ -300,6 +301,11 @@ public class Inventory : MonoBehaviour
         }
 
         return grid[row, column].IsStackEmpty;
+    }
+    public Dictionary<Item, int> GetItemToCount()
+    {
+        return itemsToStacks.Select(kv => (kv.Key, kv.Value.Select(stack => stack.Count).Sum()))
+            .ToDictionary(pair => pair.Key, pair => pair.Item2);
     }
     public void LogItems()
     {

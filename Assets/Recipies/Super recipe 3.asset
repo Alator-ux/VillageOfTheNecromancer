@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a415a750db100cd44ae1a4bc54b662c3, type: 3}
+  m_Name: Super recipe 3
+  m_EditorClassIdentifier: 
+  ingredients:
+  - item: {fileID: 11400000, guid: 3b03b30c47c80174ab01b51938a47b40, type: 2}
+    count: 1
+  craftedNumber: 2
+  craftedItem: {fileID: 11400000, guid: 3b03b30c47c80174ab01b51938a47b40, type: 2}
