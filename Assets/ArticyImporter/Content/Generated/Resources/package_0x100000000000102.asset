@@ -1,0 +1,526 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7311506531008939235
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5213981b471344bb615181f147bc5, type: 3}
+  m_Name: Ufo_B5B18E83
+  m_EditorClassIdentifier: 
+  id: 72057594037928205
+  technicalName: Ufo_B5B18E83
+  parentId: 216172783392894804
+  childrenIds: 
+  mDisplayName:
+    value:
+      mValue: "\u0420\u0430\u0437\u043D\u043E\u0435"
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 269
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mExternalId: 
+  mShortId: 3048312451
+  mZIndex: 0
+--- !u!114 &-6835100801141586996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5213981b471344bb615181f147bc5, type: 3}
+  m_Name: Ufo_5BAAE2F1
+  m_EditorClassIdentifier: 
+  id: 72057594037928201
+  technicalName: Ufo_5BAAE2F1
+  parentId: 216172783392894804
+  childrenIds: 
+  mDisplayName:
+    value:
+      mValue: "\u0410\u0443\u0434\u0438\u043E"
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 265
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mExternalId: 
+  mShortId: 1537925873
+  mZIndex: 0
+--- !u!114 &-4645687222515689849
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b7505e239ed854299c3316d6debbca, type: 3}
+  m_Name: Ntt_CE1D6BFE
+  m_EditorClassIdentifier: 
+  id: 72057594037928207
+  technicalName: Ntt_CE1D6BFE
+  parentId: 216172785005863603
+  childrenIds: 
+  mAttachments:
+    listIds: 
+  mDisplayName:
+    value:
+      mValue: Ntt_CE1D6BFE.DisplayName
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 271
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mColor: {r: 0.78431374, g: 0.8862745, b: 0.90588236, a: 1}
+  mText:
+    value:
+      mValue: 
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 271
+        highId: 16777216
+      mPropertyPath: Text
+  mExternalId: 
+  mPosition: {x: 0, y: 0}
+  mZIndex: 0
+  mSize: {x: 256, y: 196}
+  mPreviewImage:
+    mViewBoxX: 0
+    mViewBoxY: 0
+    mViewBoxWidth: 0
+    mViewBoxHeight: 0
+    mMode: 0
+    mAsset:
+      id: 0
+      instanceId: 0
+  mShortId: 3458034686
+--- !u!114 &-1172046254231963409
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5213981b471344bb615181f147bc5, type: 3}
+  m_Name: Ufo_186E007C
+  m_EditorClassIdentifier: 
+  id: 72057594037928197
+  technicalName: Ufo_186E007C
+  parentId: 216172783392894804
+  childrenIds: 
+  mDisplayName:
+    value:
+      mValue: "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F"
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 261
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mExternalId: 
+  mShortId: 409862268
+  mZIndex: 0
+--- !u!114 &-767675413949557583
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41977aeaa073e044082a2cc39a1739aa, type: 3}
+  m_Name: Dlg_23603056
+  m_EditorClassIdentifier: 
+  id: 72057594037928215
+  technicalName: Dlg_23603056
+  parentId: 216172783251375095
+  childrenIds: 1d010000000000012901000000000001
+  mAttachments:
+    listIds: 
+  mDisplayName:
+    value:
+      mValue: Dlg_23603056.DisplayName
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 279
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mPreviewImage:
+    mViewBoxX: 0
+    mViewBoxY: 0
+    mViewBoxWidth: 0
+    mViewBoxHeight: 0
+    mMode: 0
+    mAsset:
+      id: 0
+      instanceId: 0
+  mColor: {r: 0.78431374, g: 0.8862745, b: 0.90588236, a: 1}
+  mText:
+    value:
+      mValue: 
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 279
+        highId: 16777216
+      mPropertyPath: Text
+  mExternalId: 
+  mPosition: {x: 467, y: 275}
+  mZIndex: 0
+  mSize: {x: 291, y: 200}
+  mShortId: 593506390
+  mInputPins:
+    value:
+    - id: 72057594037928218
+      mText:
+        value:
+          handlerId: 0
+          ownerId: 0
+          ownerInstanceId: 0
+          mRawScript: 
+      mOwner:
+        id: 72057594037928215
+        instanceId: 0
+      mConnections:
+        value: []
+  mOutputPins:
+    value:
+    - id: 72057594037928219
+      mText:
+        value:
+          handlerId: 0
+          ownerId: 0
+          ownerInstanceId: 0
+          mRawScript: 
+      mOwner:
+        id: 72057594037928215
+        instanceId: 0
+      mConnections:
+        value: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1919818469, guid: df2ec02f61e861546b9427c26ccacb8d, type: 3}
+  m_Name: package_0x100000000000102
+  m_EditorClassIdentifier: 
+  mPackageId: 72057594037928194
+  mPackageName: All objects
+  mPackagePath: Assets/ArticyImporter/Content/Generated/Resources/package_0x100000000000102.asset
+  mResourceKey: package_0x100000000000102
+  mObjects:
+  - {fileID: -767675413949557583}
+  - {fileID: 5456936536352673490}
+  - {fileID: 4346488261542137097}
+  - {fileID: -4645687222515689849}
+  - {fileID: 3781582834279292780}
+  - {fileID: -1172046254231963409}
+  - {fileID: 8462867638415955619}
+  - {fileID: -6835100801141586996}
+  - {fileID: 5085214797976610002}
+  - {fileID: -7311506531008939235}
+--- !u!114 &3781582834279292780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b7505e239ed854299c3316d6debbca, type: 3}
+  m_Name: Ntt_D83600D0
+  m_EditorClassIdentifier: 
+  id: 72057594037928211
+  technicalName: Ntt_D83600D0
+  parentId: 216172785005863603
+  childrenIds: 
+  mAttachments:
+    listIds: 
+  mDisplayName:
+    value:
+      mValue: Ntt_D83600D0.DisplayName
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 275
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mColor: {r: 0.78431374, g: 0.8862745, b: 0.90588236, a: 1}
+  mText:
+    value:
+      mValue: 
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 275
+        highId: 16777216
+      mPropertyPath: Text
+  mExternalId: 
+  mPosition: {x: 20, y: 20}
+  mZIndex: 1
+  mSize: {x: 256, y: 196}
+  mPreviewImage:
+    mViewBoxX: 0
+    mViewBoxY: 0
+    mViewBoxWidth: 0
+    mViewBoxHeight: 0
+    mMode: 0
+    mAsset:
+      id: 0
+      instanceId: 0
+  mShortId: 3627417808
+--- !u!114 &4346488261542137097
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f984248b99294d4cab4a1dc00ed2ca0, type: 3}
+  m_Name: DFr_284DDE33
+  m_EditorClassIdentifier: 
+  id: 72057594037928233
+  technicalName: DFr_284DDE33
+  parentId: 72057594037928215
+  childrenIds: 
+  mMenuText:
+    value:
+      mValue: That is not very nice, Baron.
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 297
+        highId: 16777216
+      mPropertyPath: MenuText
+  mStageDirections:
+    value:
+      mValue: 
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 297
+        highId: 16777216
+      mPropertyPath: StageDirections
+  mSpeaker:
+    id: 72057594037928211
+    instanceId: 0
+  mSplitHeight: 64
+  mColor: {r: 0.78431374, g: 0.8862745, b: 0.90588236, a: 1}
+  mText:
+    value:
+      mValue: DFr_284DDE33.Text
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 297
+        highId: 16777216
+      mPropertyPath: Text
+  mExternalId: 
+  mPosition: {x: 475, y: 350}
+  mZIndex: 1
+  mSize: {x: 225, y: 200}
+  mShortId: 676191795
+  mInputPins:
+    value:
+    - id: 72057594037928236
+      mText:
+        value:
+          handlerId: 0
+          ownerId: 0
+          ownerInstanceId: 0
+          mRawScript: 
+      mOwner:
+        id: 72057594037928233
+        instanceId: 0
+      mConnections:
+        value: []
+  mOutputPins:
+    value:
+    - id: 72057594037928237
+      mText:
+        value:
+          handlerId: 0
+          ownerId: 0
+          ownerInstanceId: 0
+          mRawScript: 
+      mOwner:
+        id: 72057594037928233
+        instanceId: 0
+      mConnections:
+        value: []
+--- !u!114 &5085214797976610002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5213981b471344bb615181f147bc5, type: 3}
+  m_Name: Ufo_859E57F4
+  m_EditorClassIdentifier: 
+  id: 72057594037928203
+  technicalName: Ufo_859E57F4
+  parentId: 216172783392894804
+  childrenIds: 
+  mDisplayName:
+    value:
+      mValue: "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B"
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 267
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mExternalId: 
+  mShortId: 2241746932
+  mZIndex: 0
+--- !u!114 &5456936536352673490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f984248b99294d4cab4a1dc00ed2ca0, type: 3}
+  m_Name: DFr_F14F6464
+  m_EditorClassIdentifier: 
+  id: 72057594037928221
+  technicalName: DFr_F14F6464
+  parentId: 72057594037928215
+  childrenIds: 
+  mMenuText:
+    value:
+      mValue: Do what?
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 285
+        highId: 16777216
+      mPropertyPath: MenuText
+  mStageDirections:
+    value:
+      mValue: 
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 285
+        highId: 16777216
+      mPropertyPath: StageDirections
+  mSpeaker:
+    id: 72057594037928211
+    instanceId: 0
+  mSplitHeight: 64
+  mColor: {r: 0.78431374, g: 0.8862745, b: 0.90588236, a: 1}
+  mText:
+    value:
+      mValue: DFr_F14F6464.Text
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 285
+        highId: 16777216
+      mPropertyPath: Text
+  mExternalId: 
+  mPosition: {x: 125, y: 350}
+  mZIndex: 0
+  mSize: {x: 225, y: 200}
+  mShortId: 4048512100
+  mInputPins:
+    value:
+    - id: 72057594037928224
+      mText:
+        value:
+          handlerId: 0
+          ownerId: 0
+          ownerInstanceId: 0
+          mRawScript: 
+      mOwner:
+        id: 72057594037928221
+        instanceId: 0
+      mConnections:
+        value: []
+  mOutputPins:
+    value:
+    - id: 72057594037928225
+      mText:
+        value:
+          handlerId: 0
+          ownerId: 0
+          ownerInstanceId: 0
+          mRawScript: 
+      mOwner:
+        id: 72057594037928221
+        instanceId: 0
+      mConnections:
+        value:
+        - mLabel:
+            value:
+              mValue: 
+              mOwner:
+                instanceId: 0
+                referencingMode: 0
+                lowId: 285
+                highId: 16777216
+              mPropertyPath: Label
+          mColor: {r: 0.78431374, g: 0.8862745, b: 0.90588236, a: 1}
+          mTargetPin: 72057594037928236
+          mTarget:
+            id: 72057594037928233
+            instanceId: 0
+--- !u!114 &8462867638415955619
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5213981b471344bb615181f147bc5, type: 3}
+  m_Name: Ufo_5E818823
+  m_EditorClassIdentifier: 
+  id: 72057594037928199
+  technicalName: Ufo_5E818823
+  parentId: 216172783392894804
+  childrenIds: 
+  mDisplayName:
+    value:
+      mValue: "\u0412\u0438\u0434\u0435\u043E"
+      mOwner:
+        instanceId: 0
+        referencingMode: 0
+        lowId: 263
+        highId: 16777216
+      mPropertyPath: DisplayName
+  mExternalId: 
+  mShortId: 1585547299
+  mZIndex: 0
