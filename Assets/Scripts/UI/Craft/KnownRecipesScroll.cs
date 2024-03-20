@@ -42,8 +42,10 @@ public class KnownRecipesScroll : SelectableScrollElement<Recipe>
             var button = contentItems[i].GetComponent<Button>();
             var colors = button.colors;
             colors.normalColor = new Color(0.70f, 0.70f, 0.70f);
-            colors.highlightedColor = new Color(0.65f, 0.65f, 0.65f);
-            colors.selectedColor = new Color(0.61f, 0.54f, 0.45f);
+            /*colors.highlightedColor = new Color(0.65f, 0.65f, 0.65f);
+            colors.selectedColor = new Color(0.61f, 0.54f, 0.45f);*/
+            colors.highlightedColor = new Color(0.482f, 0.482f, 0.482f);
+            colors.selectedColor = colors.highlightedColor;
             colors.pressedColor = colors.selectedColor;
             button.colors = colors;
         }

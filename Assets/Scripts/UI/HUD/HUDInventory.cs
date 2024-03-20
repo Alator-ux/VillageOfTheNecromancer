@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class HUDInventory : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject player;
     private Inventory playerInventory;
     private PlayerUseItemController playerUseItemController;
     private TooltipManager tooltipManager;
@@ -23,6 +21,7 @@ public class HUDInventory : MonoBehaviour
 
     void Start()
     {
+        var player = GameObject.Find("Player");
         playerUseItemController = player.GetComponent<PlayerUseItemController>();
         tooltipManager = GetComponent<TooltipManager>();
 

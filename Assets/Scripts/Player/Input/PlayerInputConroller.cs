@@ -12,7 +12,7 @@ public class PlayerInputController : MovingObject
         interactionManager = GetComponent<PlayerInteractionManager>();
         mouseController = GetComponent<MouseController>();
 
-        uiManager = GameObject.Find("UI Canvas").GetComponent<UIManager>();
+        uiManager = GameObject.FindObjectOfType<UIManager>();
 
         base.Start();
     }

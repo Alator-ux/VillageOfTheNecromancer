@@ -8,12 +8,14 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-public class PathFinder : MonoBehaviour
+public class PathFinder
 {
     PathNodeGrid grid;
-    void Start()
+    float radius;
+    public PathFinder(float radius = 0.5f)
     {
         grid = PathNodeGrid.instance;
+        this.radius = radius;
     }
 
     private List<Vector2Int> GetNeighbours(Vector2Int current)
@@ -26,49 +28,54 @@ public class PathFinder : MonoBehaviour
         return nodes;
     }
 
-    List<Tuple<PathNode, PathNode>> AStarPath(PathNode start, PathNode finish)
+    List<Vector2> AStarPath(PathNode start, PathNode finish)
     {
         var pq = new PriorityQueue<Tuple<Vector2Int, float>>((grid.GridWidth + grid.GridHeight) * 2);
         pq.Enqueue(new Tuple<Vector2Int, float>(start.gridPosition, 0), 0);
 
-        var family = new Dictionary<PathNode, PathNode>();
-        family[start] = null;
+        var familyBush = new Dictionary<PathNode, PathNode>();
+        familyBush[start] = null;
+
+        var minDist = new Dictionary<PathNode, float>();
+        minDist[start] = 0;
 
         Vector2Int currentNode;
-        float currentNodeDist;
+        float currentNodeDist, currentExpectedFullDistance;
         while (!pq.IsEmpty)
         {
             {
                 var tuple = pq.Dequeue();
                 currentNode = tuple.Item1.Item1;
                 currentNodeDist = tuple.Item1.Item2;
+                currentExpectedFullDistance = tuple.Item2;
             }
             if (currentNode == finish.gridPosition)
             {
                 break;
             }
-            if (grid.GetPathNodeAt(currentNode).Distance < currentNodeDist)
+            var currentPathNode = grid.GetPathNodeAt(currentNode);
+            if (minDist[currentPathNode] < currentNodeDist)
             {
                 continue;
             }
-            var currentPathNode = grid.GetPathNodeAt(currentNode);
             var neighbours = GetNeighbours(currentNode);
             foreach (var neighbourNode in neighbours)
             {
                 var neighbourPathNode = grid.GetPathNodeAt(neighbourNode);
-                if (neighbourPathNode.walkable)
+                if (neighbourPathNode.IsWalkable(radius))
                 {
                     var newNodeDistance = currentNodeDist + 
                         PathNode.Dist(neighbourPathNode, currentPathNode);
-                    if (newNodeDistance < neighbourPathNode.Distance)
+                    var oldDistance = minDist.ContainsKey(neighbourPathNode) ? minDist[neighbourPathNode] : float.PositiveInfinity;
+                    if (newNodeDistance < oldDistance)
                     {
-                        neighbourPathNode.Distance = newNodeDistance;
+                        //neighbourPathNode.Distance = newNodeDistance;
                         //family[currentPathNode] = new Tuple<PathNode, PathNode>(family[currentPathNode].Item1, neighbourPathNode);
                         //family[neighbourPathNode] = new Tuple<PathNode, PathNode>(currentPathNode, null);
                         //neighbourPathNode.ParentNode = currentPathNode;
                         //currentPathNode.ChildNode = neighbourPathNode;
-                        family[currentPathNode] = neighbourPathNode;
-                        family[neighbourPathNode] = null;
+                        familyBush[neighbourPathNode] = currentPathNode;
+                        minDist[neighbourPathNode] = newNodeDistance;
                         var expectedFullDistance = newNodeDistance + PathNode.Dist(neighbourPathNode, finish);
                         pq.Enqueue(new Tuple<Vector2Int, float>(neighbourNode, newNodeDistance), expectedFullDistance);
                     }
@@ -76,23 +83,34 @@ public class PathFinder : MonoBehaviour
             }
         }
 
-        var path = new List<Tuple<PathNode, PathNode>>();
-        PathNode current = start;
-        while (current != null)
+        var path = new List<Vector2>();
+        PathNode current = finish;
+        while (current != null && familyBush.ContainsKey(current))
         {
-            var next = family[current];
-            path.Add(new Tuple<PathNode, PathNode>(current, next));
-            current = next;
+            var prev = familyBush[current];
+            path.Insert(0, current.worldPosition);
+            current = prev;
         }
-
-        return path[path.Count - 1].Item1.Equal(finish) ? path : null;
+        if (path.Count < 1 || !(path[0] == start.worldPosition))
+        {
+            return null;
+        }
+        return path.ToList();
     }
 
-    public void FindPath(Vector2 start, Vector2 finish)
+    public List<Vector2> FindPath(Vector2 start, Vector2 finish)
     {
-        grid.UpdateWalkablePathNodes();
+        grid.UpdateWalkablePathNodes(radius);
         var startPathNode = grid.FindClosestPathNode(start);
+        if(startPathNode == null)
+        {
+            return null;
+        }
         var finishPathNode = grid.FindClosestPathNode(finish);
-        var path = AStarPath(startPathNode, finishPathNode);
+        if (!finishPathNode.IsWalkable(radius))
+        {
+            return null;
+        }
+        return AStarPath(startPathNode, finishPathNode);
     }
 }

@@ -17,14 +17,15 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        hudInventoryInputScript = gameObject.transform.Find("HUD").GetComponent<HUDInventoryInputScript>();
+        hudInventoryInputScript = transform.Find("HUD").GetComponent<HUDInventoryInputScript>();
 
-        craftPanelScript = gameObject.transform.Find("CraftPanel").GetComponent<CraftPanelScript>();
+        craftPanelScript = transform.Find("CraftPanel").GetComponent<CraftPanelScript>();
         craftPanelScript.OnDisableCallback = () =>
         {
             hudIsInteractive = true;
             Time.timeScale = 1f;
         };
+        craftPanelScript.gameObject.SetActive(true);
     }
     
     public void ProcessMouseInput(MouseInfo mouseInfo)

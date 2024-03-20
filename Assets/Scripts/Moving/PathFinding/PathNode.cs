@@ -1,22 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PathNode 
 {
-    public bool walkable;
     public Vector2 worldPosition;
     public Vector2Int gridPosition;
 
-    private PathNode parentNode = null;
-    private PathNode childNode = null;
-
-    public PathNode ParentNode
-    {
-        get => parentNode;
-        set => SetParent(value);
-    }
+    Dictionary<float, bool> walkableForRadius;
 
     private float distance = float.PositiveInfinity;  //  расстояние от начальной вершины
 
@@ -25,22 +19,12 @@ public class PathNode
         get => distance;
         set => distance = value;
     }
-    public PathNode ChildNode { get => childNode; set => childNode = value; }
 
-    private void SetParent(PathNode parent)
+    public PathNode(Vector2 position, Vector2Int gridPosition)
     {
-        parentNode = parent;
-        if (parent == null)
-        {
-            distance = float.PositiveInfinity;
-        }
-    }
-
-    public PathNode(bool _walkable, Vector2 position, Vector2Int gridPosition)
-    {
-        this.walkable = _walkable;
         this.worldPosition = position;
         this.gridPosition = gridPosition;
+        walkableForRadius = new Dictionary<float, bool>();
     }
 
     public static float Dist(PathNode a, PathNode b)
@@ -48,10 +32,29 @@ public class PathNode
         return Vector2.Distance(a.worldPosition, b.worldPosition);
     }
 
+    public bool IsWalkable(float radius)
+    {
+        if (walkableForRadius.ContainsKey(radius))
+        {
+            return walkableForRadius[radius];
+        }
+
+        return UpdateWalkable(radius);
+    }
+
     public bool UpdateWalkable(float radius)
     {
-        var collider = Physics2D.OverlapCircle(worldPosition, radius);
-        walkable = collider == null || collider.isTrigger;
+        var colliders = Physics2D.OverlapCircleAll(worldPosition, radius);
+        var walkable = true;
+        foreach(var collider in colliders)
+        {
+            if (!collider.isTrigger)
+            {
+                walkable = false;
+                break;
+            }
+        }
+        walkableForRadius[radius] = walkable;
         return walkable;
     }
 
