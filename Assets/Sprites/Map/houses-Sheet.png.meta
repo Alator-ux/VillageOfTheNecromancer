@@ -152,12 +152,12 @@ TextureImporter:
       name: houses-Sheet_0
       rect:
         serializedVersion: 2
-        x: 117
+        x: 116
         y: 93
-        width: 169
-        height: 178
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 171
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -178,11 +178,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 496
-        y: 83
+        y: 82
         width: 174
-        height: 127
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -203,11 +203,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 823
-        y: 29
-        width: 330
-        height: 357
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        y: 28
+        width: 331
+        height: 359
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -243,10 +243,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1328
         y: 127
-        width: 151
-        height: 144
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        width: 152
+        height: 145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -266,12 +266,12 @@ TextureImporter:
       name: houses-Sheet_4
       rect:
         serializedVersion: 2
-        x: 1708
-        y: 114
-        width: 166
-        height: 185
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+        x: 1706
+        y: 113
+        width: 168
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -283,6 +283,66 @@ TextureImporter:
       bones: []
       spriteID: 131cd6c0981e93670bed3915c4e72d5e
       internalID: -316920312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: houses-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2030
+        y: 109
+        width: 340
+        height: 265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 156, y: -131.5}
+        - {x: 156, y: -124.5}
+        - {x: 18, y: -123.5}
+        - {x: 18, y: -130.5}
+        - {x: 1, y: -130.5}
+        - {x: 2, y: -95.5}
+        - {x: -9, y: -94.5}
+        - {x: -10, y: -45.5}
+        - {x: -138, y: -45.5}
+        - {x: -138, y: -95.5}
+        - {x: -153, y: -95.5}
+        - {x: -153, y: -24.5}
+        - {x: 169, y: -25.5}
+        - {x: 169, y: -130.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9380c6890b72ddcb28b291df8c240aea
+      internalID: -543399937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: houses-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2061
+        y: 27
+        width: 130
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -65, y: -41}
+        - {x: -65, y: -4}
+        - {x: 64, y: -4}
+        - {x: 64, y: -41}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eab5765c37f0c30db981b731cb3bab9
+      internalID: -136005707
       vertices: []
       indices: 
       edges: []
@@ -303,6 +363,8 @@ TextureImporter:
       houses-Sheet_2: 587264500
       houses-Sheet_3: 800921691
       houses-Sheet_4: -316920312
+      houses-Sheet_5: -543399937
+      houses-Sheet_6: -136005707
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
