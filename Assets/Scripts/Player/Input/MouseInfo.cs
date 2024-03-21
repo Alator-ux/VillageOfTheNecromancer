@@ -36,4 +36,5 @@ public class MouseInfo
     public Vector3 ClickPosition { get => clickPosition; set => clickPosition = value; }
     public bool Hover { get => hover; set => hover = value; }
     public Vector3 Position { get => position; set => position = value; }
+    public bool Clicked { get => clickButton != MouseButton.None; }
 }
