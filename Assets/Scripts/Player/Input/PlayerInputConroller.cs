@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Articy.Villageofthenecrofarmer.GlobalVariables;
 using UnityEngine;
 
 public class PlayerInputController : MovingObject

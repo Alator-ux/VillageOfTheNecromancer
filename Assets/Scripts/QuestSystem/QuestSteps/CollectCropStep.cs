@@ -8,7 +8,7 @@ public class CollectCropStep : QuestStep
     
     [SerializeField] int cropCollected = 0;
 
-    [SerializeField] int cropToCollect = 2;
+    [SerializeField] int cropToCollect = 3;
 
     private void OnEnable()
     {

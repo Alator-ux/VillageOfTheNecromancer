@@ -8,14 +8,17 @@ public class CollectSeedsStep : QuestStep
     private int seedsCollected = 0;
 
     private int seedsToCollect = 3;
+    
+    [SerializeField] private GameObject seedPrefab;
 
     private void OnEnable()
     {
-        Transform seeds = GameObject.Find("Seeds").GetComponent<Transform>();
-        foreach (Transform t in seeds)
+        var location = GameObject.Find("Items").transform.Find("Seeds");
+        for (int i = 0; i < 3; i++)
         {
-            t.gameObject.SetActive(true);
+            Instantiate(seedPrefab, new Vector3(location.position.x + i, location.position.y, location.position.z), Quaternion.identity);
         }
+        
         GameManager.instance.questActions.onSeedCollected += SeedCollected;
     }
 

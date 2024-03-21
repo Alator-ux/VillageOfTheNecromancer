@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class PickHoeStep : QuestStep
 {
-
+    [SerializeField] private GameObject hoePrefab;
     private void OnEnable()
     {
-        Transform hoe = GameObject.Find("Hoe").GetComponent<Transform>();
-        foreach (Transform t in hoe)
-        {
-            t.gameObject.SetActive(true);
-        }
+        var location = GameObject.Find("Items").transform.Find("Hoe");
+        Instantiate(hoePrefab, location);
         GameManager.instance.questActions.onHoePicked += PickHoe;
     }
 

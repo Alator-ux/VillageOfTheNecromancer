@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6374641231376327527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2637793188408308835}
+  - component: {fileID: 46102973574935681}
+  - component: {fileID: 9076937112021817159}
+  - component: {fileID: 3202239650689055500}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2637793188408308835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374641231376327527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.56100553, y: 0.69221354, z: -0.048517358}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &46102973574935681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374641231376327527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a0af09ddf4ff44b9a2ce565cf6d511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueWidget: {fileID: 0}
+  dialogueText: {fileID: 0}
+  dialogueSpeaker: {fileID: 0}
+  ProceedButton: {fileID: 0}
+  questid: 
+  flowPlayer: {fileID: 0}
+--- !u!114 &9076937112021817159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374641231376327527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 149237616, guid: df2ec02f61e861546b9427c26ccacb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDefaultGlobalVariables: 1
+  globalVariables: {fileID: 0}
+  overwriteMethodProvider: 0
+  overwrittenMethodProvider: {fileID: 0}
+  startOn:
+    instanceId: 0
+    referencingMode: 0
+    lowId: 0
+    highId: 0
+  pauseOn: 6
+  ignoreInvalidBranches: 1
+  continuouslyRecalculateBranches: 0
+  continouslyRecalculateInterval: 1
+--- !u!114 &3202239650689055500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374641231376327527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c47d35fd9c77574eb06138436e0e4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
