@@ -34,17 +34,16 @@ public class PickableItem : Interactable
         int added = inventory.AddItem(item, 1);
         if (added == 0)
             return;
+        
+        if (item.GetType().Name == "Seed")
+        {
+             GameManager.instance.questActions.SeedCollected();
+        }
 
-        //Quest
-        // if (item.GetType().Name == "Seed")
-        // {
-        //     GameManager.instance.questActions.SeedCollected();
-        // }
-
-        // if (item.GetType().Name == "Hoe")
-        // {
-        //     GameManager.instance.questActions.HoePicked();
-        // }
+        if (item.GetType().Name == "Hoe")
+        {
+            GameManager.instance.questActions.HoePicked();
+        }
 
         PlayerUseItemController playerUseItemController = interactor.GetComponent<PlayerUseItemController>();
         if(playerUseItemController.ItemInUse == null)
