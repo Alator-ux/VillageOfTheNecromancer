@@ -10,6 +10,6 @@ public class QuestLog : MonoBehaviour
 
     public void DisplayInLog(string content)
     {
-        logText.text += "\n" + content;
+        logText.text += content + "\n";
     }
 }

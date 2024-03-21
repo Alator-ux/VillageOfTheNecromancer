@@ -20,7 +20,7 @@ namespace Articy.Villageofthenecrofarmer.GlobalVariables
 {
     
     
-    [Articy.Unity.ArticyCodeGenerationHashAttribute(638461113499895639)]
+    [Articy.Unity.ArticyCodeGenerationHashAttribute(638466309620658215)]
     public partial class ArticyScriptFragments : BaseScriptFragments, ISerializationCallbackReceiver
     {
         
@@ -39,7 +39,7 @@ namespace Articy.Villageofthenecrofarmer.GlobalVariables
         {
             Conditions = new System.Collections.Generic.Dictionary<uint, System.Func<ArticyGlobalVariables, Articy.Unity.IBaseScriptMethodProvider, bool>>();
             Instructions = new System.Collections.Generic.Dictionary<uint, System.Action<ArticyGlobalVariables, Articy.Unity.IBaseScriptMethodProvider>>();
-            OnAfterDeserialize_0x100000000000102();
+            OnAfterDeserialize_0x100000000000110();
         }
         #endregion
         

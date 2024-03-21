@@ -24,11 +24,26 @@ namespace Articy.Villageofthenecrofarmer.GlobalVariables
     public class ArticyGlobalVariables : BaseGlobalVariables
     {
         
+        [SerializeField()]
+        [HideInInspector()]
+        private DialogueFinished mDialogueFinished = new DialogueFinished();
+        
         #region Initialize static VariableName set
         static ArticyGlobalVariables()
         {
+            variableNames.Add("DialogueFinished.FirstGrimmFinished");
+            variableNames.Add("DialogueFinished.SecondGrimmFinished");
+            variableNames.Add("DialogueFinished.GrimmMet");
         }
         #endregion
+        
+        public DialogueFinished DialogueFinished
+        {
+            get
+            {
+                return mDialogueFinished;
+            }
+        }
         
         public static ArticyGlobalVariables Default
         {
@@ -40,6 +55,7 @@ namespace Articy.Villageofthenecrofarmer.GlobalVariables
         
         public override void Init()
         {
+            DialogueFinished.RegisterVariables(this);
         }
         
         public static ArticyGlobalVariables CreateGlobalVariablesClone()

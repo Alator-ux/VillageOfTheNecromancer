@@ -8,14 +8,13 @@ public class PlayerInputController : MovingObject
 {
     private Animator animator;
 
-    [SerializeField]
-    private GameObject hudGameObject;
+    [SerializeField] private GameObject hudGameObject;
     private HUDInventory hudInventory;
     private UIManager uiManager;
     private PlayerInteractionManager interactionManager;
     private MouseController mouseController;
-    [SerializeField]
-    private GameObject QuestLogWindow;
+    [SerializeField] private GameObject QuestLogWindow;
+
     protected override void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,6 +31,7 @@ public class PlayerInputController : MovingObject
         HandleKeyboardEvents();
         HandleMouseEvents();
     }
+
     void HandleKeyboardEvents()
     {
         Vector2 moveDirection = new Vector2(0f, 0f);
@@ -46,14 +46,12 @@ public class PlayerInputController : MovingObject
             interactionManager.Interact();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            QuestLogWindow.SetActive(!QuestLogWindow.activeSelf);
-        if (Input.GetButtonDown("Craft"))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             uiManager.ProcessCraftButtonInput();
+   
         }
-
+        
         for (int column = 0; column < 9; column++)
         {
             var keyCode = KeyCode.Alpha1 + column;
@@ -62,6 +60,14 @@ public class PlayerInputController : MovingObject
                 uiManager.ProcessNumInput(keyCode);
             }
         }
+        
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            QuestLogWindow.SetActive(!QuestLogWindow.activeSelf);
+
+            
+        }
+        
     }
     void HandleMouseEvents()
     {

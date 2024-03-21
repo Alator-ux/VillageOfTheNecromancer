@@ -15,3 +15,62 @@ using System.Collections;
 using UnityEngine;
 
 
+namespace Articy.Villageofthenecrofarmer.GlobalVariables
+{
+    
+    
+    [Serializable()]
+    public class DialogueFinished : IArticyNamespace
+    {
+        
+        [SerializeField()]
+        private BaseGlobalVariables _VariableStorage;
+        
+        // 
+        public bool FirstGrimmFinished
+        {
+            get
+            {
+                return _VariableStorage.Internal_GetVariableValueBoolean(0);
+            }
+            set
+            {
+                _VariableStorage.Internal_SetVariableValueBoolean(0, value);
+            }
+        }
+        
+        // 
+        public bool SecondGrimmFinished
+        {
+            get
+            {
+                return _VariableStorage.Internal_GetVariableValueBoolean(1);
+            }
+            set
+            {
+                _VariableStorage.Internal_SetVariableValueBoolean(1, value);
+            }
+        }
+        
+        // 
+        public bool GrimmMet
+        {
+            get
+            {
+                return _VariableStorage.Internal_GetVariableValueBoolean(2);
+            }
+            set
+            {
+                _VariableStorage.Internal_SetVariableValueBoolean(2, value);
+            }
+        }
+        
+        public void RegisterVariables(BaseGlobalVariables aStorage)
+        {
+            _VariableStorage = aStorage;
+            aStorage.RegisterVariable("DialogueFinished.FirstGrimmFinished", false);
+            aStorage.RegisterVariable("DialogueFinished.SecondGrimmFinished", false);
+            aStorage.RegisterVariable("DialogueFinished.GrimmMet", false);
+        }
+    }
+}

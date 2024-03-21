@@ -172,7 +172,7 @@ MonoBehaviour:
   mTechnicalName: DefaultBasicCharacterFeature.BornIn
   mDisplayName: "\u0420\u043E\u0434\u0438\u043B\u0441\u044F \u0432"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -312,7 +312,7 @@ MonoBehaviour:
   mTechnicalName: DefaultExtendedCharacterFeature.Motivation
   mDisplayName: "\u0426\u0435\u043B\u0438"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -349,7 +349,7 @@ MonoBehaviour:
   mTechnicalName: DefaultBasicCharacterFeature.Accent
   mDisplayName: "\u0413\u043E\u043B\u043E\u0441"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -489,7 +489,7 @@ MonoBehaviour:
   mTechnicalName: Transform
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.Transformation, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.Transformation, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -747,7 +747,7 @@ MonoBehaviour:
   mTechnicalName: Parent
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -815,7 +815,7 @@ MonoBehaviour:
   mTechnicalName: StageDirections
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   mTechnicalName: DefaultExtendedCharacterFeature.Fears
   mDisplayName: "\u0421\u043B\u0430\u0431\u044B\u0435 \u0441\u0442\u043E\u0440\u043E\u043D\u044B"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   mTechnicalName: DefaultExtendedCharacterFeature.InnerConflict
   mDisplayName: "\u0412\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u0438\u0439 \u043A\u043E\u043D\u0444\u043B\u0438\u043A\u0442"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   mTechnicalName: Text
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   mTechnicalName: DefaultBasicCharacterFeature.Personality
   mDisplayName: "\u041B\u0438\u0447\u043D\u043E\u0441\u0442\u044C"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -1887,7 +1887,7 @@ MonoBehaviour:
   - TextObject
   - UserFolder
   mArticyTypeTypes:
-  - Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null
   - Articy.Villageofthenecrofarmer.Sex, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
   - Articy.Villageofthenecrofarmer.ShapeType, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -1902,7 +1902,7 @@ MonoBehaviour:
     PublicKeyToken=null
   - Articy.Villageofthenecrofarmer.LocationAnchorSize, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
-  - Articy.Unity.PreviewImageViewBoxModes, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  - Articy.Unity.PreviewImageViewBoxModes, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   - Articy.Villageofthenecrofarmer.FlowFragment, Assembly-CSharp, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
@@ -2001,7 +2001,7 @@ MonoBehaviour:
   mTechnicalName: DefaultExtendedCharacterFeature.Skills
   mDisplayName: "\u041D\u0430\u0432\u044B\u043A\u0438"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   mTechnicalName: CreatedBy
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -2072,7 +2072,7 @@ MonoBehaviour:
   mTechnicalName: Filename
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   mTechnicalName: OriginalSource
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   mTechnicalName: Speaker
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   mTechnicalName: DefaultBasicCharacterFeature.Occupation
   mDisplayName: "\u041F\u0440\u043E\u0444\u0435\u0441\u0441\u0438\u044F"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -2365,7 +2365,7 @@ MonoBehaviour:
   mTechnicalName: Target
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   mTechnicalName: DefaultBasicCharacterFeature.Appearance
   mDisplayName: "\u0412\u043D\u0435\u0448\u043D\u0438\u0439 \u0432\u0438\u0434"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -2476,7 +2476,7 @@ MonoBehaviour:
   mTechnicalName: ArticyObject
   mDisplayName: 
   mBaseType: {fileID: 0}
-  mCSharpType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mCSharpType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mIsEnum: 0
   mHasTemplate: 0
@@ -2543,7 +2543,7 @@ MonoBehaviour:
   mTechnicalName: PreviewImageViewBoxModes
   mDisplayName: PreviewImageViewBoxModes
   mBaseType: {fileID: 0}
-  mCSharpType: Articy.Unity.PreviewImageViewBoxModes, ArticyRuntime, Version=1.0.0.0,
+  mCSharpType: Articy.Unity.PreviewImageViewBoxModes, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mIsEnum: 1
   mHasTemplate: 0
@@ -2753,7 +2753,7 @@ MonoBehaviour:
   mTechnicalName: DefaultBasicCharacterFeature.Species
   mDisplayName: "\u0412\u0438\u0434"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -2957,7 +2957,7 @@ MonoBehaviour:
   mTechnicalName: DisplayName
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -2976,7 +2976,7 @@ MonoBehaviour:
   mTechnicalName: ImageAsset
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyObject, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -3010,7 +3010,7 @@ MonoBehaviour:
   mTechnicalName: Expression
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyScriptCondition, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyScriptCondition, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -3077,7 +3077,7 @@ MonoBehaviour:
   mTechnicalName: PreviewImage
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.PreviewImage, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.PreviewImage, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -3114,7 +3114,7 @@ MonoBehaviour:
   mTechnicalName: MenuText
   mDisplayName: 
   mIsTemplateProperty: 0
-  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.0.0, Culture=neutral,
+  mPropertyType: Articy.Unity.ArticyString, ArticyRuntime, Version=1.0.3.0, Culture=neutral,
     PublicKeyToken=null
   mConstraintNames: 
   mConstraintValues: []
@@ -3166,7 +3166,7 @@ MonoBehaviour:
   mTechnicalName: DefaultExtendedCharacterFeature.Habits
   mDisplayName: "\u041F\u0440\u0438\u0447\u0443\u0434\u044B/\u041F\u0440\u0438\u0432\u044B\u0447\u043A\u0438"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
@@ -3261,7 +3261,7 @@ MonoBehaviour:
   mDisplayName: "\u0414\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435
     \u0434\u0435\u0442\u0430\u043B\u0438"
   mIsTemplateProperty: 1
-  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.0.0,
+  mPropertyType: Articy.Unity.ArticyMultiLanguageString, ArticyRuntime, Version=1.0.3.0,
     Culture=neutral, PublicKeyToken=null
   mConstraintNames: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
   mConstraintValues:
