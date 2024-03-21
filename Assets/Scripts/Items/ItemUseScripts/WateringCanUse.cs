@@ -4,9 +4,30 @@ using UnityEngine;
 
 public class WateringCanUse : ItemUse
 {
+    private WateringCan wateringCanItem;
     private Soil highlightedSoil = null;
-
+    private Soil wateredSoil = null;
     private float maxDistance = 2.0f;
+    private GameObject wateringCanInHand;
+    private Animator wateringCanAnimator;
+
+    private void OnEnable()
+    {
+        wateringCanItem = item as WateringCan;
+        if (wateringCanItem == null)
+        {
+            Debug.Log("watering can is null");
+            return;
+        }
+
+        wateringCanInHand = Instantiate(wateringCanItem.WateringCanInHandPrefab, transform);
+        wateringCanInHand.transform.localPosition = new Vector3(0.7f, 1.0f);
+
+        WateringCanInHand wateringCanInHandScript = wateringCanInHand.GetComponent<WateringCanInHand>();
+        wateringCanInHandScript.WateringCanUseScript = this;
+
+        wateringCanAnimator = wateringCanInHand.GetComponent<Animator>();
+    }
 
     private void FixedUpdate()
     {
@@ -45,6 +66,9 @@ public class WateringCanUse : ItemUse
             highlightedSoil.ResetColor();
             Debug.Log(highlightedSoil);
         }
+        if (wateringCanInHand != null) {
+            Destroy(wateringCanInHand);
+        }
     }
 
     public void MouseHoverSoil(Soil soil)
@@ -62,7 +86,17 @@ public class WateringCanUse : ItemUse
     {
         if (!CanWater(soil)) return;
 
-        soil.Water();
+        Debug.Log("Try water");
+        // wateringCanAnimator.Play("Watering");
+        wateringCanAnimator.SetBool("Watering", true);
+        wateredSoil = soil;
+    }
+
+    public void OnWateringAnimationEnded() {
+        Debug.Log("OnWateringAnimationEnded");
+        wateringCanAnimator.SetBool("Watering", false);
+        wateredSoil.Water();
+        wateredSoil = null;
     }
 
     private bool CanWater(Soil soil)

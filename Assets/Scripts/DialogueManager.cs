@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Articy.Unity;
 using Articy.Unity.Interfaces;
-using Articy.Villageofthenecrofarmer;
+// using Articy.Villageofthenecrofarmer;
 using TMPro;
 
 
@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
     {
         flowPlayer.Play();
     }
-    
+
     public void StartDialogue(IArticyObject aObject)
     {
         if (aObject != null)
@@ -54,7 +54,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
     public void CloseDialogueBox()
     {
         DialogueActive = false;
-        dialogueWidget.SetActive(DialogueActive);        
+        dialogueWidget.SetActive(DialogueActive);
     }
 
     // This is called every time the flow player reaches an object of interest
@@ -74,7 +74,7 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
             {
                 dialogueText.text = objectWithText.Text;
             }
-            else 
+            else
             {
                 ContinueDialogue();
             }
@@ -83,11 +83,11 @@ public class DialogueManager : MonoBehaviour, IArticyFlowPlayerCallbacks
         var objectWithSpeaker = aObject as IObjectWithSpeaker;
         if (objectWithSpeaker != null)
         {
-            var speakerEntity = objectWithSpeaker.Speaker as Entity;
-            if (speakerEntity != null)
-            {
-                dialogueSpeaker.text = speakerEntity.DisplayName;
-            }
+            // var speakerEntity = objectWithSpeaker.Speaker as Entity;
+            // if (speakerEntity != null)
+            // {
+            //     dialogueSpeaker.text = speakerEntity.DisplayName;
+            // }
         }
     }
 

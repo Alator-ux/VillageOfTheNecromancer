@@ -17,4 +17,5 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 2464ad30f83fc1643b3cca87248f5ef2, type: 3}
   stackSize: 1
   droppedItemPrefab: {fileID: 7974238886809604230, guid: b2c5340d0b148604595e9b1511f120ab, type: 3}
-  itemUseScript: {fileID: 0}
+  UseScriptName: WateringCanUse
+  WateringCanInHandPrefab: {fileID: 7756795935857735787, guid: bdf73ab3829616f4c9c0c6b6c7a5378c, type: 3}
