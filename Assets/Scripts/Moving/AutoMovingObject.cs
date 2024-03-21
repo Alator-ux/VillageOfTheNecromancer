@@ -25,7 +25,7 @@ public class AutoMovingObject : MovingObject
         var radius = (float)Math.Sqrt(Math.Pow(boxCollider.size.x, 2) + Math.Pow(boxCollider.size.y, 2));
         pathFinder = new PathFinder(radius);
 
-        MoveToPosition(new Vector2(2f, 2f));
+        MoveToPosition(new Vector2(4.4f, -2.85f));
 
     }
     private void Update()
