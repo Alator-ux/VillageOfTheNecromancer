@@ -10,6 +10,7 @@ public class WateringCanUse : ItemUse
     private float maxDistance = 2.0f;
     private GameObject wateringCanInHand;
     private Animator wateringCanAnimator;
+    private PlayerInputController playerInputController;
 
     private void OnEnable()
     {
@@ -27,6 +28,7 @@ public class WateringCanUse : ItemUse
         wateringCanInHandScript.WateringCanUseScript = this;
 
         wateringCanAnimator = wateringCanInHand.GetComponent<Animator>();
+        playerInputController = GetComponent<PlayerInputController>();
     }
 
     private void FixedUpdate()
@@ -86,10 +88,16 @@ public class WateringCanUse : ItemUse
     {
         if (!CanWater(soil)) return;
 
-        Debug.Log("Try water");
-        // wateringCanAnimator.Play("Watering");
+        if (ShouldFlipToSoil(soil))
+            playerInputController.Flip();
+
         wateringCanAnimator.SetBool("Watering", true);
         wateredSoil = soil;
+    }
+
+    private bool ShouldFlipToSoil(Soil soil) {
+        return playerInputController.FacingRight && soil.transform.position.x < transform.position.x ||
+               playerInputController.FacingLeft && soil.transform.position.x > transform.position.x;
     }
 
     public void OnWateringAnimationEnded() {
