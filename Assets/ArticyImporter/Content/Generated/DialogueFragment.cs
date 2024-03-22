@@ -296,12 +296,12 @@ namespace Articy.Villageofthenecrofarmer
         {
             if ((aProperty == "MenuText"))
             {
-                MenuText = ((ArticyString)(aValue));
+                MenuText = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "StageDirections"))
             {
-                StageDirections = ((ArticyString)(aValue));
+                StageDirections = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Speaker"))
@@ -321,7 +321,7 @@ namespace Articy.Villageofthenecrofarmer
             }
             if ((aProperty == "Text"))
             {
-                Text = ((ArticyMultiLanguageString)(aValue));
+                Text = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "ExternalId"))

@@ -49,9 +49,9 @@ public class PlayerInputController : MovingObject
         if (Input.GetKeyDown(KeyCode.C))
         {
             uiManager.ProcessCraftButtonInput();
-   
+
         }
-        
+
         for (int column = 0; column < 9; column++)
         {
             var keyCode = KeyCode.Alpha1 + column;
@@ -60,14 +60,14 @@ public class PlayerInputController : MovingObject
                 uiManager.ProcessNumInput(keyCode);
             }
         }
-        
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             QuestLogWindow.SetActive(!QuestLogWindow.activeSelf);
 
-            
+
         }
-        
+
     }
     void HandleMouseEvents()
     {

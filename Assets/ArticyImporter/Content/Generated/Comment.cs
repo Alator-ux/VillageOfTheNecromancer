@@ -198,7 +198,7 @@ namespace Articy.Villageofthenecrofarmer
         {
             if ((aProperty == "CreatedBy"))
             {
-                CreatedBy = ((ArticyString)(aValue));
+                CreatedBy = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "CreatedOn"))
@@ -213,7 +213,7 @@ namespace Articy.Villageofthenecrofarmer
             }
             if ((aProperty == "Text"))
             {
-                Text = ((ArticyString)(aValue));
+                Text = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "ExternalId"))

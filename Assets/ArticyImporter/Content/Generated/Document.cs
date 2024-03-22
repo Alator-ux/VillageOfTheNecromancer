@@ -180,7 +180,7 @@ namespace Articy.Villageofthenecrofarmer
         {
             if ((aProperty == "DisplayName"))
             {
-                DisplayName = ((ArticyString)(aValue));
+                DisplayName = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Color"))
@@ -190,7 +190,7 @@ namespace Articy.Villageofthenecrofarmer
             }
             if ((aProperty == "Text"))
             {
-                Text = ((ArticyString)(aValue));
+                Text = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "ExternalId"))

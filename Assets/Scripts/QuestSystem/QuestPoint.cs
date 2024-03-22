@@ -6,10 +6,10 @@ using UnityEngine;
 public class QuestPoint : MonoBehaviour
 {
     private bool playerIsNear = false;
-    
+
     [Header("Quest")]
     [SerializeField] private QuestInfoStatic questInfoForPoint;
-    
+
     public string questId;
 
     [Header("Config")]
@@ -17,7 +17,7 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] private bool finishPoint = true;
     private QuestState currentQuestState;
 
-    private void Awake() 
+    private void Awake()
     {
         questId = questInfoForPoint.id;
     }
@@ -38,7 +38,7 @@ public class QuestPoint : MonoBehaviour
 
     public void DialogueFinished()
     {
-        
+
     }
     public void QuestStart(string questid)
     {
@@ -46,7 +46,7 @@ public class QuestPoint : MonoBehaviour
         {
             QuestManager.instance.StartQuest(questid);
         }
-        
+
     }
 
     public void QuestAdvance(string questid)
@@ -60,7 +60,7 @@ public class QuestPoint : MonoBehaviour
 
     public void QuestStateChange(Quest quest)
     {
-        
+
         if (quest.info.id.Equals(questId))
         {
             currentQuestState = quest.state;

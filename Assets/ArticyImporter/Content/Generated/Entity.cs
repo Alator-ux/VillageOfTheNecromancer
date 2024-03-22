@@ -221,7 +221,7 @@ namespace Articy.Villageofthenecrofarmer
             }
             if ((aProperty == "DisplayName"))
             {
-                DisplayName = ((ArticyMultiLanguageString)(aValue));
+                DisplayName = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Color"))
@@ -231,7 +231,7 @@ namespace Articy.Villageofthenecrofarmer
             }
             if ((aProperty == "Text"))
             {
-                Text = ((ArticyMultiLanguageString)(aValue));
+                Text = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "ExternalId"))

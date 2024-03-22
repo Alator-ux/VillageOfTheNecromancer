@@ -20,7 +20,7 @@ namespace Articy.Villageofthenecrofarmer.GlobalVariables
 {
     
     
-    [Articy.Unity.ArticyCodeGenerationHashAttribute(638466309620658215)]
+    [Articy.Unity.ArticyCodeGenerationHashAttribute(638467283949372300)]
     public partial class ArticyScriptFragments : BaseScriptFragments, ISerializationCallbackReceiver
     {
         

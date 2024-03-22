@@ -228,12 +228,12 @@ namespace Articy.Villageofthenecrofarmer.Features
             }
             if ((aProperty == "Species"))
             {
-                Species = ((ArticyMultiLanguageString)(aValue));
+                Species = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "BornIn"))
             {
-                BornIn = ((ArticyMultiLanguageString)(aValue));
+                BornIn = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Sex"))
@@ -243,22 +243,22 @@ namespace Articy.Villageofthenecrofarmer.Features
             }
             if ((aProperty == "Occupation"))
             {
-                Occupation = ((ArticyMultiLanguageString)(aValue));
+                Occupation = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Accent"))
             {
-                Accent = ((ArticyMultiLanguageString)(aValue));
+                Accent = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Personality"))
             {
-                Personality = ((ArticyMultiLanguageString)(aValue));
+                Personality = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Appearance"))
             {
-                Appearance = ((ArticyMultiLanguageString)(aValue));
+                Appearance = System.Convert.ToString(aValue);
                 return;
             }
         }

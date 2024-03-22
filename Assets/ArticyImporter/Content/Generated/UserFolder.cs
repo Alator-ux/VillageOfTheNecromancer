@@ -107,7 +107,7 @@ namespace Articy.Villageofthenecrofarmer
         {
             if ((aProperty == "DisplayName"))
             {
-                DisplayName = ((ArticyString)(aValue));
+                DisplayName = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "ExternalId"))

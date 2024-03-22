@@ -13,9 +13,9 @@ public class PlayerInteractionManager : MonoBehaviour
     [Header("DialogueRelated")]
 
     private DialogueManager dialogueManager;
-    
+
     [SerializeField] ArticyObject availableDialogue;
-    
+
 
     private void Start()
     {
@@ -115,7 +115,7 @@ public class PlayerInteractionManager : MonoBehaviour
             }
         }
     }
-    
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("NPC"))
@@ -134,5 +134,5 @@ public class PlayerInteractionManager : MonoBehaviour
 
         }
     }
-    
+
 }

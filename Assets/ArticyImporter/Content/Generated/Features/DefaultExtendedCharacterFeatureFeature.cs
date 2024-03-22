@@ -187,32 +187,32 @@ namespace Articy.Villageofthenecrofarmer.Features
         {
             if ((aProperty == "Motivation"))
             {
-                Motivation = ((ArticyMultiLanguageString)(aValue));
+                Motivation = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "InnerConflict"))
             {
-                InnerConflict = ((ArticyMultiLanguageString)(aValue));
+                InnerConflict = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Skills"))
             {
-                Skills = ((ArticyMultiLanguageString)(aValue));
+                Skills = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Fears"))
             {
-                Fears = ((ArticyMultiLanguageString)(aValue));
+                Fears = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "Habits"))
             {
-                Habits = ((ArticyMultiLanguageString)(aValue));
+                Habits = System.Convert.ToString(aValue);
                 return;
             }
             if ((aProperty == "FurtherDetails"))
             {
-                FurtherDetails = ((ArticyMultiLanguageString)(aValue));
+                FurtherDetails = System.Convert.ToString(aValue);
                 return;
             }
         }

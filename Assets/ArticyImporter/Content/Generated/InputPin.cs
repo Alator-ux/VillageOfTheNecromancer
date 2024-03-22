@@ -22,7 +22,7 @@ namespace Articy.Villageofthenecrofarmer
     
     
     [Serializable()]
-    [Articy.Unity.ArticyCodeGenerationHashAttribute(638461113363779821)]
+    [Articy.Unity.ArticyCodeGenerationHashAttribute(638467283881012024)]
     public class InputPin : ArticyPrimitive, IInputPin
     {
         
