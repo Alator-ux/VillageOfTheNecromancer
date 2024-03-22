@@ -5,6 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class HoeUse : ItemUse
 {
+    [SerializeField]
+    private Soil soilPrefab;
+
     private Hoe hoeItem;
 
     private float maxDistance = 2.0f;
@@ -124,6 +127,13 @@ public class HoeUse : ItemUse
         if (soilTile == null)
             return;
 
-        groundTilemap.SetTile(highlightedTileCell, soilTile);
+        // groundTilemap.SetTile(highlightedTileCell, soilTile);
+
+        groundTilemap.SetTile(highlightedTileCell, null);
+        Vector3 soilPosition = groundTilemap.CellToWorld(highlightedTileCell);
+        soilPosition += new Vector3(soilPrefab.transform.localScale.x / 2.0f, soilPrefab.transform.localScale.y / 2.0f);
+
+        Soil soil = Instantiate(soilPrefab, soilPosition, Quaternion.identity);
+        SoilManager.Instance.RegisterSoil(soil, new Vector2Int(highlightedTileCell.x, highlightedTileCell.y));
     }
 }

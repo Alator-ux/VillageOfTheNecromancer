@@ -15,6 +15,8 @@ public abstract class MovingObject : MonoBehaviour
     public bool FacingRight {get; private set; } = true;
     public bool FacingLeft => !FacingRight;
 
+    protected bool canMove = true;
+
     protected virtual void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -24,6 +26,8 @@ public abstract class MovingObject : MonoBehaviour
 
     protected void Move(Vector2 moveDirection)
     {
+        if (!canMove) return;
+
         moveDirection.Normalize();
         Vector2 start = rb2D.position;
         Vector2 end = start + moveDirection * speed * Time.fixedDeltaTime;
@@ -43,4 +47,11 @@ public abstract class MovingObject : MonoBehaviour
         transform.localScale = scale;
     }
 
+    public void Freeze() {
+        canMove = false;
+    }
+
+    public void Unfreeze() {
+        canMove = true;
+    }
 }

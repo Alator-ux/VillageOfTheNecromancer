@@ -92,6 +92,7 @@ public class WateringCanUse : ItemUse
             playerInputController.Flip();
 
         wateringCanAnimator.SetBool("Watering", true);
+        playerInputController.Freeze();
         wateredSoil = soil;
     }
 
@@ -105,6 +106,7 @@ public class WateringCanUse : ItemUse
         wateringCanAnimator.SetBool("Watering", false);
         wateredSoil.Water();
         wateredSoil = null;
+        playerInputController.Unfreeze();
     }
 
     private bool CanWater(Soil soil)
