@@ -62,7 +62,6 @@ public class Plant : Interactable
     protected new void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Debug.Log("I am planted!");
         GrowPoints = baseGrowPoints;
         base.Start();
         StartCoroutine(GrowTimer());
@@ -125,19 +124,19 @@ public class Plant : Interactable
                     CurrentState = PlantState.Grown;
 
                 if (CurrentState != PlantState.Seed)
-                    UpdateSprite();
+                    UpdateRendering();
                 break;
             case PlantState.Child:
                 if (GrowPoints >= grownGrowPointsThreshold)
                 {
                     CurrentState = PlantState.Grown;
-                    UpdateSprite();
+                    UpdateRendering();
                 }
                 break;
         }
     }
 
-    protected void UpdateSprite()
+    protected virtual void UpdateRendering()
     {
         switch (CurrentState)
         {
@@ -157,9 +156,15 @@ public class Plant : Interactable
     {
         if (interactor == null || CurrentState != PlantState.Grown) return;
 
-        OnPickUp(interactor);
+        if (CanPickUp(interactor)) {
+            OnPickUp(interactor);
 
-        AfterPickUp();
+            AfterPickUp();
+        }
+    }
+
+    protected virtual bool CanPickUp(GameObject interactor) {
+        return interactor.GetComponent<Inventory>() != null;
     }
 
     protected virtual void OnPickUp(GameObject interactor) {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2349002495797945312}
   - component: {fileID: 8465783011844891512}
   - component: {fileID: -6532578010849816270}
+  - component: {fileID: 4450825727250988646}
   m_Layer: 10
   m_Name: WaterFruitPlant
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 975130589, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
+  m_Sprite: {fileID: -620286891, guid: 95be696b0ea70984dbcfb813c2c92f70, type: 3}
   m_Color: {r: 0.03208439, g: 0.8213448, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,8 +122,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.3}
+    oldSize: {x: 0.46875, y: 0.4375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,9 +151,30 @@ MonoBehaviour:
   seedSpriteRenderer: {fileID: 975130589, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
   childGrowPointsThreshold: 15
   childSpriteRenderer: {fileID: -545974863, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
-  grownGrowPointsThreshold: 20
+  grownGrowPointsThreshold: 25
   grownSpriteRenderer: {fileID: -315365310, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
   needsWater: 1
   healthyGrowPointsIncrement: 5
   growPointsPenaltyPerViolation: 5
   Soil: {fileID: 0}
+--- !u!95 &4450825727250988646
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5408820985873089467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4dceee62fa0ebe2409771632bcbfdf50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

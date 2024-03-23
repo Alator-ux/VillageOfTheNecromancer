@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WaterFruitPlant : Plant
+public class WaterFruitPlant : AnimatedPlant
 {
     protected override void OnPickUp(GameObject interactor)
     {
@@ -18,6 +18,6 @@ public class WaterFruitPlant : Plant
     {
         CurrentState = PlantState.Child;
         GrowPoints = childGrowPointsThreshold;
-        UpdateSprite();
+        UpdateRendering();
     }
 }
