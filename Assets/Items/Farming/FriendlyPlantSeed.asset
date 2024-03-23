@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee7d9fff6955e64e882ee794959a70b, type: 3}
+  m_Name: FriendlyPlantSeed
+  m_EditorClassIdentifier: 
+  name: Friendly plant seed
+  description: Unique plant's seed
+  image: {fileID: 975130589, guid: 12bcc8603f16d69478087d54add03be3, type: 3}
+  stackSize: 10
+  droppedItemPrefab: {fileID: 542552474495479402, guid: 85c7e140e3da5c04f8abf1906e885713, type: 3}
+  UseScriptName: SeedUse
+  plantPrefab: {fileID: 6872826167121781398, guid: 6cc026894e34b4241a2922f1e565c181, type: 3}
